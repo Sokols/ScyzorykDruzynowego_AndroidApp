@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Scyzoryk Drużynowego</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="prompt_username">Login</string>
+    <string name="prompt_password">Hasło</string>
+    <string name="action_login">Zaloguj</string>
+    <string name="login">LOGOWANIE</string>
+    <string name="remember_me">Zapamiętaj mnie</string>
+    <string name="registration">REJESTRACJA</string>
+    <string name="register">Zarejestruj</string>
+    <string name="no_account_question">Nie masz jeszcze konta?</string>
+    <string name="prompt_repeat_password">Powtórz hasło</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
