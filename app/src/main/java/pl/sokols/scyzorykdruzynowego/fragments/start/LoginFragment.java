@@ -1,5 +1,6 @@
-package pl.sokols.scyzorykdruzynowego;
+package pl.sokols.scyzorykdruzynowego.fragments.start;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,8 @@ import androidx.navigation.Navigation;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import pl.sokols.scyzorykdruzynowego.R;
+import pl.sokols.scyzorykdruzynowego.activities.MainActivity;
 
 public class LoginFragment extends Fragment {
 
@@ -35,6 +38,7 @@ public class LoginFragment extends Fragment {
 
     @OnClick(R.id.loginButton)
     public void setLoginButton() {
-
+        startActivity(new Intent(getContext(), MainActivity.class));
+        getActivity().finish();
     }
 }

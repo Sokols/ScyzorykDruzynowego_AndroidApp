@@ -1,8 +1,10 @@
-package pl.sokols.scyzorykdruzynowego;
+package pl.sokols.scyzorykdruzynowego.activities;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import pl.sokols.scyzorykdruzynowego.R;
 
 public class StartActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego;
+package pl.sokols.scyzorykdruzynowego.fragments.start;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import pl.sokols.scyzorykdruzynowego.R;
 
 public class RegistrationFragment extends Fragment {
 
