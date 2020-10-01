@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.fragments.start;
+package pl.sokols.scyzorykdruzynowego.activities.start.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.activities.MainActivity;
+import pl.sokols.scyzorykdruzynowego.activities.main.MainActivity;
 
 public class LoginFragment extends Fragment {
 

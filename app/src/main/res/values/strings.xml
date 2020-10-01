@@ -8,8 +8,10 @@
     <string name="registration">REJESTRACJA</string>
     <string name="register">Zarejestruj</string>
     <string name="no_account_question">Nie masz jeszcze konta?</string>
+    <string name="title_activity_main">Main activity</string>
     <string name="prompt_repeat_password">Powtórz hasło</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="people">Członkowie</string>
+    <string name="to_do_list">TO DO</string>
+    <string name="meetings">Zbiórki</string>
 
 </resources>

@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimary"
-    tools:context=".fragments.start.RegistrationFragment">
+    android:background="@color/colorBackground"
+    tools:context=".activities.start.ui.RegistrationFragment">
 
     <TextView
         android:id="@+id/textViewLogin"

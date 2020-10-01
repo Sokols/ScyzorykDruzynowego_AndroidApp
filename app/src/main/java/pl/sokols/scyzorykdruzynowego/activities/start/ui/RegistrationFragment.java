@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.fragments.start;
+package pl.sokols.scyzorykdruzynowego.activities.start.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

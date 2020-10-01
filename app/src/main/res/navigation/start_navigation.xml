@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="pl.sokols.scyzorykdruzynowego.fragments.start.LoginFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.activities.start.ui.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="pl.sokols.scyzorykdruzynowego.fragments.start.RegistrationFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.activities.start.ui.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/startFragment"
-        android:name="pl.sokols.scyzorykdruzynowego.fragments.start.StartFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.activities.start.ui.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
