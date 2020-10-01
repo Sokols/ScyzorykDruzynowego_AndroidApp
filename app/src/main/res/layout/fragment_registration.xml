@@ -116,7 +116,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/no_account_question"
+        android:text="@string/account_question"
         android:textColor="@color/colorAccent"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/loginRegistrationButton"

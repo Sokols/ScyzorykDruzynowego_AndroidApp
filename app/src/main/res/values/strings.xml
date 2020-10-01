@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Scyzoryk Drużynowego</string>
     <string name="prompt_username">Login</string>
     <string name="prompt_password">Hasło</string>
@@ -8,10 +9,16 @@
     <string name="registration">REJESTRACJA</string>
     <string name="register">Zarejestruj</string>
     <string name="no_account_question">Nie masz jeszcze konta?</string>
+    <string name="account_question">Masz już konto?</string>
     <string name="title_activity_main">Main activity</string>
     <string name="prompt_repeat_password">Powtórz hasło</string>
     <string name="people">Członkowie</string>
     <string name="to_do_list">TO DO</string>
     <string name="meetings">Zbiórki</string>
+    <string name="blank_team">Zastęp: %s</string>
+    <string name="choose">Wybierz:</string>
+    <string name="new_team">Nowy zastęp</string>
+    <string name="or">lub</string>
+    <string name="new_person">Nowa osoba</string>
 
 </resources>

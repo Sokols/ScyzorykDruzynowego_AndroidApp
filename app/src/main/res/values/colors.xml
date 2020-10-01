@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorBackground">#1C1C1C</color>
     <color name="colorAccent">#FF9800</color>
-    <color name="standard_link">#0000EE</color>
+    <color name="colorTextOfTeam">#505050</color>
+    <color name="colorMainText">#A5A4A4</color>
 </resources>
