@@ -20,5 +20,14 @@
     <string name="new_team">Nowy zastęp</string>
     <string name="or">lub</string>
     <string name="new_person">Nowa osoba</string>
+    <string name="type_data">Wprowadź dane</string>
+    <string name="team_name">Nazwa zastępu (wymagane)</string>
+    <string name="name">Imię</string>
+    <string name="surname">Nazwisko</string>
+    <string name="birthday_date">Data urodzenia</string>
+    <string name="confirm">Zatwierdź</string>
+    <string name="scout_rank">Stopień</string>
+    <string name="scout_function">Funkcja</string>
+    <string name="scout_team">Zastęp</string>
 
 </resources>

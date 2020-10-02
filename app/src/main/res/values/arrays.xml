@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="ranks">
+        <item>-</item>
+        <item>Młodzik</item>
+        <item>Wywiadowca</item>
+        <item>Ćwik</item>
+        <item>HO</item>
+        <item>HR</item>
+    </string-array>
+
+    <string-array name="functions">
+        <item>-</item>
+        <item>Zastępowy</item>
+        <item>Podzastępowy</item>
+        <item>Skarbnik</item>
+        <item>Sekretarz</item>
+        <item>Fotograf</item>
+        <item>Ogniomistrz</item>
+        <item>Kuchmistrz</item>
+    </string-array>
+
+</resources>

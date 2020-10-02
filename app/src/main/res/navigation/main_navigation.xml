@@ -3,23 +3,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_people">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_people"
         android:name="pl.sokols.scyzorykdruzynowego.activities.main.ui.people.PeopleFragment"
         android:label="@string/people"
-        tools:layout="@layout/fragment_people" />
+        tools:layout="@layout/fragment_people" >
+        <action
+            android:id="@+id/action_people_to_select"
+            app:destination="@id/selectCreateTeamOrScoutFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_todo"
         android:name="pl.sokols.scyzorykdruzynowego.activities.main.ui.todo.TodoFragment"
         android:label="@string/to_do_list"
         tools:layout="@layout/fragment_todo" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_meetings"
         android:name="pl.sokols.scyzorykdruzynowego.activities.main.ui.meetings.MeetingsFragment"
         android:label="@string/meetings"
         tools:layout="@layout/fragment_meetings" />
+
+    <fragment
+        android:id="@+id/selectCreateTeamOrScoutFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.activities.main.ui.people.SelectCreateTeamOrScoutFragment"
+        android:label="fragment_select_create_team_or_scout"
+        tools:layout="@layout/fragment_select_create_team_or_scout" >
+        <action
+            android:id="@+id/action_select_to_new_team"
+            app:destination="@id/createNewTeamFragment" />
+        <action
+            android:id="@+id/action_select_to_new_person"
+            app:destination="@id/createNewPersonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createNewTeamFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.activities.main.ui.people.CreateNewTeamFragment"
+        android:label="fragment_create_new_team"
+        tools:layout="@layout/fragment_create_new_team" >
+        <action
+            android:id="@+id/action_new_team_to_select"
+            app:destination="@id/navigation_people" />
+    </fragment>
+    <fragment
+        android:id="@+id/createNewPersonFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.activities.main.ui.people.CreateNewPersonFragment"
+        android:label="fragment_create_new_person"
+        tools:layout="@layout/fragment_create_new_person" >
+        <action
+            android:id="@+id/action_new_person_to_select"
+            app:destination="@id/navigation_people" />
+    </fragment>
 </navigation>
