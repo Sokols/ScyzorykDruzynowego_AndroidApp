@@ -16,11 +16,13 @@
     <string name="to_do_list">TO DO</string>
     <string name="meetings">Zbiórki</string>
     <string name="blank_team">Zastęp: %s</string>
-    <string name="choose">Wybierz:</string>
+    <string name="choose">Wybierz</string>
+    <string name="choice">Wybór opcji</string>
     <string name="new_team">Nowy zastęp</string>
     <string name="or">lub</string>
     <string name="new_person">Nowa osoba</string>
     <string name="type_data">Wprowadź dane</string>
+    <string name="complete_data">Uzupełnienie danych</string>
     <string name="team_name">Nazwa zastępu (wymagane)</string>
     <string name="name">Imię</string>
     <string name="surname">Nazwisko</string>
@@ -29,5 +31,11 @@
     <string name="scout_rank">Stopień</string>
     <string name="scout_function">Funkcja</string>
     <string name="scout_team">Zastęp</string>
-
+    <string name="error">Błąd</string>
+    <string name="enter_all_data">Uzupełnij wszystkie pola!</string>
+    <string name="double_login">Podany login już istnieje!</string>
+    <string name="incorrect_second_password">Niepoprawnie powtórzone hasło!</string>
+    <string name="registration_completed">Zarejestrowano!</string>
+    <string name="incorrect_login">Nie ma takiego loginu!</string>
+    <string name="incorrect_password">Niepoprawne hasło!</string>
 </resources>

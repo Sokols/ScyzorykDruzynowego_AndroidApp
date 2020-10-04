@@ -26,7 +26,6 @@
         app:backgroundTint="@color/colorPrimaryDark"
         app:itemIconTint="@color/colorAccent"
         app:itemTextColor="@color/colorAccent"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
