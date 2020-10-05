@@ -22,11 +22,11 @@ import pl.sokols.scyzorykdruzynowego.activities.main.MainActivity;
 
 public class LoginFragment extends Fragment {
 
-    @BindView(R.id.usernameEditText)
+    @BindView(R.id.usernameLoginEditText)
     EditText usernameEditText;
-    @BindView(R.id.passwordEditText)
+    @BindView(R.id.passwordLoginEditText)
     EditText passwordEditText;
-    @BindView(R.id.rememberCheckBox)
+    @BindView(R.id.rememberLoginCheckBox)
     CheckBox rememberMeCheckBox;
 
     @Override
@@ -36,12 +36,12 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
-    @OnClick(R.id.registerButton)
+    @OnClick(R.id.registerLoginButton)
     public void setRegisterButton() {
         Navigation.findNavController(getView()).navigate(R.id.action_login_to_registration);
     }
 
-    @OnClick(R.id.loginButton)
+    @OnClick(R.id.loginLoginButton)
     public void setLoginButton() {
         if (isAllDataCorrect()) {
             startActivity(new Intent(getContext(), MainActivity.class));
