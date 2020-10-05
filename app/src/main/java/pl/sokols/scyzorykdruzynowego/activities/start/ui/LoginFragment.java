@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.activities.data.reopistories.UserViewModel;
+import pl.sokols.scyzorykdruzynowego.data.viewmodels.UserViewModel;
 import pl.sokols.scyzorykdruzynowego.activities.main.MainActivity;
 
 public class LoginFragment extends Fragment {

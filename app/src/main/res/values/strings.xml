@@ -26,7 +26,7 @@
     <string name="team_name">Nazwa zastępu (wymagane)</string>
     <string name="name">Imię</string>
     <string name="surname">Nazwisko</string>
-    <string name="birthday_date">Data urodzenia</string>
+    <string name="birthday_date">Data urodzenia (dd-mm-rrrr)</string>
     <string name="confirm">Zatwierdź</string>
     <string name="scout_rank">Stopień</string>
     <string name="scout_function">Funkcja</string>

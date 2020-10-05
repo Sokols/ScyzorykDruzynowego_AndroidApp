@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.data;
+package pl.sokols.scyzorykdruzynowego.data;
 
 import android.content.Context;
 
@@ -6,10 +6,10 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import pl.sokols.scyzorykdruzynowego.activities.data.dao.PersonDao;
-import pl.sokols.scyzorykdruzynowego.activities.data.dao.UserDao;
-import pl.sokols.scyzorykdruzynowego.activities.data.entities.Person;
-import pl.sokols.scyzorykdruzynowego.activities.data.entities.User;
+import pl.sokols.scyzorykdruzynowego.data.dao.PersonDao;
+import pl.sokols.scyzorykdruzynowego.data.dao.UserDao;
+import pl.sokols.scyzorykdruzynowego.data.entities.Person;
+import pl.sokols.scyzorykdruzynowego.data.entities.User;
 
 @Database(
         entities = {

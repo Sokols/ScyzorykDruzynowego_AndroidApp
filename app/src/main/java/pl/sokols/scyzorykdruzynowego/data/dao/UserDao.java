@@ -1,21 +1,16 @@
-package pl.sokols.scyzorykdruzynowego.activities.data.dao;
+package pl.sokols.scyzorykdruzynowego.data.dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import java.util.List;
-
-import pl.sokols.scyzorykdruzynowego.activities.data.entities.User;
+import pl.sokols.scyzorykdruzynowego.data.entities.User;
 
 @Dao
 public interface UserDao {
 
     @Insert
     void insert(User user);
-
-    @Query("SELECT * FROM users")
-    List<User> getAllUsers();
 
     @Query("SELECT * FROM users WHERE username = :username")
     User getItemByName(String username);

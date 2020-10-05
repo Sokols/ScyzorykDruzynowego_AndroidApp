@@ -15,14 +15,17 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.activities.data.entities.User;
-import pl.sokols.scyzorykdruzynowego.activities.data.reopistories.UserViewModel;
+import pl.sokols.scyzorykdruzynowego.data.entities.User;
+import pl.sokols.scyzorykdruzynowego.data.viewmodels.UserViewModel;
 
 public class RegistrationFragment extends Fragment {
 
-    @BindView(R.id.usernameRegistrationEditText) EditText usernameEditText;
-    @BindView(R.id.passwordRegistrationEditText) EditText passwordEditText;
-    @BindView(R.id.repeatPasswordRegistrationEditText) EditText repeatPasswordEditText;
+    @BindView(R.id.usernameRegistrationEditText)
+    EditText usernameEditText;
+    @BindView(R.id.passwordRegistrationEditText)
+    EditText passwordEditText;
+    @BindView(R.id.repeatPasswordRegistrationEditText)
+    EditText repeatPasswordEditText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

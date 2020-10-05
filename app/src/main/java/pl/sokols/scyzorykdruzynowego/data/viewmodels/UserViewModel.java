@@ -1,17 +1,16 @@
-package pl.sokols.scyzorykdruzynowego.activities.data.reopistories;
+package pl.sokols.scyzorykdruzynowego.data.viewmodels;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import pl.sokols.scyzorykdruzynowego.activities.data.AppDatabase;
-import pl.sokols.scyzorykdruzynowego.activities.data.dao.UserDao;
-import pl.sokols.scyzorykdruzynowego.activities.data.entities.User;
+import pl.sokols.scyzorykdruzynowego.data.AppDatabase;
+import pl.sokols.scyzorykdruzynowego.data.dao.UserDao;
+import pl.sokols.scyzorykdruzynowego.data.entities.User;
 
 public class UserViewModel extends AndroidViewModel {
 
@@ -26,10 +25,6 @@ public class UserViewModel extends AndroidViewModel {
 
     public void insert(User user) {
         executorService.execute(() -> userDao.insert(user));
-    }
-
-    public List<User> getAllUsers() {
-        return userDao.getAllUsers();
     }
 
     public User getItemByName(String login) {

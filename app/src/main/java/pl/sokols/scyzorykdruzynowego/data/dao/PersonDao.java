@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.data.dao;
+package pl.sokols.scyzorykdruzynowego.data.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,13 +7,13 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import pl.sokols.scyzorykdruzynowego.activities.data.entities.Person;
+import pl.sokols.scyzorykdruzynowego.data.entities.Person;
 
 @Dao
 public interface PersonDao {
 
     @Query("SELECT * FROM people")
-    List<Person> getAll();
+    List<Person> getAllPeople();
 
     @Insert
     void insert(Person person);
