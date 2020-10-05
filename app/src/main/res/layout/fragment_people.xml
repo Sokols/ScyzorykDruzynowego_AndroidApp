@@ -8,7 +8,7 @@
     tools:context=".activities.main.ui.people.PeopleFragment">
 
     <ListView
-        android:id="@+id/allListView"
+        android:id="@+id/allPeopleListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,12 +16,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addingFAB"
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/addPeopleFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_baseline_add_24" />
+        android:text="@string/add"
+        android:textColor="@color/colorBackground"
+        app:backgroundTint="@color/colorAccent"
+        app:icon="@drawable/ic_baseline_add_24" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

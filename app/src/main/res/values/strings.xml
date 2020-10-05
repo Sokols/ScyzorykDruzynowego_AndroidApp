@@ -20,7 +20,7 @@
     <string name="choice">Wybór opcji</string>
     <string name="new_team">Nowy zastęp</string>
     <string name="or">lub</string>
-    <string name="new_person">Nowa osoba</string>
+    <string name="new_person">Nową osobę</string>
     <string name="type_data">Wprowadź dane</string>
     <string name="complete_data">Uzupełnienie danych</string>
     <string name="team_name">Nazwa zastępu (wymagane)</string>
@@ -38,4 +38,5 @@
     <string name="registration_completed">Zarejestrowano!</string>
     <string name="incorrect_login">Nie ma takiego loginu!</string>
     <string name="incorrect_password">Niepoprawne hasło!</string>
+    <string name="add">Dodaj</string>
 </resources>

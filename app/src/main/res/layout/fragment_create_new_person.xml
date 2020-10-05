@@ -8,10 +8,10 @@
     tools:context=".activities.main.ui.people.CreateNewPersonFragment">
 
     <TextView
-        android:id="@+id/addPersonTitleTextView"
+        android:id="@+id/titleNewPersonTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="@string/type_data"
         android:textColor="@color/colorMainText"
         android:textSize="@dimen/add_fragments_title_text_size"
@@ -20,148 +20,182 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/personNameTextInputLayout"
+        android:id="@+id/nameNewPersonTextInputLayout"
+        style="@style/LoginTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="@dimen/edittext_margin"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/edittext_margin"
+        android:hint="@string/name"
         android:textColorHint="@color/colorAccent"
-        app:endIconTint="@color/colorAccent"
         app:endIconMode="clear_text"
+        app:endIconTint="@color/colorAccent"
+        app:hintTextColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPersonTitleTextView">
+        app:layout_constraintTop_toBottomOf="@+id/titleNewPersonTextView">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/personNameEditText"
+            android:id="@+id/nameNewPersonEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="fill_horizontal"
-            android:layout_marginStart="@dimen/edittext_margin"
-            android:layout_marginEnd="@dimen/edittext_margin"
-            android:backgroundTint="@color/colorAccent"
-            android:hint="@string/name"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorAccent"
+            android:textCursorDrawable="@color/colorAccent" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/personSurnameTextInputLayout"
+        android:id="@+id/surnameNewPersonTextInputLayout"
+        style="@style/LoginTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/edittext_margin"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/edittext_margin"
+        android:hint="@string/surname"
         android:textColorHint="@color/colorAccent"
-        app:endIconTint="@color/colorAccent"
         app:endIconMode="clear_text"
+        app:endIconTint="@color/colorAccent"
+        app:hintTextColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personNameTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/nameNewPersonTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/personSurnameEditText"
+            android:id="@+id/surnameNewPersonEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="fill_horizontal"
-            android:layout_marginStart="@dimen/edittext_margin"
-            android:layout_marginEnd="@dimen/edittext_margin"
-            android:backgroundTint="@color/colorAccent"
-            android:hint="@string/surname"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorAccent"
+            android:textCursorDrawable="@color/colorAccent" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/personDateTextInputLayout"
+        android:id="@+id/dateNewPersonTextInputLayout"
+        style="@style/LoginTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/edittext_margin"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/edittext_margin"
+        android:hint="@string/birthday_date"
         android:textColorHint="@color/colorAccent"
-        app:endIconTint="@color/colorAccent"
         app:endIconMode="clear_text"
+        app:endIconTint="@color/colorAccent"
+        app:hintTextColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personSurnameTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/surnameNewPersonTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/personBirthdayDateEditText"
+            android:id="@+id/dateNewPersonEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="fill_horizontal"
-            android:layout_marginStart="@dimen/edittext_margin"
-            android:layout_marginEnd="@dimen/edittext_margin"
-            android:backgroundTint="@color/colorAccent"
-            android:hint="@string/birthday_date"
-            android:importantForAutofill="no"
             android:inputType="date"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorAccent"
+            android:textCursorDrawable="@color/colorAccent" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/personRankSpinnerTextInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:id="@+id/rankNewPersonTextInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/edittext_margin"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/edittext_margin"
         android:hint="@string/scout_rank"
         android:textColorHint="@color/colorAccent"
+        app:boxBackgroundColor="@color/colorBackground"
+        app:boxStrokeColor="@color/colorAccent"
+        app:boxStrokeWidth="2dp"
+        app:endIconTint="@color/colorAccent"
+        app:hintTextColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personDateTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/dateNewPersonTextInputLayout">
 
-        <AutoCompleteTextView
-            android:id="@+id/personRankAutoCompleteTextView"
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/rankNewPersonAutoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill_horizontal"
-            android:layout_marginStart="@dimen/edittext_margin"
-            android:layout_marginEnd="@dimen/edittext_margin"
-            android:backgroundTint="@color/colorAccent"
-            android:hint="@string/scout_rank"
-            android:importantForAutofill="no"
             android:inputType="none"
             android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
-            tools:ignore="labelFor" />
+            android:textColorHint="@color/colorAccent" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Spinner
-        android:id="@+id/personTeamSpinner"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/teamNewPersonTextInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/edittext_margin"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/edittext_margin"
-        android:backgroundTint="@color/colorAccent"
-        android:prompt="@string/scout_team"
-        android:textColor="@color/colorAccent"
+        android:hint="@string/scout_team"
+        android:textColorHint="@color/colorAccent"
+        app:boxBackgroundColor="@color/colorBackground"
+        app:boxStrokeColor="@color/colorAccent"
+        app:boxStrokeWidth="2dp"
+        app:endIconTint="@color/colorAccent"
+        app:hintTextColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personRankSpinnerTextInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/rankNewPersonTextInputLayout">
 
-    <Spinner
-        android:id="@+id/personFunctionSpinner"
-        android:layout_width="0dp"
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/teamNewPersonAutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/functonNewPersonTextInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/edittext_margin"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/edittext_margin"
-        android:backgroundTint="@color/colorAccent"
-        android:prompt="@string/scout_function"
-        android:textColor="@color/colorAccent"
+        android:hint="@string/scout_function"
+        android:textColorHint="@color/colorAccent"
+        app:boxBackgroundColor="@color/colorBackground"
+        app:boxStrokeColor="@color/colorAccent"
+        app:boxStrokeWidth="2dp"
+        app:endIconTint="@color/colorAccent"
+        app:hintTextColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personTeamSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/teamNewPersonTextInputLayout">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/functionNewPersonAutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/confirmAddPersonButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="@color/colorAccent"
         android:text="@string/confirm"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personFunctionSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/functonNewPersonTextInputLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

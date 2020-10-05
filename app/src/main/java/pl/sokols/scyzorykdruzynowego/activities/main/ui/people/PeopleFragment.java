@@ -21,7 +21,7 @@ public class PeopleFragment extends Fragment {
         return view;
     }
 
-    @OnClick(R.id.addingFAB)
+    @OnClick(R.id.addPeopleFloatingActionButton)
     public void setAddingFAB() {
         Navigation.findNavController(getView()).navigate(R.id.action_people_to_select);
     }

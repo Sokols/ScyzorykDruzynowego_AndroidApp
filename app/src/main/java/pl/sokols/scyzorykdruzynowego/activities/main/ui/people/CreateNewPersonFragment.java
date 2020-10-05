@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,12 +20,12 @@ import pl.sokols.scyzorykdruzynowego.R;
 
 public class CreateNewPersonFragment extends Fragment {
 
-    @BindView(R.id.personRankAutoCompleteTextView)
-    AutoCompleteTextView personRankAutoCompleteTextView;
-    @BindView(R.id.personFunctionSpinner)
-    Spinner personFunctionSpinner;
-    @BindView(R.id.personTeamSpinner)
-    Spinner personTeamSpinner;
+    @BindView(R.id.rankNewPersonAutoCompleteTextView)
+    AutoCompleteTextView rankNewPersonAutoCompleteTextView;
+    @BindView(R.id.teamNewPersonAutoCompleteTextView)
+    AutoCompleteTextView teamNewPersonAutoCompleteTextView;
+    @BindView(R.id.functionNewPersonAutoCompleteTextView)
+    AutoCompleteTextView functionNewPersonAutoCompleteTextView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,14 +41,18 @@ public class CreateNewPersonFragment extends Fragment {
     }
 
     private void setSpinnerAdapters() {
-        // prepare HINT adapters
-        ArrayAdapter<String> rankAdapter = new ArrayAdapter<>(requireContext(), R.layout.autocompletetextview_item, getResources().getStringArray(R.array.ranks));
-        ArrayAdapter<String> functionAdapter = new ArrayAdapter<>(requireContext(), R.layout.autocompletetextview_item, getResources().getStringArray(R.array.functions));
-
-        functionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // prepare adapters
+        ArrayAdapter<String> rankAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getResources().getStringArray(R.array.ranks));
+        ArrayAdapter<String> teamAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getTeamsFromDB());
+        ArrayAdapter<String> functionAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getResources().getStringArray(R.array.functions));
 
         // set adapters on spinners
-        personRankAutoCompleteTextView.setAdapter(rankAdapter);
-        personFunctionSpinner.setAdapter(functionAdapter);
+        rankNewPersonAutoCompleteTextView.setAdapter(rankAdapter);
+        teamNewPersonAutoCompleteTextView.setAdapter(teamAdapter);
+        functionNewPersonAutoCompleteTextView.setAdapter(functionAdapter);
+    }
+
+    private List<String> getTeamsFromDB() {
+        return new ArrayList<>();
     }
 }
