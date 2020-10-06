@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -26,6 +28,12 @@ public class RegistrationFragment extends Fragment {
     EditText passwordEditText;
     @BindView(R.id.repeatPasswordRegistrationEditText)
     EditText repeatPasswordEditText;
+    @BindView(R.id.usernameRegistrationTextInputLayout)
+    TextInputLayout usernameTextInputLayout;
+    @BindView(R.id.passwordRegistrationTextInputLayout)
+    TextInputLayout passwordTextInputLayout;
+    @BindView(R.id.repeatPasswordRegistrationTextInputLayout)
+    TextInputLayout repeatPasswordTextInputLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,7 +66,7 @@ public class RegistrationFragment extends Fragment {
 
     private boolean isAllDataCorrect(String username, String password, String password2, UserViewModel userViewModel) {
         // check that all data has been entered
-        if (username.isEmpty() || password.isEmpty() || password2.isEmpty()) {
+        if (isAnyFieldEmpty(username, password, password2)) {
             Toast.makeText(getActivity(), getString(R.string.enter_all_data), Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -76,5 +84,33 @@ public class RegistrationFragment extends Fragment {
         }
 
         return true;
+    }
+
+    private boolean isAnyFieldEmpty(String username, String password, String password2) {
+        // remove error texts
+        usernameTextInputLayout.setError(null);
+        passwordTextInputLayout.setError(null);
+        repeatPasswordTextInputLayout.setError(null);
+
+        // if yes - set error texts in empty required fields and return true
+        if (username.isEmpty() || password.isEmpty() || password2.isEmpty()) {
+
+            if (username.isEmpty()) {
+                usernameTextInputLayout.setError(getString(R.string.required_error));
+            }
+
+            if (password.isEmpty()) {
+                passwordTextInputLayout.setError(getString(R.string.required_error));
+            }
+
+            if (password2.isEmpty()) {
+                repeatPasswordTextInputLayout.setError(getString(R.string.required_error));
+            }
+
+            return true;
+
+        } else {
+            return false;
+        }
     }
 }

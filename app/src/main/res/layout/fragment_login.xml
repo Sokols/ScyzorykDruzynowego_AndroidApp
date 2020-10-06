@@ -43,6 +43,9 @@
         app:endIconTint="@color/colorAccent"
         app:startIconDrawable="@drawable/ic_baseline_person_24"
         app:startIconTint="@color/colorAccent"
+        app:errorEnabled="true"
+        app:boxStrokeErrorColor="@color/colorAccent"
+        app:errorTextColor="@color/colorAccent"
         app:layout_constraintBottom_toTopOf="@+id/passwordLoginTextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -71,6 +74,9 @@
         app:endIconTint="@color/colorAccent"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
         app:startIconTint="@color/colorAccent"
+        app:errorEnabled="true"
+        app:boxStrokeErrorColor="@color/colorAccent"
+        app:errorTextColor="@color/colorAccent"
         app:layout_constraintBottom_toTopOf="@+id/rememberLoginCheckBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

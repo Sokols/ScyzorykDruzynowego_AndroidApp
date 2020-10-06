@@ -39,4 +39,9 @@
     <string name="incorrect_login">Nie ma takiego loginu!</string>
     <string name="incorrect_password">Niepoprawne hasło!</string>
     <string name="add">Dodaj</string>
+    <string name="required_error">To pole jest wymagane</string>
+    <string name="added_new_team_completed">Dodano nowy zastęp!</string>
+    <string name="added_new_person_completed">Dodano nowego członka drużyny!</string>
+    <string name="date_format_error">Niepoprawny format daty</string>
+
 </resources>

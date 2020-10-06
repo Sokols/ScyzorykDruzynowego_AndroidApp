@@ -13,12 +13,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.viewmodels.UserViewModel;
 import pl.sokols.scyzorykdruzynowego.activities.main.MainActivity;
+import pl.sokols.scyzorykdruzynowego.data.viewmodels.UserViewModel;
 
 public class LoginFragment extends Fragment {
 
@@ -28,6 +30,10 @@ public class LoginFragment extends Fragment {
     EditText passwordEditText;
     @BindView(R.id.rememberLoginCheckBox)
     CheckBox rememberMeCheckBox;
+    @BindView(R.id.usernameLoginTextInputLayout)
+    TextInputLayout usernameTextInputLayout;
+    @BindView(R.id.passwordLoginTextInputLayout)
+    TextInputLayout passwordTextInputLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,14 +44,14 @@ public class LoginFragment extends Fragment {
 
     @OnClick(R.id.registerLoginButton)
     public void setRegisterButton() {
-        Navigation.findNavController(getView()).navigate(R.id.action_login_to_registration);
+        Navigation.findNavController(requireView()).navigate(R.id.action_login_to_registration);
     }
 
     @OnClick(R.id.loginLoginButton)
     public void setLoginButton() {
         if (isAllDataCorrect()) {
             startActivity(new Intent(getContext(), MainActivity.class));
-            getActivity().finish();
+            requireActivity().finish();
         }
     }
 
@@ -57,7 +63,7 @@ public class LoginFragment extends Fragment {
         UserViewModel userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
         // check if all data typed
-        if (username.isEmpty() || password.isEmpty()) {
+        if (isAnyFieldEmpty(username, password)) {
             Toast.makeText(getActivity(), getString(R.string.enter_all_data), Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -75,5 +81,28 @@ public class LoginFragment extends Fragment {
         }
 
         return true;
+    }
+
+    private boolean isAnyFieldEmpty(String username, String password) {
+
+        // remove all error texts
+        usernameTextInputLayout.setError(null);
+        passwordTextInputLayout.setError(null);
+
+        if (username.isEmpty() || password.isEmpty()) {
+
+            if (username.isEmpty()) {
+                usernameTextInputLayout.setError(getString(R.string.required_error));
+            }
+
+            if (password.isEmpty()) {
+                passwordTextInputLayout.setError(getString(R.string.required_error));
+            }
+
+            return true;
+
+        } else {
+            return false;
+        }
     }
 }

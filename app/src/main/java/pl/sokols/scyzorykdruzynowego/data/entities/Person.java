@@ -3,8 +3,14 @@ package pl.sokols.scyzorykdruzynowego.data.entities;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import java.util.Date;
+
+import pl.sokols.scyzorykdruzynowego.utils.DateConverter;
 
 @Entity(tableName = "people")
+@TypeConverters(DateConverter.class)
 public class Person {
 
     @PrimaryKey(autoGenerate = true)
@@ -15,11 +21,20 @@ public class Person {
     private String surname;
 
     @ColumnInfo(name = "date_of_birth")
-    private String dateOfBirth;
+    private Date dateOfBirth;
 
     private String rank;
     private String team;
     private String function;
+
+    public Person(String name, String surname, Date dateOfBirth, String rank, String team, String function) {
+        this.name = name;
+        this.surname = surname;
+        this.dateOfBirth = dateOfBirth;
+        this.rank = rank;
+        this.team = team;
+        this.function = function;
+    }
 
     public int getPersonId() {
         return personId;
@@ -45,11 +60,11 @@ public class Person {
         this.surname = surname;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

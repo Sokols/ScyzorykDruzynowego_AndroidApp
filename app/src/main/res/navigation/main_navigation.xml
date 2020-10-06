@@ -13,8 +13,8 @@
         <action
             android:id="@+id/action_people_to_select"
             app:destination="@id/selectCreateTeamOrScoutFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
-            app:popEnterAnim="@anim/fragment_close_exit" />
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_out" />
     </fragment>
 
     <fragment
@@ -36,10 +36,14 @@
         tools:layout="@layout/fragment_select_create_team_or_scout">
         <action
             android:id="@+id/action_select_to_new_team"
-            app:destination="@id/createNewTeamFragment" />
+            app:destination="@id/createNewTeamFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_select_to_new_person"
-            app:destination="@id/createNewPersonFragment" />
+            app:destination="@id/createNewPersonFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/createNewTeamFragment"
@@ -49,6 +53,8 @@
         <action
             android:id="@+id/action_new_team_to_people"
             app:destination="@id/navigation_people"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_out"
             app:popUpTo="@id/navigation_people"
             app:popUpToInclusive="true" />
     </fragment>
@@ -60,6 +66,8 @@
         <action
             android:id="@+id/action_new_person_to_people"
             app:destination="@id/navigation_people"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_out"
             app:popUpTo="@id/navigation_people"
             app:popUpToInclusive="true" />
     </fragment>

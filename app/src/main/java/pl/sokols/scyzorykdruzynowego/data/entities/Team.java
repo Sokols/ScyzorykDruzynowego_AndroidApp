@@ -17,6 +17,10 @@ public class Team {
         return teamId;
     }
 
+    public Team(String teamName) {
+        this.teamName = teamName;
+    }
+
     public void setTeamId(int teamId) {
         this.teamId = teamId;
     }
