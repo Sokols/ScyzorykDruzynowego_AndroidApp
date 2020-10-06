@@ -23,7 +23,7 @@
     <string name="new_person">Nową osobę</string>
     <string name="type_data">Wprowadź dane</string>
     <string name="complete_data">Uzupełnienie danych</string>
-    <string name="team_name">Nazwa zastępu (wymagane)</string>
+    <string name="team_name">Nazwa zastępu</string>
     <string name="name">Imię</string>
     <string name="surname">Nazwisko</string>
     <string name="birthday_date">Data urodzenia (dd-mm-rrrr)</string>

@@ -31,7 +31,7 @@ public class CreateNewPersonFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_create_new_person, container, false);
         ButterKnife.bind(this, view);
-        setSpinnerAdapters();
+        setAdapters();
         return view;
     }
 
@@ -40,7 +40,7 @@ public class CreateNewPersonFragment extends Fragment {
         Navigation.findNavController(requireView()).navigate(R.id.action_new_person_to_people);
     }
 
-    private void setSpinnerAdapters() {
+    private void setAdapters() {
         // prepare adapters
         ArrayAdapter<String> rankAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getResources().getStringArray(R.array.ranks));
         ArrayAdapter<String> teamAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getTeamsFromDB());

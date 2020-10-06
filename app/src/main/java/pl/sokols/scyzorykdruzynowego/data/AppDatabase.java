@@ -7,14 +7,17 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import pl.sokols.scyzorykdruzynowego.data.dao.PersonDao;
+import pl.sokols.scyzorykdruzynowego.data.dao.TeamDao;
 import pl.sokols.scyzorykdruzynowego.data.dao.UserDao;
 import pl.sokols.scyzorykdruzynowego.data.entities.Person;
+import pl.sokols.scyzorykdruzynowego.data.entities.Team;
 import pl.sokols.scyzorykdruzynowego.data.entities.User;
 
 @Database(
         entities = {
                 Person.class,
-                User.class},
+                User.class,
+                Team.class},
         version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -35,4 +38,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract PersonDao personDao();
 
     public abstract UserDao userDao();
+
+    public abstract TeamDao teamDao();
 }

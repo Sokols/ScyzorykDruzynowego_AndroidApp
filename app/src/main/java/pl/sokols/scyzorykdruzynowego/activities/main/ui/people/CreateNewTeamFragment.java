@@ -22,7 +22,7 @@ public class CreateNewTeamFragment extends Fragment {
         return view;
     }
 
-    @OnClick(R.id.confirmAddTeamButton)
+    @OnClick(R.id.confirmNewTeamButton)
     public void setConfirmAddPersonButton() {
         Navigation.findNavController(getView()).navigate(R.id.action_new_team_to_people);
     }

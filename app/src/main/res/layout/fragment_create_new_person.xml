@@ -72,7 +72,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dateNewPersonTextInputLayout"
+        android:id="@+id/nameNewTeamTextInputLayout"
         style="@style/LoginTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
         app:hintTextColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateNewPersonTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/nameNewTeamTextInputLayout">
 
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/rankNewPersonAutoCompleteTextView"
@@ -191,8 +191,8 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="64dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="@string/confirm"
         android:textColor="@color/colorPrimary"
+        android:text="@string/confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

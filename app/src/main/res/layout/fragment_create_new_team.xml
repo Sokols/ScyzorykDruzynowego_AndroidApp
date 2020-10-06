@@ -8,50 +8,56 @@
     tools:context=".activities.main.ui.people.CreateNewTeamFragment">
 
     <TextView
-        android:id="@+id/addTeamTitleTextView"
+        android:id="@+id/titleNewTeamTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="96dp"
+        android:layout_marginTop="128dp"
         android:text="@string/type_data"
         android:textColor="@color/colorMainText"
         android:textSize="@dimen/add_fragments_title_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/teamNameEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/teamNameEditText"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameNewTeamTextInputLayout"
+        style="@style/LoginTextInputLayoutStyle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/edittext_margin"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="@dimen/edittext_margin"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/colorAccent"
         android:hint="@string/team_name"
-        android:inputType="textPersonName"
-        android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/colorAccent"
+        app:hintTextColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/titleNewTeamTextView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameNewTeamEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:inputType="text"
+            android:textColor="@color/colorAccent"
+            android:textCursorDrawable="@color/colorAccent" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/confirmAddTeamButton"
+        android:id="@+id/confirmNewTeamButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:background="@color/colorAccent"
+        android:backgroundTint="@color/colorAccent"
         android:text="@string/confirm"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teamNameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/nameNewTeamTextInputLayout"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
