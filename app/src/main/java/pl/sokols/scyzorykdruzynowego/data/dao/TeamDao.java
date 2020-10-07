@@ -1,5 +1,6 @@
 package pl.sokols.scyzorykdruzynowego.data.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -15,7 +16,7 @@ public interface TeamDao {
     void insert(Team team);
 
     @Query("SELECT * FROM teams")
-    List<Team> getAllTeams();
+    LiveData<List<Team>> getAllTeams();
 
     @Query("SELECT EXISTS (SELECT * FROM teams WHERE teamName = :teamName)")
     int checkItemByName(String teamName);

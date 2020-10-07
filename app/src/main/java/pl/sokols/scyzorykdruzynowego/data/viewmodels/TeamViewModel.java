@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -28,7 +29,7 @@ public class TeamViewModel extends AndroidViewModel {
         executorService.execute(() -> teamDao.insert(team));
     }
 
-    public List<Team> getAllTeams() {
+    public LiveData<List<Team>> getAllTeams() {
         return teamDao.getAllTeams();
     }
 

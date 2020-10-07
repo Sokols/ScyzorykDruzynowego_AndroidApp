@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -24,7 +25,7 @@ public class PersonViewModel extends AndroidViewModel {
         executorService = Executors.newSingleThreadExecutor();
     }
 
-    public List<Person> getAllPeople() {
+    public LiveData<List<Person>> getAllPeople() {
         return personDao.getAllPeople();
     }
 

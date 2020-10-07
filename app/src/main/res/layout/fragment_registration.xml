@@ -41,25 +41,17 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameRegistrationTextInputLayout"
-        style="@style/LoginTextInputLayoutStyle"
+        style="@style/EditTextsTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/edittext_margin"
         android:layout_marginEnd="@dimen/edittext_margin"
         android:layout_marginBottom="8dp"
         android:hint="@string/prompt_username"
-        android:textColorHint="@color/colorAccent"
-        app:endIconMode="clear_text"
-        app:endIconTint="@color/colorAccent"
-        app:hintTextColor="@color/colorAccent"
-        app:errorEnabled="true"
-        app:boxStrokeErrorColor="@color/colorAccent"
-        app:errorTextColor="@color/colorAccent"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
         app:layout_constraintBottom_toTopOf="@+id/passwordRegistrationTextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_person_24"
-        app:startIconTint="@color/colorAccent">
+        app:layout_constraintStart_toStartOf="parent" >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/usernameRegistrationEditText"
@@ -72,25 +64,17 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordRegistrationTextInputLayout"
-        style="@style/LoginTextInputLayoutStyle"
+        style="@style/EditTextsTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/edittext_margin"
         android:layout_marginEnd="@dimen/edittext_margin"
         android:layout_marginBottom="8dp"
         android:hint="@string/prompt_password"
-        android:textColorHint="@color/colorAccent"
-        app:endIconMode="clear_text"
-        app:endIconTint="@color/colorAccent"
-        app:hintTextColor="@color/colorAccent"
-        app:errorEnabled="true"
-        app:boxStrokeErrorColor="@color/colorAccent"
-        app:errorTextColor="@color/colorAccent"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
         app:layout_constraintBottom_toTopOf="@+id/repeatPasswordRegistrationTextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        app:startIconTint="@color/colorAccent">
+        app:layout_constraintStart_toStartOf="parent" >
 
         <EditText
             android:id="@+id/passwordRegistrationEditText"
@@ -104,25 +88,17 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/repeatPasswordRegistrationTextInputLayout"
-        style="@style/LoginTextInputLayoutStyle"
+        style="@style/EditTextsTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/edittext_margin"
         android:layout_marginEnd="@dimen/edittext_margin"
         android:layout_marginBottom="8dp"
         android:hint="@string/prompt_repeat_password"
-        android:textColorHint="@color/colorAccent"
-        app:endIconMode="clear_text"
-        app:endIconTint="@color/colorAccent"
-        app:hintTextColor="@color/colorAccent"
-        app:errorEnabled="true"
-        app:boxStrokeErrorColor="@color/colorAccent"
-        app:errorTextColor="@color/colorAccent"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
         app:layout_constraintBottom_toTopOf="@+id/registerRegistrationButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        app:startIconTint="@color/colorAccent">
+        app:layout_constraintStart_toStartOf="parent" >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/repeatPasswordRegistrationEditText"

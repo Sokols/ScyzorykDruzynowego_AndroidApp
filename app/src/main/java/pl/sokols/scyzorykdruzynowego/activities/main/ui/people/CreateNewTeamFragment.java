@@ -45,8 +45,8 @@ public class CreateNewTeamFragment extends Fragment {
         // insert new team if every data is ok an return to the login fragment
         if (isAllDataCorrect(teamName)) {
             teamViewModel.insert(new Team(teamName));
-            Navigation.findNavController(getView()).navigate(R.id.action_new_team_to_people);
-            Toast.makeText(getActivity(), getString(R.string.added_new_team_completed), Toast.LENGTH_SHORT).show();;
+            Navigation.findNavController(requireView()).navigate(R.id.action_new_team_to_people);
+            Toast.makeText(getActivity(), getString(R.string.added_new_team_completed), Toast.LENGTH_SHORT).show();
         }
     }
 

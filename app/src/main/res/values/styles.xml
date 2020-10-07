@@ -15,9 +15,26 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+    <style name="EditTextsTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">@color/colorAccent</item>
         <item name="boxStrokeWidth">2dp</item>
+        <item name="android:textColorHint">@color/colorAccent</item>
+        <item name="hintTextColor">@color/colorAccent</item>
+        <item name="endIconMode">clear_text</item>
+        <item name="endIconTint">@color/colorAccent</item>
+        <item name="startIconTint">@color/colorAccent</item>
+        <item name="errorEnabled">true</item>
+        <item name="boxStrokeErrorColor">@color/colorAccent</item>
+        <item name="errorTextColor">@color/colorAccent</item>
+    </style>
+
+    <style name="AutoCompleteTextViewsTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="android:textColorHint">@color/colorAccent</item>
+        <item name="boxBackgroundColor">@color/colorBackground</item>
+        <item name="boxStrokeColor">@color/colorAccent</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="endIconTint">@color/colorAccent</item>
+        <item name="hintTextColor">@color/colorAccent</item>
     </style>
 
 </resources>
