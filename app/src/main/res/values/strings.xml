@@ -16,6 +16,7 @@
     <string name="to_do_list">TO DO</string>
     <string name="meetings">Zbiórki</string>
     <string name="blank_team">Zastęp: %s</string>
+    <string name="blank_rank">Stopień: %s</string>
     <string name="choose">Wybierz</string>
     <string name="choice">Wybór opcji</string>
     <string name="new_team">Nowy zastęp</string>

@@ -15,10 +15,10 @@ public interface TeamDao {
     @Insert
     void insert(Team team);
 
-    @Query("SELECT * FROM teams")
+    @Query("SELECT * FROM teams ORDER BY team_name ASC")
     LiveData<List<Team>> getAllTeams();
 
-    @Query("SELECT team_name FROM teams")
+    @Query("SELECT team_name FROM teams ORDER BY team_name ASC")
     List<String> getAllTeamNames();
 
     @Query("SELECT EXISTS (SELECT * FROM teams WHERE team_name = :teamName)")

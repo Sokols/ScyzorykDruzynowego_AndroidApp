@@ -25,16 +25,16 @@ public class TeamViewModel extends AndroidViewModel {
         executorService = Executors.newSingleThreadExecutor();
     }
 
-    public void insert(Team team) {
-        executorService.execute(() -> teamDao.insert(team));
-    }
-
     public LiveData<List<Team>> getAllTeams() {
         return teamDao.getAllTeams();
     }
 
     public List<String> getAllTeamNames() {
         return teamDao.getAllTeamNames();
+    }
+
+    public void insert(Team team) {
+        executorService.execute(() -> teamDao.insert(team));
     }
 
     public int checkItemByName(String teamName) {

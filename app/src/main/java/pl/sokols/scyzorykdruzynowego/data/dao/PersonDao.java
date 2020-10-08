@@ -16,6 +16,9 @@ public interface PersonDao {
     @Query("SELECT * FROM people")
     LiveData<List<Person>> getAllPeople();
 
+    @Query("SELECT * FROM people WHERE team = :team")
+    List<Person> getPeopleByTeamName(String team);
+
     @Insert
     void insert(Person person);
 

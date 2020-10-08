@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -33,8 +34,9 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         }
     }
 
+    private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
     private List<Team> mTeamList = new ArrayList<>();
-    private List<Person> mAllPeopleList = new ArrayList<>();
+    private List<Person> peopleByTeamNameList = new ArrayList<>();
     private LayoutInflater mInflater;
     private Context mContext;
 
@@ -53,9 +55,13 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
     @Override
     public void onBindViewHolder(@NonNull PeopleViewHolder holder, int position) {
         Team currentTeam = mTeamList.get(position);
-        OneTeamAdapter oneTeamAdapter = new OneTeamAdapter(getPeopleListByTeam(currentTeam.getTeamName()), mContext);
         holder.titleTeamTextView.setText(mContext.getString(R.string.blank_team, currentTeam.getTeamName()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(holder.oneTeamRecyclerView.getContext(), LinearLayoutManager.VERTICAL, false);
+        layoutManager.setInitialPrefetchItemCount(peopleByTeamNameList.size());
+        OneTeamAdapter oneTeamAdapter = new OneTeamAdapter(getPeopleListByTeam(currentTeam.getTeamName()), mContext);
+        holder.oneTeamRecyclerView.setLayoutManager(layoutManager);
         holder.oneTeamRecyclerView.setAdapter(oneTeamAdapter);
+        holder.oneTeamRecyclerView.setRecycledViewPool(viewPool);
     }
 
     @Override
@@ -65,7 +71,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
 
     private List<Person> getPeopleListByTeam(String teamName) {
         List<Person> personList = new ArrayList<>();
-        for (Person person : mAllPeopleList) {
+        for (Person person : peopleByTeamNameList) {
             if (person.getTeam().equals(teamName)) {
                 personList.add(person);
             }
@@ -78,8 +84,8 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         notifyDataSetChanged();
     }
 
-    public void setAllPeopleList(List<Person> allPeopleList) {
-        this.mAllPeopleList = allPeopleList;
+    public void setPeopleByTeamNameList(List<Person> peopleList) {
+        this.peopleByTeamNameList = peopleList;
         notifyDataSetChanged();
     }
 }

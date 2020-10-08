@@ -29,6 +29,10 @@ public class PersonViewModel extends AndroidViewModel {
         return personDao.getAllPeople();
     }
 
+    public List<Person> getPeopleByTeamName(String teamName) {
+        return personDao.getPeopleByTeamName(teamName);
+    }
+
     public void insert(Person person) {
         executorService.execute(() -> personDao.insert(person));
     }

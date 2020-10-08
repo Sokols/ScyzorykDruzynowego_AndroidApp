@@ -131,6 +131,11 @@ public class CreateNewPersonFragment extends Fragment {
         rankAutoCompleteTextView.setAdapter(rankAdapter);
         teamAutoCompleteTextView.setAdapter(teamAdapter);
         functionAutoCompleteTextView.setAdapter(functionAdapter);
+
+        // and set default values on ACTV
+        rankAutoCompleteTextView.setText(rankAdapter.getItem(0), false);
+        teamAutoCompleteTextView.setText(teamAdapter.getItem(0), false);
+        functionAutoCompleteTextView.setText(functionAdapter.getItem(0), false);
     }
 
     private String[] getTeamsFromDB() {

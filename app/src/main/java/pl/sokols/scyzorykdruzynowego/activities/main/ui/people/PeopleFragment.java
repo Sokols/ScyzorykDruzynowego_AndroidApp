@@ -37,8 +37,8 @@ public class PeopleFragment extends Fragment {
         PeopleAdapter peopleAdapter = new PeopleAdapter(getContext());
 
         // add observers to viewmodels
-        personViewModel.getAllPeople().observe(requireActivity(), people -> peopleAdapter.setAllPeopleList(people));
-        teamViewModel.getAllTeams().observe(requireActivity(), teams -> peopleAdapter.setTeamList(teams));
+        personViewModel.getAllPeople().observe(requireActivity(), peopleAdapter::setPeopleByTeamNameList);
+        teamViewModel.getAllTeams().observe(requireActivity(), peopleAdapter::setTeamList);
 
         // prepare recycler view
         allPeopleRecyclerView.setAdapter(peopleAdapter);
