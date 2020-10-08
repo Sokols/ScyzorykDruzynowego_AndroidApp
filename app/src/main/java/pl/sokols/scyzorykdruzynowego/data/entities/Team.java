@@ -11,6 +11,7 @@ public class Team {
     @ColumnInfo(name = "id")
     private int teamId;
 
+    @ColumnInfo(name = "team_name")
     private String teamName;
 
     public int getTeamId() {

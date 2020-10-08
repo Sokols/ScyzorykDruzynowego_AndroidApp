@@ -33,6 +33,10 @@ public class TeamViewModel extends AndroidViewModel {
         return teamDao.getAllTeams();
     }
 
+    public List<String> getAllTeamNames() {
+        return teamDao.getAllTeamNames();
+    }
+
     public int checkItemByName(String teamName) {
         return teamDao.checkItemByName(teamName);
     }

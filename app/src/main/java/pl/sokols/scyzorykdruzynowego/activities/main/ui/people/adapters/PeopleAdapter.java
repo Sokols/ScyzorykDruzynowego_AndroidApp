@@ -54,7 +54,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
     public void onBindViewHolder(@NonNull PeopleViewHolder holder, int position) {
         Team currentTeam = mTeamList.get(position);
         OneTeamAdapter oneTeamAdapter = new OneTeamAdapter(getPeopleListByTeam(currentTeam.getTeamName()), mContext);
-        holder.titleTeamTextView.setText(currentTeam.getTeamName());
+        holder.titleTeamTextView.setText(mContext.getString(R.string.blank_team, currentTeam.getTeamName()));
         holder.oneTeamRecyclerView.setAdapter(oneTeamAdapter);
     }
 

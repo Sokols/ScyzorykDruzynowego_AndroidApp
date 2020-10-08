@@ -18,6 +18,9 @@ public interface TeamDao {
     @Query("SELECT * FROM teams")
     LiveData<List<Team>> getAllTeams();
 
-    @Query("SELECT EXISTS (SELECT * FROM teams WHERE teamName = :teamName)")
+    @Query("SELECT team_name FROM teams")
+    List<String> getAllTeamNames();
+
+    @Query("SELECT EXISTS (SELECT * FROM teams WHERE team_name = :teamName)")
     int checkItemByName(String teamName);
 }

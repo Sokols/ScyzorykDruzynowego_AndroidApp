@@ -1,6 +1,5 @@
 package pl.sokols.scyzorykdruzynowego.activities.main.ui.people;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,6 @@ import androidx.navigation.Navigation;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -27,6 +25,7 @@ import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entities.Person;
 import pl.sokols.scyzorykdruzynowego.data.viewmodels.PersonViewModel;
+import pl.sokols.scyzorykdruzynowego.data.viewmodels.TeamViewModel;
 import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class CreateNewPersonFragment extends Fragment {
@@ -56,7 +55,6 @@ public class CreateNewPersonFragment extends Fragment {
         return view;
     }
 
-    @SuppressLint("SimpleDateFormat")
     @OnClick(R.id.confirmAddPersonButton)
     public void setConfirmAddPersonButton() {
         // get typed data
@@ -73,29 +71,14 @@ public class CreateNewPersonFragment extends Fragment {
         if (isRequiredFieldsCorrect(name, surname) && isDateFormatCorrect(date)) {
             try {
                 personViewModel.insert(new Person(name, surname, Utils.getDateFromString(date), rank, team, function));
+            } catch (ParseException e) {
+                e.printStackTrace();
+                personViewModel.insert(new Person(name, surname, null, rank, team, function));
+            } finally {
                 Toast.makeText(getActivity(), getString(R.string.added_new_person_completed), Toast.LENGTH_SHORT).show();
                 Navigation.findNavController(requireView()).navigate(R.id.action_new_person_to_people);
-            } catch (ParseException e) {
-                e.printStackTrace();
             }
         }
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    private boolean isDateFormatCorrect(String date) {
-        // remove error text
-        textInputLayouts.get(2).setError(null);
-
-        if (!date.isEmpty()) {
-            try {
-                Utils.getDateFromString(date);
-            } catch (ParseException e) {
-                e.printStackTrace();
-                textInputLayouts.get(2).setError(getString(R.string.date_format_error));
-                return false;
-            }
-        }
-        return true;
     }
 
     private boolean isRequiredFieldsCorrect(String name, String surname) {
@@ -122,19 +105,41 @@ public class CreateNewPersonFragment extends Fragment {
         }
     }
 
+    private boolean isDateFormatCorrect(String date) {
+        // remove error text
+        textInputLayouts.get(2).setError(null);
+
+        if (!date.isEmpty()) {
+            try {
+                Utils.getDateFromString(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                textInputLayouts.get(2).setError(getString(R.string.date_format_error));
+                return false;
+            }
+        }
+        return true;
+    }
+
     private void setAdapters() {
         // prepare adapters
         ArrayAdapter<String> rankAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getResources().getStringArray(R.array.ranks));
         ArrayAdapter<String> teamAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getTeamsFromDB());
         ArrayAdapter<String> functionAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getResources().getStringArray(R.array.functions));
 
-        // set adapters on spinners
+        // set adapters on ACTV
         rankAutoCompleteTextView.setAdapter(rankAdapter);
         teamAutoCompleteTextView.setAdapter(teamAdapter);
         functionAutoCompleteTextView.setAdapter(functionAdapter);
     }
 
-    private List<String> getTeamsFromDB() {
-        return new ArrayList<>();
+    private String[] getTeamsFromDB() {
+        TeamViewModel teamViewModel = new ViewModelProvider(this).get(TeamViewModel.class);
+        List<String> teams = teamViewModel.getAllTeamNames();
+        String [] teamNames = new String[teams.size()];
+        for (int i = 0; i < teams.size(); i++) {
+            teamNames[i] = teams.get(i);
+        }
+        return teamNames;
     }
 }
