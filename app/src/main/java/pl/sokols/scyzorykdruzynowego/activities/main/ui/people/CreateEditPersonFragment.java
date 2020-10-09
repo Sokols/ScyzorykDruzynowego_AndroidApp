@@ -1,5 +1,6 @@
 package pl.sokols.scyzorykdruzynowego.activities.main.ui.people;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +11,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -28,7 +29,9 @@ import pl.sokols.scyzorykdruzynowego.data.viewmodels.PersonViewModel;
 import pl.sokols.scyzorykdruzynowego.data.viewmodels.TeamViewModel;
 import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
-public class CreateNewPersonFragment extends Fragment {
+import static android.content.DialogInterface.BUTTON_NEGATIVE;
+
+public class CreateEditPersonFragment extends Fragment {
 
     @BindView(R.id.nameNewPersonEditText)
     EditText nameEditText;
@@ -49,9 +52,10 @@ public class CreateNewPersonFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_create_new_person, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_edit_person, container, false);
         ButterKnife.bind(this, view);
         setAdapters();
+        dateEditText.setOnClickListener(dateEditTextOnClickListener);
         return view;
     }
 
@@ -65,7 +69,7 @@ public class CreateNewPersonFragment extends Fragment {
         String team = teamAutoCompleteTextView.getText().toString();
         String function = functionAutoCompleteTextView.getText().toString();
 
-        PersonViewModel personViewModel = new ViewModelProvider(this).get(PersonViewModel.class);
+        PersonViewModel personViewModel = Utils.getPersonViewModel(this);
 
         // insert new person if every data is ok and return to the people fragment
         if (isRequiredFieldsCorrect(name, surname) && isDateFormatCorrect(date)) {
@@ -139,12 +143,24 @@ public class CreateNewPersonFragment extends Fragment {
     }
 
     private String[] getTeamsFromDB() {
-        TeamViewModel teamViewModel = new ViewModelProvider(this).get(TeamViewModel.class);
+        TeamViewModel teamViewModel = Utils.getTeamViewModel(this);
         List<String> teams = teamViewModel.getAllTeamNames();
-        String [] teamNames = new String[teams.size()];
+        String[] teamNames = new String[teams.size()];
         for (int i = 0; i < teams.size(); i++) {
             teamNames[i] = teams.get(i);
         }
         return teamNames;
     }
+
+    private View.OnClickListener dateEditTextOnClickListener = v -> {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(requireActivity(), R.style.MyDatePickerTheme,
+                (view, year, monthOfYear, dayOfMonth) -> {
+                    String selectedDate = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                    ((EditText) v).setText(selectedDate);
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
+        datePickerDialog.setButton(BUTTON_NEGATIVE, getString(R.string.cancel), datePickerDialog);
+        datePickerDialog.show();
+    };
 }

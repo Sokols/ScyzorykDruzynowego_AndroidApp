@@ -8,7 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import pl.sokols.scyzorykdruzynowego.data.AppDatabase;
+import pl.sokols.scyzorykdruzynowego.data.database.UsersDatabase;
 import pl.sokols.scyzorykdruzynowego.data.dao.UserDao;
 import pl.sokols.scyzorykdruzynowego.data.entities.User;
 
@@ -19,7 +19,7 @@ public class UserViewModel extends AndroidViewModel {
 
     public UserViewModel(@NonNull Application application) {
         super(application);
-        userDao = AppDatabase.getInstance(application).userDao();
+        userDao = UsersDatabase.getInstance(application).userDao();
         executorService = Executors.newSingleThreadExecutor();
     }
 

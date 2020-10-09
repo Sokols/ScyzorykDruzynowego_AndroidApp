@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".activities.main.ui.people.CreateNewPersonFragment">
+    tools:context=".activities.main.ui.people.CreateEditPersonFragment">
 
     <TextView
         android:id="@+id/titleNewPersonTextView"
@@ -82,6 +82,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="fill_horizontal"
             android:inputType="date"
+            android:clickable="false"
+            android:focusable="false"
             android:textColor="@color/colorAccent"
             android:textCursorDrawable="@color/colorAccent" />
     </com.google.android.material.textfield.TextInputLayout>

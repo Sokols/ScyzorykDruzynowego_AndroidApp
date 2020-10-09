@@ -1,7 +1,6 @@
 package pl.sokols.scyzorykdruzynowego.activities.start.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,6 +23,11 @@ import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.activities.main.MainActivity;
 import pl.sokols.scyzorykdruzynowego.data.viewmodels.UserViewModel;
+import pl.sokols.scyzorykdruzynowego.utils.Utils;
+
+import static pl.sokols.scyzorykdruzynowego.utils.Utils.USER_ID_SHARED_PREFS_KEY;
+import static pl.sokols.scyzorykdruzynowego.utils.Utils.USER_LOGIN_SHARED_PREFS_KEY;
+import static pl.sokols.scyzorykdruzynowego.utils.Utils.REMEMBER_ME_SHARED_PREFS_KEY;
 
 public class LoginFragment extends Fragment {
 
@@ -38,19 +42,15 @@ public class LoginFragment extends Fragment {
     @BindView(R.id.passwordLoginTextInputLayout)
     TextInputLayout passwordTextInputLayout;
 
-    private static final String SHARED_PREFS_LOGIN_NAME = "login_prefs";
-    private static final String REMEMBER_ME_SHARED_PREFS_KEY = "remember_me_key";
-    private static final String LOGIN_SHARED_PREFS_KEY = "login_key";
-
     private SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sharedPreferences = requireContext().getSharedPreferences(SHARED_PREFS_LOGIN_NAME, Context.MODE_PRIVATE);
+        sharedPreferences = requireContext().getSharedPreferences(Utils.SHARED_PREFS_KEY_NAME, Context.MODE_PRIVATE);
         if (sharedPreferences.getBoolean(REMEMBER_ME_SHARED_PREFS_KEY, false)) {
-            startNewActivity();
+            Utils.startNewActivity(requireActivity(), new MainActivity());
         }
     }
 
@@ -69,8 +69,7 @@ public class LoginFragment extends Fragment {
     @OnClick(R.id.loginLoginButton)
     public void setLoginButton() {
         if (isAllDataCorrect()) {
-            setSharedPreferences();
-            startNewActivity();
+            Utils.startNewActivity(requireActivity(), new MainActivity());
         }
     }
 
@@ -99,6 +98,7 @@ public class LoginFragment extends Fragment {
             return false;
         }
 
+        setSharedPreferences(userViewModel.getItemByName(username).getUserId());
         return true;
     }
 
@@ -124,13 +124,9 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    private void setSharedPreferences() {
+    private void setSharedPreferences(int userId) {
         sharedPreferences.edit().putBoolean(REMEMBER_ME_SHARED_PREFS_KEY, rememberMeCheckBox.isChecked()).apply();
-        sharedPreferences.edit().putString(LOGIN_SHARED_PREFS_KEY, usernameEditText.getText().toString()).apply();
-    }
-
-    private void startNewActivity() {
-        startActivity(new Intent(requireContext(), MainActivity.class));
-        requireActivity().finish();
+        sharedPreferences.edit().putString(USER_LOGIN_SHARED_PREFS_KEY, usernameEditText.getText().toString()).apply();
+        sharedPreferences.edit().putInt(USER_ID_SHARED_PREFS_KEY, userId).apply();
     }
 }

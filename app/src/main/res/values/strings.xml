@@ -4,6 +4,7 @@
     <string name="prompt_username">Login</string>
     <string name="prompt_password">Hasło</string>
     <string name="action_login">Zaloguj</string>
+    <string name="action_logout">Wyloguj</string>
     <string name="login">LOGOWANIE</string>
     <string name="remember_me">Zapamiętaj mnie</string>
     <string name="registration">REJESTRACJA</string>
@@ -48,5 +49,12 @@
     <string name="search">Szukaj</string>
     <string name="more">Więcej</string>
     <string name="menu">Menu</string>
-
+    <string name="exit">Wyjdź</string>
+    <string name="are_you_sure_title">Jesteś pewien?</string>
+    <string name="are_you_sure_close_app_description">Czy na pewno chcesz wyjść z aplikacji?</string>
+    <string name="are_you_sure_logout_description">Czy na pewno chcesz się wylogować?</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Anuluj</string>
 </resources>

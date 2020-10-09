@@ -37,4 +37,25 @@
         <item name="hintTextColor">@color/colorAccent</item>
     </style>
 
+    <style name="MyDialogTheme" parent="Theme.MaterialComponents.Dialog">
+        <item name="background">@color/colorBackground</item>
+        <item name="android:textColorPrimary">@color/colorMainText</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButtonTheme</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButtonTheme</item>
+    </style>
+
+    <style name="DialogButtonTheme" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="background">@color/colorBackground</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="MyDatePickerTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:colorControlActivated">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorMainText</item>
+        <item name="android:textColorSecondary">@color/colorAccent</item>
+    </style>
+
 </resources>

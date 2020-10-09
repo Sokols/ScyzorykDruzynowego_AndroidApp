@@ -3,12 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/itemSearch"
-        android:icon="@drawable/ic_baseline_search_24"
-        android:title="@string/search" />
+        android:id="@+id/actionLogout"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="@string/action_logout"
+        app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/itemMore"
-        android:title="@string/more" />
+        android:id="@+id/actionExit"
+        android:icon="@drawable/ic_baseline_close_24"
+        android:title="@string/exit"
+        app:showAsAction="ifRoom" />
 
 </menu>

@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -19,9 +18,10 @@ import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entities.Team;
 import pl.sokols.scyzorykdruzynowego.data.viewmodels.TeamViewModel;
+import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 
-public class CreateNewTeamFragment extends Fragment {
+public class CreateEditTeamFragment extends Fragment {
 
     @BindView(R.id.nameNewTeamEditText)
     EditText nameEditText;
@@ -30,7 +30,7 @@ public class CreateNewTeamFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_create_new_team, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_edit_team, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -40,7 +40,7 @@ public class CreateNewTeamFragment extends Fragment {
         // get typed data
         String teamName = nameEditText.getText().toString();
 
-        TeamViewModel teamViewModel = new ViewModelProvider(this).get(TeamViewModel.class);
+        TeamViewModel teamViewModel = Utils.getTeamViewModel(this);
 
         // insert new team if every data is ok an return to the login fragment
         if (isAllDataCorrect(teamName)) {

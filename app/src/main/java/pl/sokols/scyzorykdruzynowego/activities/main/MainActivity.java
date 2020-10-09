@@ -1,10 +1,13 @@
 package pl.sokols.scyzorykdruzynowego.activities.main;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
@@ -17,6 +20,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import pl.sokols.scyzorykdruzynowego.R;
+import pl.sokols.scyzorykdruzynowego.activities.start.StartActivity;
+import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,12 +41,21 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
 
-        return super.onOptionsItemSelected(item);
+            case R.id.actionLogout:
+                logoutUser();
+                return true;
+
+            case R.id.actionExit:
+                closeApp();
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -56,6 +70,32 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, new AppBarConfiguration.Builder(
                 R.id.navigation_people, R.id.navigation_todo, R.id.navigation_meetings).build());
         NavigationUI.setupWithNavController(navView, navController);
+    }
 
+    private void logoutUser() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        dialogBuilder.setTitle(getString(R.string.are_you_sure_title));
+        dialogBuilder.setMessage(getString(R.string.are_you_sure_logout_description));
+        dialogBuilder.setPositiveButton(getString(R.string.yes),
+                (dialogInterface, whichButton) -> {
+                    SharedPreferences sharedPreferences = getSharedPreferences(Utils.SHARED_PREFS_KEY_NAME, MODE_PRIVATE);
+                    sharedPreferences.edit().putBoolean(Utils.REMEMBER_ME_SHARED_PREFS_KEY, false).apply();
+                    startActivity(new Intent(this, StartActivity.class));
+                    finish();
+                });
+        dialogBuilder.setNegativeButton(getString(R.string.no),
+                (dialogInterface, i) -> { /* do nothing */ });
+        dialogBuilder.create().show();
+    }
+
+    private void closeApp() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        dialogBuilder.setTitle(getString(R.string.are_you_sure_title));
+        dialogBuilder.setMessage(getString(R.string.are_you_sure_close_app_description));
+        dialogBuilder.setPositiveButton(getString(R.string.yes),
+                (dialogInterface, whichButton) -> finish());
+        dialogBuilder.setNegativeButton(getString(R.string.no),
+                (dialogInterface, i) -> { /* do nothing */ });
+        dialogBuilder.create().show();
     }
 }
