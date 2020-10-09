@@ -1,6 +1,8 @@
 package pl.sokols.scyzorykdruzynowego.activities.start.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -35,6 +38,22 @@ public class LoginFragment extends Fragment {
     @BindView(R.id.passwordLoginTextInputLayout)
     TextInputLayout passwordTextInputLayout;
 
+    private static final String SHARED_PREFS_LOGIN_NAME = "login_prefs";
+    private static final String REMEMBER_ME_SHARED_PREFS_KEY = "remember_me_key";
+    private static final String LOGIN_SHARED_PREFS_KEY = "login_key";
+
+    private SharedPreferences sharedPreferences;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        sharedPreferences = requireContext().getSharedPreferences(SHARED_PREFS_LOGIN_NAME, Context.MODE_PRIVATE);
+        if (sharedPreferences.getBoolean(REMEMBER_ME_SHARED_PREFS_KEY, false)) {
+            startNewActivity();
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
@@ -50,8 +69,8 @@ public class LoginFragment extends Fragment {
     @OnClick(R.id.loginLoginButton)
     public void setLoginButton() {
         if (isAllDataCorrect()) {
-            startActivity(new Intent(getContext(), MainActivity.class));
-            requireActivity().finish();
+            setSharedPreferences();
+            startNewActivity();
         }
     }
 
@@ -84,7 +103,6 @@ public class LoginFragment extends Fragment {
     }
 
     private boolean isAnyFieldEmpty(String username, String password) {
-
         // remove all error texts
         usernameTextInputLayout.setError(null);
         passwordTextInputLayout.setError(null);
@@ -104,5 +122,15 @@ public class LoginFragment extends Fragment {
         } else {
             return false;
         }
+    }
+
+    private void setSharedPreferences() {
+        sharedPreferences.edit().putBoolean(REMEMBER_ME_SHARED_PREFS_KEY, rememberMeCheckBox.isChecked()).apply();
+        sharedPreferences.edit().putString(LOGIN_SHARED_PREFS_KEY, usernameEditText.getText().toString()).apply();
+    }
+
+    private void startNewActivity() {
+        startActivity(new Intent(requireContext(), MainActivity.class));
+        requireActivity().finish();
     }
 }

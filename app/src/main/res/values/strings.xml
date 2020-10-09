@@ -45,4 +45,8 @@
     <string name="added_new_person_completed">Dodano nowego członka drużyny!</string>
     <string name="date_format_error">Niepoprawny format daty</string>
     <string name="position">%d.</string>
+    <string name="search">Szukaj</string>
+    <string name="more">Więcej</string>
+    <string name="menu">Menu</string>
+
 </resources>

@@ -7,11 +7,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,17 +59,24 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
     public void onBindViewHolder(@NonNull PeopleViewHolder holder, int position) {
         Team currentTeam = mTeamList.get(position);
         holder.titleTeamTextView.setText(mContext.getString(R.string.blank_team, currentTeam.getTeamName()));
-        LinearLayoutManager layoutManager = new LinearLayoutManager(holder.oneTeamRecyclerView.getContext(), LinearLayoutManager.VERTICAL, false);
-        layoutManager.setInitialPrefetchItemCount(peopleByTeamNameList.size());
-        OneTeamAdapter oneTeamAdapter = new OneTeamAdapter(getPeopleListByTeam(currentTeam.getTeamName()), mContext);
-        holder.oneTeamRecyclerView.setLayoutManager(layoutManager);
-        holder.oneTeamRecyclerView.setAdapter(oneTeamAdapter);
-        holder.oneTeamRecyclerView.setRecycledViewPool(viewPool);
+        setTeamRecyclerView(currentTeam, holder);
     }
 
     @Override
     public int getItemCount() {
         return mTeamList.size();
+    }
+
+    private void setTeamRecyclerView(Team currentTeam, PeopleViewHolder holder) {
+        // prepare divider item decoration
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);
+        itemDecoration.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(mContext, R.drawable.item_divider)));
+
+        // set recyclerview
+        holder.oneTeamRecyclerView.setLayoutManager(new LinearLayoutManager(holder.oneTeamRecyclerView.getContext(), LinearLayoutManager.VERTICAL, false));
+        holder.oneTeamRecyclerView.setAdapter(new OneTeamAdapter(getPeopleListByTeam(currentTeam.getTeamName()), mContext));
+        holder.oneTeamRecyclerView.addItemDecoration(itemDecoration);
+        holder.oneTeamRecyclerView.setRecycledViewPool(viewPool);
     }
 
     private List<Person> getPeopleListByTeam(String teamName) {

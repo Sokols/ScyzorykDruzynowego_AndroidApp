@@ -52,6 +52,7 @@ public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTimeV
     public void onBindViewHolder(@NonNull OneTimeViewHolder holder, int position) {
         Person currentPerson = mPersonList.get(position);
         holder.nameTextView.setText(String.format("%s %s", currentPerson.getName(), currentPerson.getSurname()));
+        holder.nameTextView.setOnClickListener(nameTextViewOnClickListener);
         holder.rankTextView.setText(mContext.getString(R.string.blank_rank, currentPerson.getRank()));
     }
 
@@ -64,4 +65,8 @@ public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTimeV
         this.mPersonList = personList;
         notifyDataSetChanged();
     }
+
+    private View.OnClickListener nameTextViewOnClickListener = view -> {
+        // do something
+    };
 }
