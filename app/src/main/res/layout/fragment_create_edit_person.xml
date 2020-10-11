@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:gravity="center_horizontal"
         android:text="@string/type_data"
         android:textColor="@color/colorMainText"
         android:textSize="@dimen/add_fragments_title_text_size"

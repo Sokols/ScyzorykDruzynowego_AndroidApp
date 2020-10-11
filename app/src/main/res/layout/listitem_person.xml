@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:background="@color/colorBackground"
             android:padding="5dp"
-            android:text="TextView"
+            android:text="@string/blank"
             android:textColor="@color/colorAccent"
             android:textSize="18sp" />
 
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:background="@color/colorBackground"
             android:padding="5dp"
-            android:text="TextView"
+            android:text="@string/blank_rank"
             android:textColor="@color/colorMainText" />
     </LinearLayout>
 

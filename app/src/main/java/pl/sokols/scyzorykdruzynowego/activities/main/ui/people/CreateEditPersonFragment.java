@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -33,6 +35,8 @@ import static android.content.DialogInterface.BUTTON_NEGATIVE;
 
 public class CreateEditPersonFragment extends Fragment {
 
+    @BindView(R.id.titleNewPersonTextView)
+    TextView titleTextView;
     @BindView(R.id.nameNewPersonEditText)
     EditText nameEditText;
     @BindView(R.id.surnameNewPersonEditText)
@@ -45,6 +49,8 @@ public class CreateEditPersonFragment extends Fragment {
     AutoCompleteTextView teamAutoCompleteTextView;
     @BindView(R.id.functionNewPersonAutoCompleteTextView)
     AutoCompleteTextView functionAutoCompleteTextView;
+    @BindView(R.id.confirmAddPersonButton)
+    Button confirmAddPersonButton;
     @BindViews({R.id.nameNewPersonTextInputLayout, R.id.surnameNewPersonTextInputLayout,
             R.id.dateNewPersonTextInputLayout, R.id.rankNewPersonTextInputLayout,
             R.id.teamNewPersonTextInputLayout, R.id.functonNewPersonTextInputLayout})
@@ -55,8 +61,43 @@ public class CreateEditPersonFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_create_edit_person, container, false);
         ButterKnife.bind(this, view);
         setAdapters();
+
+        Person person = getArguments() != null ? getArguments().getParcelable(getString(R.string.person_data_key)) : null;
+        if (person != null) {
+            setFragmentToPreviewMode(person);
+        }
         dateEditText.setOnClickListener(dateEditTextOnClickListener);
         return view;
+    }
+
+    private void setFragmentToPreviewMode(Person person) {
+        // change view components' texts
+        titleTextView.setText(getString(R.string.person_data));
+        nameEditText.setText(person.getName());
+        surnameEditText.setText(person.getSurname());
+        dateEditText.setText(person.getDateOfBirth() == null ? getString(R.string.blank) : person.getDateOfBirth().toString());
+        rankAutoCompleteTextView.setText(person.getRank());
+        teamAutoCompleteTextView.setText(person.getTeam());
+        functionAutoCompleteTextView.setText(person.getFunction());
+
+        dateEditText.setOnClickListener(null);
+        turnOnOffEditMode(false);
+
+        confirmAddPersonButton.setVisibility(View.INVISIBLE);
+    }
+
+    private void turnOnOffEditMode(boolean mode) {
+        nameEditText.setFocusable(mode);
+        surnameEditText.setFocusable(mode);
+        dateEditText.setFocusable(mode);
+        rankAutoCompleteTextView.setFocusable(mode);
+        rankAutoCompleteTextView.dismissDropDown();
+        teamAutoCompleteTextView.setFocusable(mode);
+        functionAutoCompleteTextView.setFocusable(mode);
+
+        for (TextInputLayout textInputLayout : textInputLayouts) {
+            textInputLayout.setEndIconVisible(mode);
+        }
     }
 
     @OnClick(R.id.confirmAddPersonButton)

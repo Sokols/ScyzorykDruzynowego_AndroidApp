@@ -1,5 +1,9 @@
 package pl.sokols.scyzorykdruzynowego.data.entities;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.Keep;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -9,9 +13,10 @@ import java.util.Date;
 
 import pl.sokols.scyzorykdruzynowego.utils.DateConverter;
 
+@Keep
 @Entity(tableName = "people")
 @TypeConverters(DateConverter.class)
-public class Person {
+public class Person implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -90,5 +95,15 @@ public class Person {
 
     public void setFunction(String function) {
         this.function = function;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
     }
 }

@@ -34,7 +34,7 @@ public class PeopleFragment extends Fragment {
         TeamViewModel teamViewModel = Utils.getTeamViewModel(this);
 
         // prepare adapter
-        PeopleAdapter peopleAdapter = new PeopleAdapter(getContext());
+        PeopleAdapter peopleAdapter = new PeopleAdapter(getContext(), this);
 
         // add observers to viewmodels
         personViewModel.getAllPeople().observe(requireActivity(), peopleAdapter::setPeopleByTeamNameList);

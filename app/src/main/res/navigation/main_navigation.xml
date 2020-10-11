@@ -15,6 +15,25 @@
             app:destination="@id/selectCreateTeamOrScoutFragment"
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_people_to_edit_person"
+            app:destination="@id/createNewPersonFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_out" >
+            <argument
+                android:name="isCreateFragment"
+                android:defaultValue="false" />
+        </action>
+        <action
+            android:id="@+id/action_people_to_edit_team"
+            app:destination="@id/createNewTeamFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_out">
+            <argument
+                android:name="isCreateFragment"
+                app:argType="boolean"
+                android:defaultValue="false" />
+        </action>
     </fragment>
 
     <fragment
@@ -38,12 +57,22 @@
             android:id="@+id/action_select_to_new_team"
             app:destination="@id/createNewTeamFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@android:anim/fade_out" />
+            app:popEnterAnim="@android:anim/fade_out" >
+            <argument
+                android:name="isCreateFragment"
+                app:argType="boolean"
+                android:defaultValue="true" />
+        </action>
         <action
             android:id="@+id/action_select_to_new_person"
             app:destination="@id/createNewPersonFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@android:anim/fade_out" />
+            app:popEnterAnim="@android:anim/fade_out" >
+            <argument
+                android:name="isCreateFragment"
+                app:argType="boolean"
+                android:defaultValue="true" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/createNewTeamFragment"
@@ -57,6 +86,10 @@
             app:popEnterAnim="@android:anim/fade_out"
             app:popUpTo="@id/navigation_people"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="isCreateFragment"
+            app:argType="boolean"
+            android:defaultValue="true" />
     </fragment>
     <fragment
         android:id="@+id/createNewPersonFragment"
@@ -70,5 +103,9 @@
             app:popEnterAnim="@android:anim/fade_out"
             app:popUpTo="@id/navigation_people"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="isCreateFragment"
+            app:argType="boolean"
+            android:defaultValue="true" />
     </fragment>
 </navigation>

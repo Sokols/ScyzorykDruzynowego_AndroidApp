@@ -18,6 +18,10 @@ import pl.sokols.scyzorykdruzynowego.data.entities.Person;
 
 public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTimeViewHolder> {
 
+    public interface OnItemClickListener {
+        void onItemClick(Person item);
+    }
+
     static class OneTimeViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.namePersonTextView)
@@ -29,15 +33,25 @@ public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTimeV
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+
+        public void bind(Person currentPerson, OnItemClickListener listener) {
+            nameTextView.setText(String.format("%s %s", currentPerson.getName(), currentPerson.getSurname()));
+            rankTextView.setText(String.format(rankTextView.getText().toString(), currentPerson.getRank()));
+            itemView.setOnClickListener(view -> {
+                listener.onItemClick(currentPerson);
+            });
+        }
     }
 
     private List<Person> mPersonList;
     private LayoutInflater mInflater;
     private Context mContext;
+    private OnItemClickListener mListener;
 
-    public OneTeamAdapter(List<Person> personList, Context context) {
+    public OneTeamAdapter(List<Person> personList, Context context, OnItemClickListener listener) {
         this.mPersonList = personList;
         this.mContext = context;
+        this.mListener = listener;
         this.mInflater = LayoutInflater.from(context);
     }
 
@@ -50,10 +64,7 @@ public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTimeV
 
     @Override
     public void onBindViewHolder(@NonNull OneTimeViewHolder holder, int position) {
-        Person currentPerson = mPersonList.get(position);
-        holder.nameTextView.setText(String.format("%s %s", currentPerson.getName(), currentPerson.getSurname()));
-        holder.nameTextView.setOnClickListener(nameTextViewOnClickListener);
-        holder.rankTextView.setText(mContext.getString(R.string.blank_rank, currentPerson.getRank()));
+        holder.bind(mPersonList.get(position), mListener);
     }
 
     @Override
@@ -65,8 +76,4 @@ public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTimeV
         this.mPersonList = personList;
         notifyDataSetChanged();
     }
-
-    private View.OnClickListener nameTextViewOnClickListener = view -> {
-        // do something
-    };
 }
