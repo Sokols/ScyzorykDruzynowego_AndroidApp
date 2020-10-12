@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.main.ui.todo;
+package pl.sokols.scyzorykdruzynowego.ui.todo;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

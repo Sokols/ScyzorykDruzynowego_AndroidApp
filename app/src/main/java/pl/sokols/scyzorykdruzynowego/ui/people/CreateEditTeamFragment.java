@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.main.ui.people;
+package pl.sokols.scyzorykdruzynowego.ui.people;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,8 +16,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.entities.Team;
-import pl.sokols.scyzorykdruzynowego.data.viewmodels.TeamViewModel;
+import pl.sokols.scyzorykdruzynowego.data.entity.Team;
+import pl.sokols.scyzorykdruzynowego.data.viewmodel.TeamViewModel;
 import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 

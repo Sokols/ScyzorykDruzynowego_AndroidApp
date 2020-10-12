@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.data.viewmodels;
+package pl.sokols.scyzorykdruzynowego.data.viewmodel;
 
 import android.app.Application;
 
@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 
 import pl.sokols.scyzorykdruzynowego.data.database.UsersDatabase;
 import pl.sokols.scyzorykdruzynowego.data.dao.UserDao;
-import pl.sokols.scyzorykdruzynowego.data.entities.User;
+import pl.sokols.scyzorykdruzynowego.data.entity.User;
 
 public class UserViewModel extends AndroidViewModel {
 

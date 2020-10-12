@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.main.ui.meetings;
+package pl.sokols.scyzorykdruzynowego.ui.meetings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

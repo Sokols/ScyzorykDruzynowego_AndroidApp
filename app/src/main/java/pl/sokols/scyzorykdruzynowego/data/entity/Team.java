@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.data.entities;
+package pl.sokols.scyzorykdruzynowego.data.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

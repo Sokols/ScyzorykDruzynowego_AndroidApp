@@ -14,8 +14,8 @@ import java.util.concurrent.Executors;
 
 import pl.sokols.scyzorykdruzynowego.data.dao.PersonDao;
 import pl.sokols.scyzorykdruzynowego.data.dao.TeamDao;
-import pl.sokols.scyzorykdruzynowego.data.entities.Person;
-import pl.sokols.scyzorykdruzynowego.data.entities.Team;
+import pl.sokols.scyzorykdruzynowego.data.entity.Person;
+import pl.sokols.scyzorykdruzynowego.data.entity.Team;
 
 @Database(entities = {
         Team.class,

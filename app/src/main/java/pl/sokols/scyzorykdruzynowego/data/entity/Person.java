@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.data.entities;
+package pl.sokols.scyzorykdruzynowego.data.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.start.ui;
+package pl.sokols.scyzorykdruzynowego.ui.start;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.activities.main.MainActivity;
+import pl.sokols.scyzorykdruzynowego.ui.main.MainActivity;
 import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 import static pl.sokols.scyzorykdruzynowego.utils.Utils.REMEMBER_ME_SHARED_PREFS_KEY;

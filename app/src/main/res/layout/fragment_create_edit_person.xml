@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".activities.main.ui.people.CreateEditPersonFragment">
+    tools:context=".ui.people.CreateEditPersonFragment">
 
     <TextView
         android:id="@+id/titleNewPersonTextView"

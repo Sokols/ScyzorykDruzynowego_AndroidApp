@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.main.ui.people.adapters;
+package pl.sokols.scyzorykdruzynowego.ui.people.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.entities.Person;
+import pl.sokols.scyzorykdruzynowego.data.entity.Person;
 
 public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTimeViewHolder> {
 

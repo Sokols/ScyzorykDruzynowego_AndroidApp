@@ -7,7 +7,7 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import pl.sokols.scyzorykdruzynowego.data.entities.Team;
+import pl.sokols.scyzorykdruzynowego.data.entity.Team;
 
 @Dao
 public interface TeamDao {

@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import pl.sokols.scyzorykdruzynowego.data.dao.UserDao;
-import pl.sokols.scyzorykdruzynowego.data.entities.User;
+import pl.sokols.scyzorykdruzynowego.data.entity.User;
 
 @Database(entities = {
                 User.class}, version = 1)

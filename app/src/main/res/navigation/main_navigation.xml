@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_people"
-        android:name="pl.sokols.scyzorykdruzynowego.activities.main.ui.people.PeopleFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.ui.people.PeopleFragment"
         android:label="@string/people"
         tools:layout="@layout/fragment_people" >
         <action
@@ -38,19 +38,19 @@
 
     <fragment
         android:id="@+id/navigation_todo"
-        android:name="pl.sokols.scyzorykdruzynowego.activities.main.ui.todo.TodoFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.ui.todo.TodoFragment"
         android:label="@string/to_do_list"
         tools:layout="@layout/fragment_todo" />
 
     <fragment
         android:id="@+id/navigation_meetings"
-        android:name="pl.sokols.scyzorykdruzynowego.activities.main.ui.meetings.MeetingsFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.ui.meetings.MeetingsFragment"
         android:label="@string/meetings"
         tools:layout="@layout/fragment_meetings" />
 
     <fragment
         android:id="@+id/selectCreateTeamOrScoutFragment"
-        android:name="pl.sokols.scyzorykdruzynowego.activities.main.ui.people.SelectCreateTeamOrScoutFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.ui.people.SelectCreateTeamOrScoutFragment"
         android:label="@string/choice"
         tools:layout="@layout/fragment_select_create_team_or_scout">
         <action
@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/createNewTeamFragment"
-        android:name="pl.sokols.scyzorykdruzynowego.activities.main.ui.people.CreateEditTeamFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.ui.people.CreateEditTeamFragment"
         android:label="@string/complete_data"
         tools:layout="@layout/fragment_create_edit_team">
         <action
@@ -93,7 +93,7 @@
     </fragment>
     <fragment
         android:id="@+id/createNewPersonFragment"
-        android:name="pl.sokols.scyzorykdruzynowego.activities.main.ui.people.CreateEditPersonFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.ui.people.CreateEditPersonFragment"
         android:label="@string/complete_data"
         tools:layout="@layout/fragment_create_edit_person">
         <action

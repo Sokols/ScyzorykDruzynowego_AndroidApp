@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".activities.start.ui.RegistrationFragment">
+    tools:context=".ui.registration.RegistrationFragment">
 
     <TextView
         android:id="@+id/titleRegistrationTextView"

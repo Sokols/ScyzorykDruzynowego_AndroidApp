@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.start.ui;
+package pl.sokols.scyzorykdruzynowego.ui.login;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -21,8 +21,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.activities.main.MainActivity;
-import pl.sokols.scyzorykdruzynowego.data.viewmodels.UserViewModel;
+import pl.sokols.scyzorykdruzynowego.ui.main.MainActivity;
+import pl.sokols.scyzorykdruzynowego.data.viewmodel.UserViewModel;
 import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 import static pl.sokols.scyzorykdruzynowego.utils.Utils.USER_ID_SHARED_PREFS_KEY;

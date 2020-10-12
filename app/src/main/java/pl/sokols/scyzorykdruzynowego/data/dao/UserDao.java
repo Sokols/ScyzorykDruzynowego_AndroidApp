@@ -4,7 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import pl.sokols.scyzorykdruzynowego.data.entities.User;
+import pl.sokols.scyzorykdruzynowego.data.entity.User;
 
 @Dao
 public interface UserDao {

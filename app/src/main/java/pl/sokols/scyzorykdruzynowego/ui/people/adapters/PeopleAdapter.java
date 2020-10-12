@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.main.ui.people.adapters;
+package pl.sokols.scyzorykdruzynowego.ui.people.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -22,8 +22,8 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.entities.Person;
-import pl.sokols.scyzorykdruzynowego.data.entities.Team;
+import pl.sokols.scyzorykdruzynowego.data.entity.Person;
+import pl.sokols.scyzorykdruzynowego.data.entity.Team;
 
 public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder> {
 

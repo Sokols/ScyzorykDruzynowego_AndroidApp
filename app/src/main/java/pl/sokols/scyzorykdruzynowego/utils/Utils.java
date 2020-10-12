@@ -13,8 +13,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import pl.sokols.scyzorykdruzynowego.data.viewmodels.PersonViewModel;
-import pl.sokols.scyzorykdruzynowego.data.viewmodels.TeamViewModel;
+import pl.sokols.scyzorykdruzynowego.data.viewmodel.PersonViewModel;
+import pl.sokols.scyzorykdruzynowego.data.viewmodel.TeamViewModel;
 
 public class Utils {
 

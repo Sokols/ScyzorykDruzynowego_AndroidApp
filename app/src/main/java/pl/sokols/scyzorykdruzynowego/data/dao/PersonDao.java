@@ -9,7 +9,7 @@ import androidx.room.Update;
 
 import java.util.List;
 
-import pl.sokols.scyzorykdruzynowego.data.entities.Person;
+import pl.sokols.scyzorykdruzynowego.data.entity.Person;
 
 @Dao
 public interface PersonDao {

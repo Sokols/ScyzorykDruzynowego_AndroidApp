@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.main.ui.people;
+package pl.sokols.scyzorykdruzynowego.ui.people;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -26,9 +26,9 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.entities.Person;
-import pl.sokols.scyzorykdruzynowego.data.viewmodels.PersonViewModel;
-import pl.sokols.scyzorykdruzynowego.data.viewmodels.TeamViewModel;
+import pl.sokols.scyzorykdruzynowego.data.entity.Person;
+import pl.sokols.scyzorykdruzynowego.data.viewmodel.PersonViewModel;
+import pl.sokols.scyzorykdruzynowego.data.viewmodel.TeamViewModel;
 import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;

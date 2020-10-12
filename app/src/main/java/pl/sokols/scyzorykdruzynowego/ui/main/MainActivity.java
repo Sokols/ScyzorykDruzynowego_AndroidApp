@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.main;
+package pl.sokols.scyzorykdruzynowego.ui.main;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,7 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.activities.start.StartActivity;
+import pl.sokols.scyzorykdruzynowego.ui.start.StartActivity;
 import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {

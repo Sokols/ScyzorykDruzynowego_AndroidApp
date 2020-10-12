@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.start.ui;
+package pl.sokols.scyzorykdruzynowego.ui.registration;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,8 +17,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.entities.User;
-import pl.sokols.scyzorykdruzynowego.data.viewmodels.UserViewModel;
+import pl.sokols.scyzorykdruzynowego.data.entity.User;
+import pl.sokols.scyzorykdruzynowego.data.viewmodel.UserViewModel;
 
 public class RegistrationFragment extends Fragment {
 
@@ -54,14 +54,14 @@ public class RegistrationFragment extends Fragment {
         // insert new user if every data is ok and return to the login fragment
         if (isAllDataCorrect(username, password, password2, userViewModel)) {
             userViewModel.insert(new User(username, password));
-            Navigation.findNavController(getView()).navigate(R.id.action_registration_to_login);
+            Navigation.findNavController(requireView()).navigate(R.id.action_registration_to_login);
             Toast.makeText(getActivity(), getString(R.string.registration_completed), Toast.LENGTH_SHORT).show();
         }
     }
 
     @OnClick(R.id.loginRegistrationButton)
     public void setLoginButton() {
-        Navigation.findNavController(getView()).navigate(R.id.action_registration_to_login);
+        Navigation.findNavController(requireView()).navigate(R.id.action_registration_to_login);
     }
 
     private boolean isAllDataCorrect(String username, String password, String password2, UserViewModel userViewModel) {

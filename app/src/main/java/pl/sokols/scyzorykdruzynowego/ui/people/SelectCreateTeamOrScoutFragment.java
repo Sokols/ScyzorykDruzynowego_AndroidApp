@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.main.ui.people;
+package pl.sokols.scyzorykdruzynowego.ui.people;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,11 +23,11 @@ public class SelectCreateTeamOrScoutFragment extends Fragment {
 
     @OnClick(R.id.newPersonButton)
     public void setNewPersonButton() {
-        Navigation.findNavController(getView()).navigate(R.id.action_select_to_new_person);
+        Navigation.findNavController(requireView()).navigate(R.id.action_select_to_new_person);
     }
 
     @OnClick(R.id.newTeamButton)
     public void setNewTeamButton() {
-        Navigation.findNavController(getView()).navigate(R.id.action_select_to_new_team);
+        Navigation.findNavController(requireView()).navigate(R.id.action_select_to_new_team);
     }
 }

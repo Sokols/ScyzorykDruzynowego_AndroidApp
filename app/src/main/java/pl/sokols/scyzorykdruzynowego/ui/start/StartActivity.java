@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.activities.start;
+package pl.sokols.scyzorykdruzynowego.ui.start;
 
 import android.os.Bundle;
 
