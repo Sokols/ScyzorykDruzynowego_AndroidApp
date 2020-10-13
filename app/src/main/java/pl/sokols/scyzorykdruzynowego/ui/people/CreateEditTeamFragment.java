@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entity.Team;
-import pl.sokols.scyzorykdruzynowego.data.viewmodel.TeamViewModel;
+import pl.sokols.scyzorykdruzynowego.data.repository.TeamViewModel;
 import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 

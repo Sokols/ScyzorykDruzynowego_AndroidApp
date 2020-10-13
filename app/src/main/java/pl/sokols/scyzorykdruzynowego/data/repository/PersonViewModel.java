@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.data.viewmodel;
+package pl.sokols.scyzorykdruzynowego.data.repository;
 
 import android.app.Application;
 

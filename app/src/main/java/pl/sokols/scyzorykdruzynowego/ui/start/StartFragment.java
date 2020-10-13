@@ -1,6 +1,7 @@
 package pl.sokols.scyzorykdruzynowego.ui.start;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -41,7 +42,8 @@ public class StartFragment extends Fragment {
 
             // if checkbox checked open main activity
             if (sharedPreferences.getBoolean(REMEMBER_ME_SHARED_PREFS_KEY, false)) {
-                Utils.startNewActivity(requireActivity(), new MainActivity());
+                startActivity(new Intent(requireActivity(), MainActivity.class));
+                requireActivity().finish();
             } else {
                 Navigation.findNavController(view).navigate(R.id.action_start_to_login);
             }

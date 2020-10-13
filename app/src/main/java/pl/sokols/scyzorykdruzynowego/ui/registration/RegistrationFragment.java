@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -18,7 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entity.User;
-import pl.sokols.scyzorykdruzynowego.data.viewmodel.UserViewModel;
+import pl.sokols.scyzorykdruzynowego.data.repository.UserRepository;
 
 public class RegistrationFragment extends Fragment {
 
@@ -49,11 +48,11 @@ public class RegistrationFragment extends Fragment {
         String password = passwordEditText.getText().toString();
         String password2 = repeatPasswordEditText.getText().toString();
 
-        UserViewModel userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        UserRepository userRepository = new UserRepository(requireActivity().getApplication());
 
         // insert new user if every data is ok and return to the login fragment
-        if (isAllDataCorrect(username, password, password2, userViewModel)) {
-            userViewModel.insert(new User(username, password));
+        if (isAllDataCorrect(username, password, password2, userRepository)) {
+            userRepository.insert(new User(username, password));
             Navigation.findNavController(requireView()).navigate(R.id.action_registration_to_login);
             Toast.makeText(getActivity(), getString(R.string.registration_completed), Toast.LENGTH_SHORT).show();
         }
@@ -64,7 +63,7 @@ public class RegistrationFragment extends Fragment {
         Navigation.findNavController(requireView()).navigate(R.id.action_registration_to_login);
     }
 
-    private boolean isAllDataCorrect(String username, String password, String password2, UserViewModel userViewModel) {
+    private boolean isAllDataCorrect(String username, String password, String password2, UserRepository userRepository) {
         // check that all data has been entered
         if (isAnyFieldEmpty(username, password, password2)) {
             Toast.makeText(getActivity(), getString(R.string.enter_all_data), Toast.LENGTH_SHORT).show();
@@ -78,7 +77,7 @@ public class RegistrationFragment extends Fragment {
         }
 
         // check if username is unique
-        if (userViewModel.checkItemByName(username) == 1) {
+        if (userRepository.checkItemByName(username) == 1) {
             Toast.makeText(getActivity(), getString(R.string.double_login), Toast.LENGTH_SHORT).show();
             return false;
         }

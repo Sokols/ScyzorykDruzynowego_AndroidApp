@@ -1,24 +1,22 @@
-package pl.sokols.scyzorykdruzynowego.data.viewmodel;
+package pl.sokols.scyzorykdruzynowego.data.repository;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import pl.sokols.scyzorykdruzynowego.data.database.UsersDatabase;
 import pl.sokols.scyzorykdruzynowego.data.dao.UserDao;
+import pl.sokols.scyzorykdruzynowego.data.database.UsersDatabase;
 import pl.sokols.scyzorykdruzynowego.data.entity.User;
 
-public class UserViewModel extends AndroidViewModel {
+public class UserRepository {
 
     private ExecutorService executorService;
     private UserDao userDao;
 
-    public UserViewModel(@NonNull Application application) {
-        super(application);
+    public UserRepository(@NonNull Application application) {
         userDao = UsersDatabase.getInstance(application).userDao();
         executorService = Executors.newSingleThreadExecutor();
     }

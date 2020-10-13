@@ -104,6 +104,6 @@ public class Person implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-
+        // do nothing
     }
 }
