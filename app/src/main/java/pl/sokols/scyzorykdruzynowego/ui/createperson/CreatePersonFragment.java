@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.ui.people;
+package pl.sokols.scyzorykdruzynowego.ui.createperson;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -27,13 +27,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entity.Person;
-import pl.sokols.scyzorykdruzynowego.data.repository.PersonViewModel;
-import pl.sokols.scyzorykdruzynowego.data.repository.TeamViewModel;
+import pl.sokols.scyzorykdruzynowego.data.repository.PersonRepository;
+import pl.sokols.scyzorykdruzynowego.data.repository.TeamRepository;
 import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
 
-public class CreateEditPersonFragment extends Fragment {
+public class CreatePersonFragment extends Fragment {
 
     @BindView(R.id.titleNewPersonTextView)
     TextView titleTextView;
@@ -58,7 +58,7 @@ public class CreateEditPersonFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_create_edit_person, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_person, container, false);
         ButterKnife.bind(this, view);
         setAdapters();
 
@@ -110,15 +110,15 @@ public class CreateEditPersonFragment extends Fragment {
         String team = teamAutoCompleteTextView.getText().toString();
         String function = functionAutoCompleteTextView.getText().toString();
 
-        PersonViewModel personViewModel = Utils.getPersonViewModel(this);
+        PersonRepository personRepository = new PersonRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()));
 
         // insert new person if every data is ok and return to the people fragment
         if (isRequiredFieldsCorrect(name, surname) && isDateFormatCorrect(date)) {
             try {
-                personViewModel.insert(new Person(name, surname, Utils.getDateFromString(date), rank, team, function));
+                personRepository.insert(new Person(name, surname, Utils.getDateFromString(date), rank, team, function));
             } catch (ParseException e) {
                 e.printStackTrace();
-                personViewModel.insert(new Person(name, surname, null, rank, team, function));
+                personRepository.insert(new Person(name, surname, null, rank, team, function));
             } finally {
                 Toast.makeText(getActivity(), getString(R.string.added_new_person_completed), Toast.LENGTH_SHORT).show();
                 Navigation.findNavController(requireView()).navigate(R.id.action_new_person_to_people);
@@ -184,8 +184,8 @@ public class CreateEditPersonFragment extends Fragment {
     }
 
     private String[] getTeamsFromDB() {
-        TeamViewModel teamViewModel = Utils.getTeamViewModel(this);
-        List<String> teams = teamViewModel.getAllTeamNames();
+        TeamRepository teamRepository = new TeamRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()));
+        List<String> teams = teamRepository.getAllTeamNames();
         String[] teamNames = new String[teams.size()];
         for (int i = 0; i < teams.size(); i++) {
             teamNames[i] = teams.get(i);

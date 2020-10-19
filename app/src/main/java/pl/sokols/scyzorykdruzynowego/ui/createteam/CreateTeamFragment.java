@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.ui.people;
+package pl.sokols.scyzorykdruzynowego.ui.createteam;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,11 +17,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entity.Team;
-import pl.sokols.scyzorykdruzynowego.data.repository.TeamViewModel;
+import pl.sokols.scyzorykdruzynowego.data.repository.TeamRepository;
 import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 
-public class CreateEditTeamFragment extends Fragment {
+public class CreateTeamFragment extends Fragment {
 
     @BindView(R.id.nameNewTeamEditText)
     EditText nameEditText;
@@ -30,7 +30,7 @@ public class CreateEditTeamFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_create_edit_team, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_team, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -40,11 +40,11 @@ public class CreateEditTeamFragment extends Fragment {
         // get typed data
         String teamName = nameEditText.getText().toString();
 
-        TeamViewModel teamViewModel = Utils.getTeamViewModel(this);
+        TeamRepository teamRepository = new TeamRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()));
 
         // insert new team if every data is ok an return to the login fragment
         if (isAllDataCorrect(teamName)) {
-            teamViewModel.insert(new Team(teamName));
+            teamRepository.insert(new Team(teamName));
             Navigation.findNavController(requireView()).navigate(R.id.action_new_team_to_people);
             Toast.makeText(getActivity(), getString(R.string.added_new_team_completed), Toast.LENGTH_SHORT).show();
         }

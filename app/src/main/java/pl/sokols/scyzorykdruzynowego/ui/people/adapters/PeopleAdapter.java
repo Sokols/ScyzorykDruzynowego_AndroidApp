@@ -69,7 +69,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
 
     @Override
     public int getItemCount() {
-        return mTeamList.size();
+        return mTeamList == null ? 0 : mTeamList.size();
     }
 
     private void setTeamRecyclerView(Team currentTeam, PeopleViewHolder holder) {

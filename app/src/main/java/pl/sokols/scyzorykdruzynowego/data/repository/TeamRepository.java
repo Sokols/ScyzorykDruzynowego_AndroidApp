@@ -3,10 +3,7 @@ package pl.sokols.scyzorykdruzynowego.data.repository;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -16,30 +13,12 @@ import pl.sokols.scyzorykdruzynowego.data.dao.TeamDao;
 import pl.sokols.scyzorykdruzynowego.data.database.AppDatabase;
 import pl.sokols.scyzorykdruzynowego.data.entity.Team;
 
-public class TeamViewModel extends AndroidViewModel {
-
-    public static class TeamViewModelFactory implements ViewModelProvider.Factory {
-
-        private Application mApplication;
-        private int mUserIdParam;
-
-        public TeamViewModelFactory(@NonNull Application application, int userIdParam) {
-            this.mApplication = application;
-            this.mUserIdParam = userIdParam;
-        }
-
-        @NonNull
-        @Override
-        public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-            return (T) new TeamViewModel(mApplication, mUserIdParam);
-        }
-    }
+public class TeamRepository {
 
     private ExecutorService executorService;
     private TeamDao teamDao;
 
-    public TeamViewModel(@NonNull Application application, int userId) {
-        super(application);
+    public TeamRepository(@NonNull Application application, int userId) {
         teamDao = AppDatabase.getInstance(application, userId).teamDao();
         executorService = Executors.newSingleThreadExecutor();
     }

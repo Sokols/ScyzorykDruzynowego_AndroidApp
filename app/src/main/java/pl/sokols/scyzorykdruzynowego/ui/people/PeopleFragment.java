@@ -6,49 +6,56 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
+import pl.sokols.scyzorykdruzynowego.databinding.FragmentPeopleBinding;
 import pl.sokols.scyzorykdruzynowego.ui.people.adapters.PeopleAdapter;
-import pl.sokols.scyzorykdruzynowego.data.repository.PersonViewModel;
-import pl.sokols.scyzorykdruzynowego.data.repository.TeamViewModel;
-import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class PeopleFragment extends Fragment {
 
-    @BindView(R.id.allPeopleRecyclerView)
-    RecyclerView allPeopleRecyclerView;
+    private PeopleViewModel viewModel;
+    private FragmentPeopleBinding binding;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        this.viewModel = new ViewModelProvider(requireActivity()).get(PeopleViewModel.class);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_people, container, false);
-        ButterKnife.bind(this, view);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_people, container, false);
+        binding.setPeopleViewModel(viewModel);
+        binding.setLifecycleOwner(this);
 
-        // prepare viewmodels
-        PersonViewModel personViewModel = Utils.getPersonViewModel(this);
-        TeamViewModel teamViewModel = Utils.getTeamViewModel(this);
-
-        // prepare adapter
-        PeopleAdapter peopleAdapter = new PeopleAdapter(getContext(), this);
-
-        // add observers to viewmodels
-        personViewModel.getAllPeople().observe(requireActivity(), peopleAdapter::setPeopleByTeamNameList);
-        teamViewModel.getAllTeams().observe(requireActivity(), peopleAdapter::setTeamList);
-
-        // prepare recycler view
-        allPeopleRecyclerView.setAdapter(peopleAdapter);
-        allPeopleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        View view = binding.getRoot();
+        init(view);
         return view;
     }
 
-    @OnClick(R.id.addPeopleFloatingActionButton)
-    public void setAddingFAB() {
-        Navigation.findNavController(requireView()).navigate(R.id.action_people_to_select);
+    private void init(View view) {
+        // init recyclerview
+        PeopleAdapter peopleAdapter = new PeopleAdapter(getContext(), this);
+        binding.allPeopleRecyclerView.setAdapter(peopleAdapter);
+        binding.allPeopleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // init observers
+//        PersonRepository personRepository = new PersonRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()));
+//        personRepository.getAllPeople().observe(getViewLifecycleOwner(), peopleAdapter::setPeopleByTeamNameList);
+//
+//        TeamRepository teamRepository = new TeamRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()));
+//        teamRepository.getAllTeams().observe(requireActivity(), peopleAdapter::setTeamList);
+
+        viewModel.getPeopleByTeamList().observe(getViewLifecycleOwner(), peopleAdapter::setPeopleByTeamNameList);
+
+        viewModel.getTeamList().observe(getViewLifecycleOwner(), peopleAdapter::setTeamList);
+
+        binding.addPeopleFloatingActionButton.setOnClickListener(view1 -> Navigation.findNavController(view).navigate(R.id.action_people_to_select));
     }
 }

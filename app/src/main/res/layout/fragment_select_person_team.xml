@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".ui.people.SelectCreateTeamOrScoutFragment">
+    tools:context=".ui.selectpersonteam.SelectPersonTeamFragment">
 
     <TextView
         android:id="@+id/mainQuestionTextView"

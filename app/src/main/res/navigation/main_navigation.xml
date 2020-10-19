@@ -50,9 +50,9 @@
 
     <fragment
         android:id="@+id/selectCreateTeamOrScoutFragment"
-        android:name="pl.sokols.scyzorykdruzynowego.ui.people.SelectCreateTeamOrScoutFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.ui.selectpersonteam.SelectPersonTeamFragment"
         android:label="@string/choice"
-        tools:layout="@layout/fragment_select_create_team_or_scout">
+        tools:layout="@layout/fragment_select_person_team">
         <action
             android:id="@+id/action_select_to_new_team"
             app:destination="@id/createNewTeamFragment"
@@ -76,9 +76,9 @@
     </fragment>
     <fragment
         android:id="@+id/createNewTeamFragment"
-        android:name="pl.sokols.scyzorykdruzynowego.ui.people.CreateEditTeamFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.ui.createteam.CreateTeamFragment"
         android:label="@string/complete_data"
-        tools:layout="@layout/fragment_create_edit_team">
+        tools:layout="@layout/fragment_create_team">
         <action
             android:id="@+id/action_new_team_to_people"
             app:destination="@id/navigation_people"
@@ -93,9 +93,9 @@
     </fragment>
     <fragment
         android:id="@+id/createNewPersonFragment"
-        android:name="pl.sokols.scyzorykdruzynowego.ui.people.CreateEditPersonFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.ui.createperson.CreatePersonFragment"
         android:label="@string/complete_data"
-        tools:layout="@layout/fragment_create_edit_person">
+        tools:layout="@layout/fragment_create_person">
         <action
             android:id="@+id/action_new_person_to_people"
             app:destination="@id/navigation_people"

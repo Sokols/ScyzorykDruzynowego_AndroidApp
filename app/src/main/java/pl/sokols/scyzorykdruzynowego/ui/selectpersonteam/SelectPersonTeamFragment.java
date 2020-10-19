@@ -1,4 +1,4 @@
-package pl.sokols.scyzorykdruzynowego.ui.people;
+package pl.sokols.scyzorykdruzynowego.ui.selectpersonteam;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,11 +12,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
 
-public class SelectCreateTeamOrScoutFragment extends Fragment {
+public class SelectPersonTeamFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_select_create_team_or_scout, container, false);
+        View view = inflater.inflate(R.layout.fragment_select_person_team, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
