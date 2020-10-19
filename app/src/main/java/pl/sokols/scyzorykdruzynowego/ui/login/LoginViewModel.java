@@ -47,8 +47,12 @@ public class LoginViewModel extends AndroidViewModel {
 
         UserRepository userRepository = model.getUserRepository();
 
-        // check if typed username exists
-        if (userRepository.checkItemByName(username) != 1) {
+        // check if all data exist
+        if (username.equals("") || password.equals("")) {
+            return false;
+        }
+        // check if typed username exists in database
+        else if (userRepository.checkItemByName(username) != 1) {
             isUsernameUnique.setValue(false);
             return false;
         }

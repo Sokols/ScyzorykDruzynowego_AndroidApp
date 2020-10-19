@@ -4,112 +4,83 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.snackbar.Snackbar;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.entity.User;
-import pl.sokols.scyzorykdruzynowego.data.repository.UserRepository;
+import pl.sokols.scyzorykdruzynowego.databinding.FragmentRegistrationBinding;
+
+import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
 
 public class RegistrationFragment extends Fragment {
 
-    @BindView(R.id.usernameRegistrationEditText)
-    EditText usernameEditText;
-    @BindView(R.id.passwordRegistrationEditText)
-    EditText passwordEditText;
-    @BindView(R.id.repeatPasswordRegistrationEditText)
-    EditText repeatPasswordEditText;
-    @BindView(R.id.usernameRegistrationTextInputLayout)
-    TextInputLayout usernameTextInputLayout;
-    @BindView(R.id.passwordRegistrationTextInputLayout)
-    TextInputLayout passwordTextInputLayout;
-    @BindView(R.id.repeatPasswordRegistrationTextInputLayout)
-    TextInputLayout repeatPasswordTextInputLayout;
+    private RegistrationViewModel viewModel;
+    private FragmentRegistrationBinding binding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_registration, container, false);
-        ButterKnife.bind(this, view);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(requireActivity()).get(RegistrationViewModel.class);
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_registration, container, false);
+        binding.setRegistrationViewModel(viewModel);
+        binding.setLifecycleOwner(this);
+
+        View view = binding.getRoot();
+        initObservers(view);
         return view;
     }
 
-    @OnClick(R.id.registerRegistrationButton)
-    public void setRegisterButton() {
-        // get typed data
-        String username = usernameEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        String password2 = repeatPasswordEditText.getText().toString();
-
-        UserRepository userRepository = new UserRepository(requireActivity().getApplication());
-
-        // insert new user if every data is ok and return to the login fragment
-        if (isAllDataCorrect(username, password, password2, userRepository)) {
-            userRepository.insert(new User(username, password));
-            Navigation.findNavController(requireView()).navigate(R.id.action_registration_to_login);
-            Toast.makeText(getActivity(), getString(R.string.registration_completed), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @OnClick(R.id.loginRegistrationButton)
-    public void setLoginButton() {
-        Navigation.findNavController(requireView()).navigate(R.id.action_registration_to_login);
-    }
-
-    private boolean isAllDataCorrect(String username, String password, String password2, UserRepository userRepository) {
-        // check that all data has been entered
-        if (isAnyFieldEmpty(username, password, password2)) {
-            Toast.makeText(getActivity(), getString(R.string.enter_all_data), Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        // check that both passwords are the same
-        if (!password.equals(password2)) {
-            Toast.makeText(getActivity(), getString(R.string.incorrect_second_password), Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        // check if username is unique
-        if (userRepository.checkItemByName(username) == 1) {
-            Toast.makeText(getActivity(), getString(R.string.double_login), Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        return true;
-    }
-
-    private boolean isAnyFieldEmpty(String username, String password, String password2) {
-        // remove error texts
-        usernameTextInputLayout.setError(null);
-        passwordTextInputLayout.setError(null);
-        repeatPasswordTextInputLayout.setError(null);
-
-        // if yes - set error texts in empty required fields and return true
-        if (username.isEmpty() || password.isEmpty() || password2.isEmpty()) {
-
-            if (username.isEmpty()) {
-                usernameTextInputLayout.setError(getString(R.string.required_error));
+    private void initObservers(View view) {
+        viewModel.getUser().observe(getViewLifecycleOwner(), user -> {
+            if (viewModel.getUsername() == null) {
+                binding.usernameRegistrationTextInputLayout.setError(getString(R.string.required_error));
+            } else {
+                binding.usernameRegistrationTextInputLayout.setError(null);
             }
 
-            if (password.isEmpty()) {
-                passwordTextInputLayout.setError(getString(R.string.required_error));
+            if (viewModel.getPassword() == null) {
+                binding.passwordRegistrationTextInputLayout.setError(getString(R.string.required_error));
+            } else {
+                binding.passwordRegistrationTextInputLayout.setError(null);
             }
 
-            if (password2.isEmpty()) {
-                repeatPasswordTextInputLayout.setError(getString(R.string.required_error));
+            if (viewModel.getPassword2() == null) {
+                binding.repeatPasswordRegistrationTextInputLayout.setError(getString(R.string.required_error));
+            } else {
+                binding.repeatPasswordRegistrationTextInputLayout.setError(null);
             }
+        });
 
-            return true;
+        viewModel.getIsUsernameUnique().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (!aBoolean) {
+                Snackbar.make(view, getString(R.string.double_login), LENGTH_SHORT).show();
+            }
+        });
 
-        } else {
-            return false;
-        }
+        viewModel.getArePasswordsCorrect().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (!aBoolean) {
+                Snackbar.make(view, getString(R.string.incorrect_second_password), LENGTH_SHORT).show();
+            }
+        });
+
+        viewModel.getIsReadyToRegister().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
+                Navigation.findNavController(requireView()).navigate(R.id.action_registration_to_login);
+                Snackbar.make(view, getString(R.string.registration_completed), LENGTH_SHORT).show();
+            }
+        });
+
+        binding.loginRegistrationButton.setOnClickListener(view1 -> Navigation.findNavController(view).navigate(R.id.action_registration_to_login));
     }
 }
