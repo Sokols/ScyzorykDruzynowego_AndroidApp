@@ -59,7 +59,7 @@
     <string name="ok">OK</string>
     <string name="cancel">Anuluj</string>
     <string name="edit">Edytuj</string>
-    <string name="blank" />
+    <string name="blank">-</string>
     <string name="person_data_key">person_key</string>
     <string name="person_data">Dane członka drużyny</string>
 </resources>

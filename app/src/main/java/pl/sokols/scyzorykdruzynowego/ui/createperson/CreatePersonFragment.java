@@ -5,192 +5,70 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
-import java.text.ParseException;
 import java.util.Calendar;
-import java.util.List;
 
-import butterknife.BindView;
-import butterknife.BindViews;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.entity.Person;
-import pl.sokols.scyzorykdruzynowego.data.repository.PersonRepository;
-import pl.sokols.scyzorykdruzynowego.data.repository.TeamRepository;
-import pl.sokols.scyzorykdruzynowego.utils.Utils;
+import pl.sokols.scyzorykdruzynowego.databinding.FragmentCreatePersonBinding;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
 
 public class CreatePersonFragment extends Fragment {
 
-    @BindView(R.id.titleNewPersonTextView)
-    TextView titleTextView;
-    @BindView(R.id.nameNewPersonEditText)
-    EditText nameEditText;
-    @BindView(R.id.surnameNewPersonEditText)
-    EditText surnameEditText;
-    @BindView(R.id.dateNewPersonEditText)
-    EditText dateEditText;
-    @BindView(R.id.rankNewPersonAutoCompleteTextView)
-    AutoCompleteTextView rankAutoCompleteTextView;
-    @BindView(R.id.teamNewPersonAutoCompleteTextView)
-    AutoCompleteTextView teamAutoCompleteTextView;
-    @BindView(R.id.functionNewPersonAutoCompleteTextView)
-    AutoCompleteTextView functionAutoCompleteTextView;
-    @BindView(R.id.confirmAddPersonButton)
-    Button confirmAddPersonButton;
-    @BindViews({R.id.nameNewPersonTextInputLayout, R.id.surnameNewPersonTextInputLayout,
-            R.id.dateNewPersonTextInputLayout, R.id.rankNewPersonTextInputLayout,
-            R.id.teamNewPersonTextInputLayout, R.id.functonNewPersonTextInputLayout})
-    List<TextInputLayout> textInputLayouts;
+    private CreatePersonViewModel viewModel;
+    private FragmentCreatePersonBinding binding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_create_person, container, false);
-        ButterKnife.bind(this, view);
-        setAdapters();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(CreatePersonViewModel.class);
+    }
 
-        Person person = getArguments() != null ? getArguments().getParcelable(getString(R.string.person_data_key)) : null;
-        if (person != null) {
-            setFragmentToPreviewMode(person);
-        }
-        dateEditText.setOnClickListener(dateEditTextOnClickListener);
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_create_person, container, false);
+        binding.setCreatePersonViewModel(viewModel);
+        binding.setLifecycleOwner(this);
+
+        View view = binding.getRoot();
+        initObserversAndListeners(view);
         return view;
     }
 
-    private void setFragmentToPreviewMode(Person person) {
-        // change view components' texts
-        titleTextView.setText(getString(R.string.person_data));
-        nameEditText.setText(person.getName());
-        surnameEditText.setText(person.getSurname());
-        dateEditText.setText(person.getDateOfBirth() == null ? getString(R.string.blank) : person.getDateOfBirth().toString());
-        rankAutoCompleteTextView.setText(person.getRank());
-        teamAutoCompleteTextView.setText(person.getTeam());
-        functionAutoCompleteTextView.setText(person.getFunction());
-
-        dateEditText.setOnClickListener(null);
-        turnOnOffEditMode(false);
-
-        confirmAddPersonButton.setVisibility(View.INVISIBLE);
-    }
-
-    private void turnOnOffEditMode(boolean mode) {
-        nameEditText.setFocusable(mode);
-        surnameEditText.setFocusable(mode);
-        dateEditText.setFocusable(mode);
-        rankAutoCompleteTextView.setFocusable(mode);
-        rankAutoCompleteTextView.dismissDropDown();
-        teamAutoCompleteTextView.setFocusable(mode);
-        functionAutoCompleteTextView.setFocusable(mode);
-
-        for (TextInputLayout textInputLayout : textInputLayouts) {
-            textInputLayout.setEndIconVisible(mode);
-        }
-    }
-
-    @OnClick(R.id.confirmAddPersonButton)
-    public void setConfirmAddPersonButton() {
-        // get typed data
-        String name = nameEditText.getText().toString();
-        String surname = surnameEditText.getText().toString();
-        String date = dateEditText.getText().toString();
-        String rank = rankAutoCompleteTextView.getText().toString();
-        String team = teamAutoCompleteTextView.getText().toString();
-        String function = functionAutoCompleteTextView.getText().toString();
-
-        PersonRepository personRepository = new PersonRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()));
-
-        // insert new person if every data is ok and return to the people fragment
-        if (isRequiredFieldsCorrect(name, surname) && isDateFormatCorrect(date)) {
-            try {
-                personRepository.insert(new Person(name, surname, Utils.getDateFromString(date), rank, team, function));
-            } catch (ParseException e) {
-                e.printStackTrace();
-                personRepository.insert(new Person(name, surname, null, rank, team, function));
-            } finally {
-                Toast.makeText(getActivity(), getString(R.string.added_new_person_completed), Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(requireView()).navigate(R.id.action_new_person_to_people);
-            }
-        }
-    }
-
-    private boolean isRequiredFieldsCorrect(String name, String surname) {
-        // remove error texts
-        textInputLayouts.get(0).setError(null);
-        textInputLayouts.get(1).setError(null);
-
-        // if yes - set error texts in empty required fields and return true
-        if (name.isEmpty() || surname.isEmpty()) {
-
-            if (name.isEmpty()) {
-                textInputLayouts.get(0).setError(getString(R.string.required_error));
+    private void initObserversAndListeners(View view) {
+        viewModel.getPerson().observe(getViewLifecycleOwner(), person -> {
+            if (person.getName() == null) {
+                binding.nameNewPersonTextInputLayout.setError(getString(R.string.required_error));
+            } else {
+                binding.nameNewPersonTextInputLayout.setError(null);
             }
 
-            if (surname.isEmpty()) {
-                textInputLayouts.get(1).setError(getString(R.string.required_error));
+            if (person.getSurname() == null) {
+                binding.surnameNewPersonTextInputLayout.setError(getString(R.string.required_error));
+            } else {
+                binding.surnameNewPersonTextInputLayout.setError(null);
             }
+        });
 
-            Toast.makeText(getActivity(), getString(R.string.enter_all_data), Toast.LENGTH_SHORT).show();
-            return false;
-
-        } else {
-            return true;
-        }
-    }
-
-    private boolean isDateFormatCorrect(String date) {
-        // remove error text
-        textInputLayouts.get(2).setError(null);
-
-        if (!date.isEmpty()) {
-            try {
-                Utils.getDateFromString(date);
-            } catch (ParseException e) {
-                e.printStackTrace();
-                textInputLayouts.get(2).setError(getString(R.string.date_format_error));
-                return false;
+        viewModel.getIsReadyToAddPerson().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
+                Snackbar.make(view, getString(R.string.added_new_person_completed), BaseTransientBottomBar.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.action_new_person_to_people);
             }
-        }
-        return true;
-    }
+        });
 
-    private void setAdapters() {
-        // prepare adapters
-        ArrayAdapter<String> rankAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getResources().getStringArray(R.array.ranks));
-        ArrayAdapter<String> teamAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getTeamsFromDB());
-        ArrayAdapter<String> functionAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getResources().getStringArray(R.array.functions));
-
-        // set adapters on ACTV
-        rankAutoCompleteTextView.setAdapter(rankAdapter);
-        teamAutoCompleteTextView.setAdapter(teamAdapter);
-        functionAutoCompleteTextView.setAdapter(functionAdapter);
-
-        // and set default values on ACTV
-        rankAutoCompleteTextView.setText(rankAdapter.getItem(0), false);
-        teamAutoCompleteTextView.setText(teamAdapter.getItem(0), false);
-        functionAutoCompleteTextView.setText(functionAdapter.getItem(0), false);
-    }
-
-    private String[] getTeamsFromDB() {
-        TeamRepository teamRepository = new TeamRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()));
-        List<String> teams = teamRepository.getAllTeamNames();
-        String[] teamNames = new String[teams.size()];
-        for (int i = 0; i < teams.size(); i++) {
-            teamNames[i] = teams.get(i);
-        }
-        return teamNames;
+        binding.dateNewPersonEditText.setOnClickListener(dateEditTextOnClickListener);
     }
 
     private View.OnClickListener dateEditTextOnClickListener = v -> {
