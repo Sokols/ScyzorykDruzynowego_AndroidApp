@@ -46,12 +46,6 @@ public class PeopleFragment extends Fragment {
         binding.allPeopleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // init observers
-//        PersonRepository personRepository = new PersonRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()));
-//        personRepository.getAllPeople().observe(getViewLifecycleOwner(), peopleAdapter::setPeopleByTeamNameList);
-//
-//        TeamRepository teamRepository = new TeamRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()));
-//        teamRepository.getAllTeams().observe(requireActivity(), peopleAdapter::setTeamList);
-
         viewModel.getPeopleByTeamList().observe(getViewLifecycleOwner(), peopleAdapter::setPeopleByTeamNameList);
 
         viewModel.getTeamList().observe(getViewLifecycleOwner(), peopleAdapter::setTeamList);

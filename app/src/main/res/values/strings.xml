@@ -36,6 +36,7 @@
     <string name="error">Błąd</string>
     <string name="enter_all_data">Uzupełnij wszystkie pola!</string>
     <string name="double_login">Podany login już istnieje!</string>
+    <string name="double_team_name">Podana nazwa zastępu jest już zajęta</string>
     <string name="incorrect_second_password">Niepoprawnie powtórzone hasło!</string>
     <string name="registration_completed">Zarejestrowano!</string>
     <string name="incorrect_login">Nie ma takiego loginu!</string>

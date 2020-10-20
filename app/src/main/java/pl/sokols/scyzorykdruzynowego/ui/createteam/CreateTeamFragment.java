@@ -5,20 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.entity.Team;
-import pl.sokols.scyzorykdruzynowego.data.repository.TeamRepository;
-import pl.sokols.scyzorykdruzynowego.utils.Utils;
+import pl.sokols.scyzorykdruzynowego.databinding.FragmentCreateTeamBinding;
 
 
 public class CreateTeamFragment extends Fragment {
@@ -28,39 +29,46 @@ public class CreateTeamFragment extends Fragment {
     @BindView(R.id.dateNewPersonTextInputLayout)
     TextInputLayout nameTextInputLayout;
 
+    private CreateTeamViewModel viewModel;
+    private FragmentCreateTeamBinding binding;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_create_team, container, false);
-        ButterKnife.bind(this, view);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(CreateTeamViewModel.class);
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_create_team, container, false);
+        binding.setCreateTeamViewModel(viewModel);
+        binding.setLifecycleOwner(this);
+
+        View view = binding.getRoot();
+        initObservers(view);
         return view;
     }
 
-    @OnClick(R.id.confirmNewTeamButton)
-    public void setConfirmAddPersonButton() {
-        // get typed data
-        String teamName = nameEditText.getText().toString();
+    private void initObservers(View view) {
+        viewModel.getTeam().observe(getViewLifecycleOwner(), team -> {
+            if (team.getTeamName() == null) {
+                binding.nameNewTeamTextInputLayout.setError(getString(R.string.required_error));
+            } else {
+                binding.nameNewTeamTextInputLayout.setError(null);
+            }
+        });
 
-        TeamRepository teamRepository = new TeamRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()));
+        viewModel.getIsTeamNameUnique().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (!aBoolean) {
+                Snackbar.make(view, getString(R.string.double_team_name), BaseTransientBottomBar.LENGTH_SHORT).show();
+            }
+        });
 
-        // insert new team if every data is ok an return to the login fragment
-        if (isAllDataCorrect(teamName)) {
-            teamRepository.insert(new Team(teamName));
-            Navigation.findNavController(requireView()).navigate(R.id.action_new_team_to_people);
-            Toast.makeText(getActivity(), getString(R.string.added_new_team_completed), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private boolean isAllDataCorrect(String teamName) {
-        // remove error text
-        nameTextInputLayout.setError(null);
-
-        // check that all data has been entered
-        if (teamName.isEmpty()) {
-            Toast.makeText(getActivity(), getString(R.string.enter_all_data), Toast.LENGTH_SHORT).show();
-            nameTextInputLayout.setError(getString(R.string.required_error));
-            return false;
-        }
-
-        return true;
+        viewModel.getIsReadyToAddTeam().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
+                Navigation.findNavController(requireView()).navigate(R.id.action_new_team_to_people);
+                Snackbar.make(view, getString(R.string.added_new_team_completed), BaseTransientBottomBar.LENGTH_SHORT).show();
+            }
+        });
     }
 }
