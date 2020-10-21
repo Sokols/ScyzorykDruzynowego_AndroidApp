@@ -1,79 +1,61 @@
 package pl.sokols.scyzorykdruzynowego.ui.people.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entity.Person;
+import pl.sokols.scyzorykdruzynowego.databinding.ListitemPersonBinding;
 
-public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTimeViewHolder> {
+public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTeamViewHolder> {
 
     public interface OnItemClickListener {
         void onItemClick(Person item);
     }
 
-    static class OneTimeViewHolder extends RecyclerView.ViewHolder {
+    static class OneTeamViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.namePersonTextView)
-        TextView nameTextView;
-        @BindView(R.id.rankPersonTextView)
-        TextView rankTextView;
+        private ListitemPersonBinding binding;
 
-        public OneTimeViewHolder(@NonNull View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
+        public OneTeamViewHolder(ListitemPersonBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
 
         public void bind(Person currentPerson, OnItemClickListener listener) {
-            nameTextView.setText(String.format("%s %s", currentPerson.getName(), currentPerson.getSurname()));
-            rankTextView.setText(String.format(rankTextView.getText().toString(), currentPerson.getRank()));
-            itemView.setOnClickListener(view -> {
-                listener.onItemClick(currentPerson);
-            });
+            binding.setPerson(currentPerson);
+            itemView.setOnClickListener(view -> listener.onItemClick(currentPerson));
+            binding.executePendingBindings();
         }
     }
 
     private List<Person> mPersonList;
-    private LayoutInflater mInflater;
-    private Context mContext;
     private OnItemClickListener mListener;
 
-    public OneTeamAdapter(List<Person> personList, Context context, OnItemClickListener listener) {
+    public OneTeamAdapter(List<Person> personList, OnItemClickListener listener) {
         this.mPersonList = personList;
-        this.mContext = context;
         this.mListener = listener;
-        this.mInflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
-    public OneTimeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.listitem_person, parent, false);
-        return new OneTimeViewHolder(itemView);
+    public OneTeamViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        ListitemPersonBinding binding = ListitemPersonBinding.inflate(layoutInflater, parent, false);
+        return new OneTeamViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OneTimeViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OneTeamViewHolder holder, int position) {
         holder.bind(mPersonList.get(position), mListener);
     }
 
     @Override
     public int getItemCount() {
-        return mPersonList.size();
-    }
-
-    public void setPersonList(List<Person> personList) {
-        this.mPersonList = personList;
-        notifyDataSetChanged();
+        return mPersonList == null ? 0 : mPersonList.size();
     }
 }

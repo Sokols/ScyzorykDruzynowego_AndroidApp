@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,19 +14,12 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputLayout;
 
-import butterknife.BindView;
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.databinding.FragmentCreateTeamBinding;
 
 
 public class CreateTeamFragment extends Fragment {
-
-    @BindView(R.id.nameNewTeamEditText)
-    EditText nameEditText;
-    @BindView(R.id.dateNewPersonTextInputLayout)
-    TextInputLayout nameTextInputLayout;
 
     private CreateTeamViewModel viewModel;
     private FragmentCreateTeamBinding binding;

@@ -3,9 +3,7 @@ package pl.sokols.scyzorykdruzynowego.ui.people.adapters;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -19,52 +17,59 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entity.Person;
 import pl.sokols.scyzorykdruzynowego.data.entity.Team;
+import pl.sokols.scyzorykdruzynowego.databinding.ListitemTeamBinding;
 
 public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder> {
 
     static class PeopleViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.titleTeamTextView)
-        TextView titleTeamTextView;
-        @BindView(R.id.oneTeamRecyclerView)
-        RecyclerView oneTeamRecyclerView;
+        private ListitemTeamBinding binding;
 
-        public PeopleViewHolder(@NonNull View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
+        public PeopleViewHolder(ListitemTeamBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        public void bind(Team currentTeam, OneTeamAdapter.OnItemClickListener listener, DividerItemDecoration itemDecoration, List<Person> peopleList) {
+            setRecyclerView(listener, itemDecoration, peopleList);
+            binding.setTeam(currentTeam);
+            binding.executePendingBindings();
+        }
+
+        private void setRecyclerView(OneTeamAdapter.OnItemClickListener listener, DividerItemDecoration itemDecoration, List<Person> peopleList) {
+            LinearLayoutManager layoutManager = new LinearLayoutManager(binding.oneTeamRecyclerView.getContext(), LinearLayoutManager.VERTICAL, false);
+            binding.oneTeamRecyclerView.setLayoutManager(layoutManager);
+            binding.oneTeamRecyclerView.setAdapter(new OneTeamAdapter(peopleList, listener));
+            binding.oneTeamRecyclerView.addItemDecoration(itemDecoration);
+            binding.oneTeamRecyclerView.setRecycledViewPool(new RecyclerView.RecycledViewPool());
         }
     }
 
-    private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
     private List<Team> mTeamList = new ArrayList<>();
-    private List<Person> peopleByTeamNameList = new ArrayList<>();
+    private List<Person> mAllPeopleList = new ArrayList<>();
     private Fragment mFragment;
-    private LayoutInflater mInflater;
     private Context mContext;
 
     public PeopleAdapter(Context context, Fragment fragment) {
         this.mContext = context;
         this.mFragment = fragment;
-        this.mInflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
     public PeopleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.listitem_team, parent, false);
-        return new PeopleViewHolder(itemView);
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        ListitemTeamBinding binding = ListitemTeamBinding.inflate(layoutInflater, parent, false);
+        return new PeopleViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PeopleViewHolder holder, int position) {
         Team currentTeam = mTeamList.get(position);
-        holder.titleTeamTextView.setText(mContext.getString(R.string.blank_team, currentTeam.getTeamName()));
-        setTeamRecyclerView(currentTeam, holder);
+        holder.bind(currentTeam, getOnItemClickListener(), getItemDecoration(), getPeopleListByTeam(currentTeam.getTeamName()));
     }
 
     @Override
@@ -72,16 +77,10 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         return mTeamList == null ? 0 : mTeamList.size();
     }
 
-    private void setTeamRecyclerView(Team currentTeam, PeopleViewHolder holder) {
-        // prepare divider item decoration
+    private DividerItemDecoration getItemDecoration() {
         DividerItemDecoration itemDecoration = new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);
         itemDecoration.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(mContext, R.drawable.item_divider)));
-
-        // set recyclerview
-        holder.oneTeamRecyclerView.setLayoutManager(new LinearLayoutManager(holder.oneTeamRecyclerView.getContext(), LinearLayoutManager.VERTICAL, false));
-        holder.oneTeamRecyclerView.setAdapter(new OneTeamAdapter(getPeopleListByTeam(currentTeam.getTeamName()), mContext, getOnItemClickListener()));
-        holder.oneTeamRecyclerView.addItemDecoration(itemDecoration);
-        holder.oneTeamRecyclerView.setRecycledViewPool(viewPool);
+        return itemDecoration;
     }
 
     private OneTeamAdapter.OnItemClickListener getOnItemClickListener() {
@@ -94,7 +93,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
 
     private List<Person> getPeopleListByTeam(String teamName) {
         List<Person> personList = new ArrayList<>();
-        for (Person person : peopleByTeamNameList) {
+        for (Person person : mAllPeopleList) {
             if (person.getTeam().equals(teamName)) {
                 personList.add(person);
             }
@@ -107,8 +106,8 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         notifyDataSetChanged();
     }
 
-    public void setPeopleByTeamNameList(List<Person> peopleList) {
-        this.peopleByTeamNameList = peopleList;
+    public void setAllPeopleList(List<Person> peopleList) {
+        this.mAllPeopleList = peopleList;
         notifyDataSetChanged();
     }
 }
