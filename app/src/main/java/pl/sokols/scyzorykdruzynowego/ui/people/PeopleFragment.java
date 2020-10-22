@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.databinding.FragmentPeopleBinding;
+import pl.sokols.scyzorykdruzynowego.ui.people.adapters.OneTeamAdapter;
 import pl.sokols.scyzorykdruzynowego.ui.people.adapters.PeopleAdapter;
 
 public class PeopleFragment extends Fragment {
@@ -41,7 +42,7 @@ public class PeopleFragment extends Fragment {
 
     private void init(View view) {
         // init recyclerview
-        PeopleAdapter peopleAdapter = new PeopleAdapter(getContext(), this);
+        PeopleAdapter peopleAdapter = new PeopleAdapter(getContext(), getOnItemClickListener());
         binding.allPeopleRecyclerView.setAdapter(peopleAdapter);
         binding.allPeopleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -51,5 +52,13 @@ public class PeopleFragment extends Fragment {
         viewModel.getTeamList().observe(getViewLifecycleOwner(), peopleAdapter::setTeamList);
 
         binding.addPeopleFloatingActionButton.setOnClickListener(view1 -> Navigation.findNavController(view).navigate(R.id.action_people_to_select));
+    }
+
+    private OneTeamAdapter.OnItemClickListener getOnItemClickListener() {
+        return item -> {
+            PeopleFragmentDirections.ActionPeopleToEditPerson action = PeopleFragmentDirections.actionPeopleToEditPerson(item);
+            action.setPerson(item);
+            Navigation.findNavController(requireView()).navigate(action);
+        };
     }
 }

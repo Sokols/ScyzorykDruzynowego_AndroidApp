@@ -41,6 +41,14 @@ public class Person implements Parcelable {
         this.function = function;
     }
 
+    protected Person(Parcel in) {
+        personId = in.readInt();
+        name = in.readString();
+        surname = in.readString();
+        rank = in.readString();
+        team = in.readString();
+        function = in.readString();
+    }
     public int getPersonId() {
         return personId;
     }
@@ -97,6 +105,18 @@ public class Person implements Parcelable {
         this.function = function;
     }
 
+    public static final Creator<Person> CREATOR = new Creator<Person>() {
+        @Override
+        public Person createFromParcel(Parcel in) {
+            return new Person(in);
+        }
+
+        @Override
+        public Person[] newArray(int size) {
+            return new Person[size];
+        }
+    };
+
     @Override
     public int describeContents() {
         return 0;
@@ -105,5 +125,11 @@ public class Person implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         // do nothing
+        parcel.writeInt(personId);
+        parcel.writeString(name);
+        parcel.writeString(surname);
+        parcel.writeString(rank);
+        parcel.writeString(team);
+        parcel.writeString(function);
     }
 }

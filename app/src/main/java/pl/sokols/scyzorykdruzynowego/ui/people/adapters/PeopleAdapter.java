@@ -1,14 +1,11 @@
 package pl.sokols.scyzorykdruzynowego.ui.people.adapters;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,9 +31,12 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         }
 
         public void bind(Team currentTeam, OneTeamAdapter.OnItemClickListener listener, DividerItemDecoration itemDecoration, List<Person> peopleList) {
-            setRecyclerView(listener, itemDecoration, peopleList);
-            binding.setTeam(currentTeam);
-            binding.executePendingBindings();
+            // bind team only
+            if (peopleList != null) {
+                setRecyclerView(listener, itemDecoration, peopleList);
+                binding.setTeam(currentTeam);
+                binding.executePendingBindings();
+            }
         }
 
         private void setRecyclerView(OneTeamAdapter.OnItemClickListener listener, DividerItemDecoration itemDecoration, List<Person> peopleList) {
@@ -50,12 +50,12 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
 
     private List<Team> mTeamList = new ArrayList<>();
     private List<Person> mAllPeopleList = new ArrayList<>();
-    private Fragment mFragment;
     private Context mContext;
+    private OneTeamAdapter.OnItemClickListener mListener;
 
-    public PeopleAdapter(Context context, Fragment fragment) {
+    public PeopleAdapter(Context context, OneTeamAdapter.OnItemClickListener listener) {
         this.mContext = context;
-        this.mFragment = fragment;
+        this.mListener = listener;
     }
 
     @NonNull
@@ -69,7 +69,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
     @Override
     public void onBindViewHolder(@NonNull PeopleViewHolder holder, int position) {
         Team currentTeam = mTeamList.get(position);
-        holder.bind(currentTeam, getOnItemClickListener(), getItemDecoration(), getPeopleListByTeam(currentTeam.getTeamName()));
+        holder.bind(currentTeam, mListener, getItemDecoration(), getPeopleListByTeam(currentTeam.getTeamName()));
     }
 
     @Override
@@ -81,14 +81,6 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         DividerItemDecoration itemDecoration = new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);
         itemDecoration.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(mContext, R.drawable.item_divider)));
         return itemDecoration;
-    }
-
-    private OneTeamAdapter.OnItemClickListener getOnItemClickListener() {
-        return item -> {
-            Bundle bundle = new Bundle();
-            bundle.putParcelable(mContext.getString(R.string.person_data_key), item);
-            Navigation.findNavController(mFragment.requireView()).navigate(R.id.action_people_to_edit_person, bundle);
-        };
     }
 
     private List<Person> getPeopleListByTeam(String teamName) {
