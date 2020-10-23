@@ -25,6 +25,7 @@
     <string name="new_person">Nową osobę</string>
     <string name="type_data">Wprowadź dane</string>
     <string name="complete_data">Uzupełnienie danych</string>
+    <string name="data">Dane</string>
     <string name="team_name">Nazwa zastępu</string>
     <string name="name">Imię</string>
     <string name="surname">Nazwisko</string>
@@ -64,4 +65,6 @@
     <string name="person_data">Dane członka drużyny</string>
     <string name="age">lat</string>
     <string name="no_function">Bez funkcji</string>
+    <string name="person_view">Podgląd osoby</string>
+    <string name="update_finished">Zaktualizowano dane</string>
 </resources>

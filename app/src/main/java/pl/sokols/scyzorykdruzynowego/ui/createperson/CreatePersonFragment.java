@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -20,6 +21,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.Calendar;
 
 import pl.sokols.scyzorykdruzynowego.R;
+import pl.sokols.scyzorykdruzynowego.data.entity.Person;
 import pl.sokols.scyzorykdruzynowego.databinding.FragmentCreatePersonBinding;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
@@ -40,13 +42,21 @@ public class CreatePersonFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_create_person, container, false);
         binding.setCreatePersonViewModel(viewModel);
         binding.setLifecycleOwner(this);
-
-        View view = binding.getRoot();
-        initObserversAndListeners(view);
-        return view;
+        viewModel.setPersonToSave(CreatePersonFragmentArgs.fromBundle(requireArguments()).getPerson());
+        viewModel.setCreatePerson(CreatePersonFragmentArgs.fromBundle(requireArguments()).getIsCreatePerson());
+        initEditTexts();
+        initObserversAndListeners();
+        return binding.getRoot();
     }
 
-    private void initObserversAndListeners(View view) {
+    private void initEditTexts() {
+        if (!CreatePersonFragmentArgs.fromBundle(requireArguments()).getIsCreatePerson()) {
+            Person person = CreatePersonFragmentArgs.fromBundle(requireArguments()).getPerson();
+            viewModel.setPerson(new MutableLiveData<>(person));
+        }
+    }
+
+    private void initObserversAndListeners() {
         viewModel.getPerson().observe(getViewLifecycleOwner(), person -> {
             if (person.getName() == null) {
                 binding.nameNewPersonTextInputLayout.setError(getString(R.string.required_error));
@@ -63,8 +73,16 @@ public class CreatePersonFragment extends Fragment {
 
         viewModel.getIsReadyToAddPerson().observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
-                Snackbar.make(view, getString(R.string.added_new_person_completed), BaseTransientBottomBar.LENGTH_SHORT).show();
-                Navigation.findNavController(view).navigate(R.id.action_new_person_to_people);
+                Snackbar.make(requireView(), getString(R.string.added_new_person_completed), BaseTransientBottomBar.LENGTH_SHORT).show();
+                Navigation.findNavController(requireView()).navigate(R.id.action_new_person_to_people);
+            }
+        });
+
+        viewModel.getIsReadyToUpdatePerson().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
+                Snackbar.make(requireView(), getString(R.string.update_finished), BaseTransientBottomBar.LENGTH_SHORT).show();
+                CreatePersonFragmentDirections.ActionCreatePersonToEditPerson action = CreatePersonFragmentDirections.actionCreatePersonToEditPerson(viewModel.getPersonToSave());
+                Navigation.findNavController(requireView()).navigate(action);
             }
         });
 

@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/actionEdit"
+        android:icon="@drawable/ic_baseline_edit_24"
+        android:title="@string/edit"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/actionLogout"
         android:icon="@drawable/ic_baseline_exit_to_app_24"
         android:title="@string/action_logout"

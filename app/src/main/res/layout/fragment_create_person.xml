@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
-                android:text="@={CreatePersonViewModel.name}"
+                android:text="@={CreatePersonViewModel.personToSave.name}"
                 android:textColor="@color/colorAccent"
                 android:textCursorDrawable="@color/colorAccent" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
-                android:text="@={CreatePersonViewModel.surname}"
+                android:text="@={CreatePersonViewModel.personToSave.surname}"
                 android:textColor="@color/colorAccent"
                 android:textCursorDrawable="@color/colorAccent" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="none"
                 adapter="@{CreatePersonViewModel.ranks}"
-                android:text="@={CreatePersonViewModel.rank}"
+                android:text="@={CreatePersonViewModel.personToSave.rank}"
                 android:textColor="@color/colorAccent"
                 android:textColorHint="@color/colorAccent" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -145,13 +145,13 @@
                 android:layout_height="wrap_content"
                 android:inputType="none"
                 adapter="@{CreatePersonViewModel.teams}"
-                android:text="@={CreatePersonViewModel.team}"
+                android:text="@={CreatePersonViewModel.personToSave.team}"
                 android:textColor="@color/colorAccent"
                 android:textColorHint="@color/colorAccent" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/functonNewPersonTextInputLayout"
+            android:id="@+id/functionNewPersonTextInputLayout"
             style="@style/AutoCompleteTextViewsTextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -169,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="none"
                 adapter="@{CreatePersonViewModel.functions}"
-                android:text="@={CreatePersonViewModel.function}"
+                android:text="@={CreatePersonViewModel.personToSave.function}"
                 android:textColor="@color/colorAccent"
                 android:textColorHint="@color/colorAccent" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -186,7 +186,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/functonNewPersonTextInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/functionNewPersonTextInputLayout"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

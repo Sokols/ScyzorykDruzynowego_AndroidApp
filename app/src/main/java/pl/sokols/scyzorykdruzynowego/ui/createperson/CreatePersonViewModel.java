@@ -16,18 +16,17 @@ import pl.sokols.scyzorykdruzynowego.utils.Utils;
 public class CreatePersonViewModel extends AndroidViewModel {
 
     private MutableLiveData<Boolean> isReadyToAddPerson = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isReadyToUpdatePerson = new MutableLiveData<>();
     private MutableLiveData<Person> person;
 
     private String[] ranks;
     private String[] teams;
     private String[] functions;
 
-    private String name;
-    private String surname;
+    private Person personToSave;
     private String date;
-    private String rank;
-    private String team;
-    private String function;
+    private boolean isCreatePerson;
+
     private CreatePersonModel model;
 
     public CreatePersonViewModel(@NonNull Application application) {
@@ -36,33 +35,34 @@ public class CreatePersonViewModel extends AndroidViewModel {
     }
 
     public void handleCreatePersonButton() {
-        Person newPerson = getNewPerson();
-        person.setValue(newPerson);
+        addDateToPerson();
+        person.setValue(personToSave);
         if (isAllDataCorrect()) {
-            model.getPersonRepository().insert(newPerson);
-            isReadyToAddPerson.setValue(true);
+            if (isCreatePerson) {
+                model.getPersonRepository().insert(personToSave);
+                isReadyToAddPerson.setValue(true);
+            } else {
+                model.getPersonRepository().update(personToSave);
+                isReadyToUpdatePerson.setValue(true);
+            }
         }
     }
 
     private boolean isAllDataCorrect() {
         // check if name or surname is null
-        return name != null && surname != null;
+        return personToSave.getName() != null && personToSave.getSurname() != null;
     }
 
-    public String getName() {
-        return name;
+    public Person getPersonToSave() {
+        return personToSave;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCreatePerson(boolean createPerson) {
+        isCreatePerson = createPerson;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setPersonToSave(Person personToSave) {
+        this.personToSave = personToSave;
     }
 
     public String getDate() {
@@ -71,30 +71,6 @@ public class CreatePersonViewModel extends AndroidViewModel {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getRank() {
-        return rank;
-    }
-
-    public void setRank(String rank) {
-        this.rank = rank;
-    }
-
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
-    }
-
-    public String getFunction() {
-        return function;
-    }
-
-    public void setFunction(String function) {
-        this.function = function;
     }
 
     public String[] getRanks() {
@@ -120,6 +96,10 @@ public class CreatePersonViewModel extends AndroidViewModel {
         return isReadyToAddPerson;
     }
 
+    public MutableLiveData<Boolean> getIsReadyToUpdatePerson() {
+        return isReadyToUpdatePerson;
+    }
+
     public MutableLiveData<Person> getPerson() {
         if (person == null) {
             person = new MutableLiveData<>();
@@ -127,19 +107,17 @@ public class CreatePersonViewModel extends AndroidViewModel {
         return person;
     }
 
-    private Person getNewPerson() {
+    public void setPerson(MutableLiveData<Person> person) {
+        this.person = person;
+    }
+
+    private void addDateToPerson() {
         Date newDate = null;
         try {
             newDate = Utils.getDateFromString(date);
         } catch (ParseException | NullPointerException e) {
             e.printStackTrace();
         }
-        return new Person(
-                name,
-                surname,
-                newDate,
-                rank == null ? getApplication().getString(R.string.blank) : rank,
-                team == null ? getApplication().getString(R.string.blank) : team,
-                function == null ? getApplication().getString(R.string.blank) : function);
+        personToSave.setDateOfBirth(newDate);
     }
 }

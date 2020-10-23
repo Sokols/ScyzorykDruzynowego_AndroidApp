@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="EditPersonViewModel"
-            type="pl.sokols.scyzorykdruzynowego.ui.editperson.EditPersonViewModel" />
+            name="age"
+            type="long" />
 
         <variable
             name="Person"
@@ -23,14 +23,13 @@
 
         <TextView
             android:id="@+id/titleEditPersonTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="32dp"
             android:gravity="center_horizontal"
             android:text='@{String.format("%s %s", Person.name, Person.surname).toUpperCase()}'
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
             android:textColor="@color/colorMainText"
             app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,13 +38,12 @@
 
         <TextView
             android:id="@+id/rankAndAgeEditPersonTextView"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="64dp"
-            android:text='@{String.format("%s, %d %s", Person.rank, 2, @string/age)}'
+            android:text='@{String.format("%s, %d %s", Person.rank, age, @string/age)}'
             android:textColor="@color/colorAccent"
             app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +52,6 @@
 
         <TextView
             android:id="@+id/functionAndTeamEditPersonTextView"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"

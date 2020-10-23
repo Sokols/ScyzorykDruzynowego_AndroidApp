@@ -3,9 +3,15 @@ package pl.sokols.scyzorykdruzynowego.utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class Utils {
@@ -23,5 +29,15 @@ public class Utils {
     public static int getUserId(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Utils.SHARED_PREFS_KEY_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(Utils.USER_ID_SHARED_PREFS_KEY, 0);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static long getAgeFromDateDifference(Date start) {
+        if (start != null) {
+            LocalDate from = start.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate to = LocalDate.now();
+            return ChronoUnit.YEARS.between(from, to);
+        }
+        return 0;
     }
 }
