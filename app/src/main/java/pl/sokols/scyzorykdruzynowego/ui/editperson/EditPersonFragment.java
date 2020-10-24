@@ -61,8 +61,7 @@ public class EditPersonFragment extends Fragment {
             action.setPerson(binding.getPerson());
             Navigation.findNavController(requireView()).navigate(action);
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }

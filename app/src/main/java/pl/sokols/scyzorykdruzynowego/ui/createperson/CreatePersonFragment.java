@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -23,6 +22,7 @@ import java.util.Calendar;
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entity.Person;
 import pl.sokols.scyzorykdruzynowego.databinding.FragmentCreatePersonBinding;
+import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
 
@@ -42,29 +42,39 @@ public class CreatePersonFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_create_person, container, false);
         binding.setCreatePersonViewModel(viewModel);
         binding.setLifecycleOwner(this);
-        viewModel.setPersonToSave(CreatePersonFragmentArgs.fromBundle(requireArguments()).getPerson());
-        viewModel.setCreatePerson(CreatePersonFragmentArgs.fromBundle(requireArguments()).getIsCreatePerson());
-        initEditTexts();
+        setViewModel();
+        fixAutoCompleteTextViewBug(viewModel.getPersonToSave());
         initObserversAndListeners();
         return binding.getRoot();
     }
 
-    private void initEditTexts() {
-        if (!CreatePersonFragmentArgs.fromBundle(requireArguments()).getIsCreatePerson()) {
-            Person person = CreatePersonFragmentArgs.fromBundle(requireArguments()).getPerson();
-            viewModel.setPerson(new MutableLiveData<>(person));
+    private void setViewModel() {
+        Person person = new Person();
+        // if safe args pass person, set it
+        if (CreatePersonFragmentArgs.fromBundle(requireArguments()).getPerson() != null) {
+            person = CreatePersonFragmentArgs.fromBundle(requireArguments()).getPerson();
         }
+        viewModel.setDate(Utils.getStringFromDate(person != null ? person.getDateOfBirth() : null));
+        viewModel.setPersonToSave(person);
+        viewModel.setCreatePerson(CreatePersonFragmentArgs.fromBundle(requireArguments()).getIsCreatePerson());
+    }
+
+    private void fixAutoCompleteTextViewBug(Person person) {
+        // repair the autoCompleteTextView bug - adapter does not show up
+        binding.rankNewPersonAutoCompleteTextView.setText(person != null ? person.getRank() : null, false);
+        binding.teamNewPersonAutoCompleteTextView.setText(person != null ? person.getTeam() : null, false);
+        binding.functionNewPersonAutoCompleteTextView.setText(person != null ? person.getFunction() : null, false);
     }
 
     private void initObserversAndListeners() {
         viewModel.getPerson().observe(getViewLifecycleOwner(), person -> {
-            if (person.getName() == null) {
+            if (person.getName() == null || person.getName().equals("")) {
                 binding.nameNewPersonTextInputLayout.setError(getString(R.string.required_error));
             } else {
                 binding.nameNewPersonTextInputLayout.setError(null);
             }
 
-            if (person.getSurname() == null) {
+            if (person.getSurname() == null || person.getSurname().equals("")) {
                 binding.surnameNewPersonTextInputLayout.setError(getString(R.string.required_error));
             } else {
                 binding.surnameNewPersonTextInputLayout.setError(null);

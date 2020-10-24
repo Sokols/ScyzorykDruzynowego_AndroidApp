@@ -86,7 +86,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
     private List<Person> getPeopleListByTeam(String teamName) {
         List<Person> personList = new ArrayList<>();
         for (Person person : mAllPeopleList) {
-            if (person.getTeam().equals(teamName)) {
+            if (person.getTeam() != null && person.getTeam().equals(teamName)) {
                 personList.add(person);
             }
         }

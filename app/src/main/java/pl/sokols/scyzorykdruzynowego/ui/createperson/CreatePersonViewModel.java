@@ -19,10 +19,6 @@ public class CreatePersonViewModel extends AndroidViewModel {
     private MutableLiveData<Boolean> isReadyToUpdatePerson = new MutableLiveData<>();
     private MutableLiveData<Person> person;
 
-    private String[] ranks;
-    private String[] teams;
-    private String[] functions;
-
     private Person personToSave;
     private String date;
     private boolean isCreatePerson;
@@ -35,7 +31,7 @@ public class CreatePersonViewModel extends AndroidViewModel {
     }
 
     public void handleCreatePersonButton() {
-        addDateToPerson();
+        preparePerson();
         person.setValue(personToSave);
         if (isAllDataCorrect()) {
             if (isCreatePerson) {
@@ -49,8 +45,11 @@ public class CreatePersonViewModel extends AndroidViewModel {
     }
 
     private boolean isAllDataCorrect() {
-        // check if name or surname is null
-        return personToSave.getName() != null && personToSave.getSurname() != null;
+        // check if name or surname is null o ""
+        if (personToSave.getName() != null && personToSave.getSurname() != null) {
+            return !personToSave.getName().equals("") && !personToSave.getSurname().equals("");
+        }
+        return false;
     }
 
     public Person getPersonToSave() {
@@ -74,22 +73,15 @@ public class CreatePersonViewModel extends AndroidViewModel {
     }
 
     public String[] getRanks() {
-        if (ranks == null) {
-            ranks = getApplication().getResources().getStringArray(R.array.ranks);
-        }
-        return ranks;
+        return getApplication().getResources().getStringArray(R.array.ranks);
     }
 
     public String[] getTeams() {
-        teams = model.getTeamRepository().getAllTeamNames().toArray(new String[0]);
-        return teams;
+        return model.getTeamRepository().getAllTeamNames().toArray(new String[0]);
     }
 
     public String[] getFunctions() {
-        if (functions == null) {
-            functions = getApplication().getResources().getStringArray(R.array.functions);
-        }
-        return functions;
+        return getApplication().getResources().getStringArray(R.array.functions);
     }
 
     public MutableLiveData<Boolean> getIsReadyToAddPerson() {
@@ -111,7 +103,8 @@ public class CreatePersonViewModel extends AndroidViewModel {
         this.person = person;
     }
 
-    private void addDateToPerson() {
+    private void preparePerson() {
+        // prepare person date
         Date newDate = null;
         try {
             newDate = Utils.getDateFromString(date);
@@ -119,5 +112,18 @@ public class CreatePersonViewModel extends AndroidViewModel {
             e.printStackTrace();
         }
         personToSave.setDateOfBirth(newDate);
+
+        // prepare person rank, team and function
+        if (personToSave.getRank() == null) {
+            personToSave.setRank("-");
+        }
+
+        if (personToSave.getTeam() == null) {
+            personToSave.setTeam("-");
+        }
+
+        if (personToSave.getFunction() == null) {
+            personToSave.setFunction("-");
+        }
     }
 }

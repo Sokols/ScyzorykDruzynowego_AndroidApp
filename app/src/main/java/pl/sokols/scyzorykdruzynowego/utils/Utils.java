@@ -26,6 +26,15 @@ public class Utils {
         return new SimpleDateFormat("dd-MM-yyyy").parse(date);
     }
 
+    @SuppressLint("SimpleDateFormat")
+    public static String getStringFromDate(Date date) {
+        if (date != null) {
+            return new SimpleDateFormat("dd-MM-yyyy").format(date);
+        } else {
+            return "";
+        }
+    }
+
     public static int getUserId(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Utils.SHARED_PREFS_KEY_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(Utils.USER_ID_SHARED_PREFS_KEY, 0);
