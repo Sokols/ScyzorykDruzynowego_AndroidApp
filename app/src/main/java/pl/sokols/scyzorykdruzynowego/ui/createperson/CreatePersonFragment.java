@@ -18,6 +18,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entity.Person;
@@ -52,9 +53,9 @@ public class CreatePersonFragment extends Fragment {
         Person person = new Person();
         // if safe args pass person, set it
         if (CreatePersonFragmentArgs.fromBundle(requireArguments()).getPerson() != null) {
-            person = CreatePersonFragmentArgs.fromBundle(requireArguments()).getPerson();
+            person = (Person) Objects.requireNonNull(CreatePersonFragmentArgs.fromBundle(requireArguments()).getPerson()).clone();
         }
-        viewModel.setDate(Utils.getStringFromDate(person != null ? person.getDateOfBirth() : null));
+        viewModel.setDate(Utils.getStringFromDate(person.getDateOfBirth()));
         viewModel.setPersonToSave(person);
         viewModel.setCreatePerson(CreatePersonFragmentArgs.fromBundle(requireArguments()).getIsCreatePerson());
     }

@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -16,7 +17,7 @@ import pl.sokols.scyzorykdruzynowego.utils.DateConverter;
 @Keep
 @Entity(tableName = "people")
 @TypeConverters(DateConverter.class)
-public class Person implements Parcelable {
+public class Person implements Parcelable, Cloneable {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -39,6 +40,17 @@ public class Person implements Parcelable {
         this.rank = rank;
         this.team = team;
         this.function = function;
+    }
+
+    @NonNull
+    @Override
+    public Object clone() {
+        try {
+            return super.clone();
+        }
+        catch (CloneNotSupportedException e) {
+            throw new Error("Something impossible just happened");
+        }
     }
 
     public Person() {}
