@@ -12,8 +12,8 @@ public class CreatePersonModel {
     private TeamRepository teamRepository;
 
     public CreatePersonModel(Application application) {
-        this.personRepository = new PersonRepository(application, Utils.getUserId(application));
-        this.teamRepository = new TeamRepository(application, Utils.getUserId(application));
+        this.personRepository = PersonRepository.getInstance(application, Utils.getUserId(application));
+        this.teamRepository = TeamRepository.getInstance(application, Utils.getUserId(application));
     }
 
     public PersonRepository getPersonRepository() {

@@ -55,6 +55,7 @@
     <string name="are_you_sure_title">Jesteś pewien?</string>
     <string name="are_you_sure_close_app_description">Czy na pewno chcesz wyjść z aplikacji?</string>
     <string name="are_you_sure_logout_description">Czy na pewno chcesz się wylogować?</string>
+    <string name="are_you_sure_remove_person_description">Czy na pewno chcesz usunąć tę osobę?</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
     <string name="ok">OK</string>
@@ -67,4 +68,6 @@
     <string name="no_function">Bez funkcji</string>
     <string name="person_view">Podgląd osoby</string>
     <string name="update_finished">Zaktualizowano dane</string>
+    <string name="person_removed">Usunięto osobę: %s %s</string>
+    <string name="delete">Usuń</string>
 </resources>

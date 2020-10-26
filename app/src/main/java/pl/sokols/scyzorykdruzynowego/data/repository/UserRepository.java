@@ -13,10 +13,18 @@ import pl.sokols.scyzorykdruzynowego.data.entity.User;
 
 public class UserRepository {
 
+    private static UserRepository INSTANCE;
     private ExecutorService executorService;
     private UserDao userDao;
 
-    public UserRepository(@NonNull Application application) {
+    public static UserRepository getInstance(Application application) {
+        if (INSTANCE == null) {
+            INSTANCE = new UserRepository(application);
+        }
+        return INSTANCE;
+    }
+
+    private UserRepository(@NonNull Application application) {
         userDao = UsersDatabase.getInstance(application).userDao();
         executorService = Executors.newSingleThreadExecutor();
     }

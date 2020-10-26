@@ -1,6 +1,7 @@
 package pl.sokols.scyzorykdruzynowego.ui.people.adapters;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,13 @@ public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTeamV
         public void bind(Person currentPerson, OnItemClickListener listener) {
             binding.setPerson(currentPerson);
             itemView.setOnClickListener(view -> listener.onItemClick(currentPerson));
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    onLongClick(view);
+                    return true;
+                }
+            });
             binding.executePendingBindings();
         }
     }
@@ -57,5 +65,19 @@ public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTeamV
     @Override
     public int getItemCount() {
         return mPersonList == null ? 0 : mPersonList.size();
+    }
+
+    public void removeItem(int position) {
+        mPersonList.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(Person item, int position) {
+        mPersonList.add(position, item);
+        notifyItemInserted(position);
+    }
+
+    public List<Person> getData() {
+        return mPersonList;
     }
 }

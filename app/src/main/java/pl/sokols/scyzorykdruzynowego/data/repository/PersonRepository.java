@@ -15,10 +15,18 @@ import pl.sokols.scyzorykdruzynowego.data.entity.Person;
 
 public class PersonRepository {
 
+    private static PersonRepository INSTANCE;
     private ExecutorService executorService;
     private PersonDao personDao;
 
-    public PersonRepository(@NonNull Application application, int userId) {
+    public static PersonRepository getInstance(Application application, int userId) {
+        if (INSTANCE == null) {
+            INSTANCE = new PersonRepository(application, userId);
+        }
+        return INSTANCE;
+    }
+
+    private PersonRepository(@NonNull Application application, int userId) {
         personDao = AppDatabase.getInstance(application, userId).personDao();
         executorService = Executors.newSingleThreadExecutor();
     }

@@ -13,8 +13,8 @@ public class PeopleModel {
 
     public PeopleModel(Application application) {
         int userId = Utils.getUserId(application);
-        this.teamRepository = new TeamRepository(application, userId);
-        this.personRepository = new PersonRepository(application, userId);
+        this.teamRepository = TeamRepository.getInstance(application, userId);
+        this.personRepository = PersonRepository.getInstance(application, userId);
     }
 
     public TeamRepository getTeamRepository() {

@@ -10,4 +10,7 @@
     <dimen name="standard_text_size">16sp</dimen>
     <dimen name="add_fragments_title_text_size">48sp</dimen>
     <dimen name="edittext_margin">64dp</dimen>
+
+    <dimen name="standard_55">60dp</dimen>
+    <dimen name="standard_105">115dp</dimen>
 </resources>

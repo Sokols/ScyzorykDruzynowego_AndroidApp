@@ -9,7 +9,7 @@ public class EditPersonModel {
     private UserRepository userRepository;
 
     public EditPersonModel(Application application) {
-        this.userRepository = new UserRepository(application);
+        this.userRepository = UserRepository.getInstance(application);
     }
 
     public UserRepository getUserRepository() {
