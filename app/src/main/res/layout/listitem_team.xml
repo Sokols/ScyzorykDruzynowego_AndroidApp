@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="PeopleViewHolder"
+            type="pl.sokols.scyzorykdruzynowego.ui.people.adapters.PeopleAdapter.PeopleViewHolder" />
 
         <variable
             name="team"
@@ -15,20 +20,43 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/titleTeamTextView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/colorTextOfTeam"
-            android:padding="4dp"
-            android:text="@{String.format(@string/blank_team, team.teamName)}"
-            android:textColor="@color/colorMainText"
-            android:textSize="@dimen/standard_text_size" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/titleTeamTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorTextOfTeam"
+                android:padding="10dp"
+                android:text="@{String.format(@string/blank_team, team.teamName)}"
+                android:textColor="@color/colorMainText"
+                android:textSize="@dimen/standard_text_size" />
+
+            <ImageButton
+                android:id="@+id/moreImageButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/colorTextOfTeam"
+                android:onClick="@{() -> PeopleViewHolder.handleMoreButton()}"
+                android:rotation="180"
+                app:srcCompat="@drawable/ic_baseline_expand_more_24" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/oneTeamRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/listitem_person" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBackground" />
     </LinearLayout>
 </layout>

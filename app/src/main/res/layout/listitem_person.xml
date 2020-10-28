@@ -10,13 +10,14 @@
             type="pl.sokols.scyzorykdruzynowego.data.entity.Person" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="100"
             android:background="@color/colorBackground"
             android:orientation="vertical"
@@ -45,5 +46,10 @@
                 android:textColor="@color/colorMainText" />
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorTextOfTeam" />
+
+    </LinearLayout>
 </layout>

@@ -63,7 +63,7 @@ public class PeopleFragment extends Fragment {
 
     private void init() {
         // init recyclerview
-        PeopleAdapter peopleAdapter = new PeopleAdapter(getContext(), getOnItemClickListener());
+        PeopleAdapter peopleAdapter = new PeopleAdapter(getOnItemClickListener());
         binding.allPeopleRecyclerView.setAdapter(peopleAdapter);
         binding.allPeopleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
