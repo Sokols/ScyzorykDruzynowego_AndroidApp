@@ -42,11 +42,12 @@
 
             <TextView
                 android:id="@+id/rankAndAgeEditPersonTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
                 android:layout_marginStart="64dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="64dp"
+                android:gravity="center_horizontal"
                 android:text='@{String.format("%s, %d %s", Person.rank, age, @string/age)}'
                 android:textColor="@color/colorAccent"
                 app:autoSizeTextType="uniform"
@@ -56,11 +57,12 @@
 
             <TextView
                 android:id="@+id/functionAndTeamEditPersonTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
                 android:layout_marginStart="64dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="64dp"
+                android:gravity="center_horizontal"
                 android:text='@{String.format("%s w zastępie %s", Person.function, Person.team)}'
                 android:textColor="@color/colorMainText"
                 app:autoSizeTextType="uniform"

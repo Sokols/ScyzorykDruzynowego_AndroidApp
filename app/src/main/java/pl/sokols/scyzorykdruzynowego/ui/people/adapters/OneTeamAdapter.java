@@ -1,7 +1,7 @@
 package pl.sokols.scyzorykdruzynowego.ui.people.adapters;
 
+import android.app.Application;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import pl.sokols.scyzorykdruzynowego.data.entity.Person;
+import pl.sokols.scyzorykdruzynowego.data.entity.Team;
+import pl.sokols.scyzorykdruzynowego.data.repository.PersonRepository;
 import pl.sokols.scyzorykdruzynowego.databinding.ListitemPersonBinding;
+import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTeamViewHolder> {
 
@@ -30,22 +33,16 @@ public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTeamV
         public void bind(Person currentPerson, OnItemClickListener listener) {
             binding.setPerson(currentPerson);
             itemView.setOnClickListener(view -> listener.onItemClick(currentPerson));
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    onLongClick(view);
-                    return true;
-                }
-            });
-            binding.executePendingBindings();
         }
     }
 
     private List<Person> mPersonList;
     private OnItemClickListener mListener;
+    private PersonRepository mPersonRepository;
 
-    public OneTeamAdapter(List<Person> personList, OnItemClickListener listener) {
-        this.mPersonList = personList;
+    public OneTeamAdapter(Team currentTeam, OnItemClickListener listener, Application application) {
+        this.mPersonRepository = PersonRepository.getInstance(application, Utils.getUserId(application.getBaseContext()));
+        this.mPersonList = mPersonRepository.getPeopleByTeamName(currentTeam.getTeamName());
         this.mListener = listener;
     }
 
@@ -68,11 +65,12 @@ public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTeamV
     }
 
     public void removeItem(int position) {
-        mPersonList.remove(position);
+        mPersonRepository.delete(mPersonList.remove(position));
         notifyItemRemoved(position);
     }
 
     public void restoreItem(Person item, int position) {
+        mPersonRepository.insert(item);
         mPersonList.add(position, item);
         notifyItemInserted(position);
     }

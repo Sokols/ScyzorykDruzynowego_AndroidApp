@@ -49,6 +49,7 @@ public class CreatePersonFragment extends Fragment {
         return binding.getRoot();
     }
 
+    // fill in the EditTexts depending on the calling fragment
     private void setViewModel() {
         Person person = new Person();
         // if safe args pass person, set it
@@ -60,14 +61,15 @@ public class CreatePersonFragment extends Fragment {
         viewModel.setCreatePerson(CreatePersonFragmentArgs.fromBundle(requireArguments()).getIsCreatePerson());
     }
 
+    // repair the autoCompleteTextView bug - adapter does not show up
     private void fixAutoCompleteTextViewBug(Person person) {
-        // repair the autoCompleteTextView bug - adapter does not show up
         binding.rankNewPersonAutoCompleteTextView.setText(person != null ? person.getRank() : null, false);
         binding.teamNewPersonAutoCompleteTextView.setText(person != null ? person.getTeam() : null, false);
         binding.functionNewPersonAutoCompleteTextView.setText(person != null ? person.getFunction() : null, false);
     }
 
     private void initObserversAndListeners() {
+        // check if name and surname fields aren't empty
         viewModel.getPerson().observe(getViewLifecycleOwner(), person -> {
             if (person.getName() == null || person.getName().equals("")) {
                 binding.nameNewPersonTextInputLayout.setError(getString(R.string.required_error));
@@ -82,6 +84,7 @@ public class CreatePersonFragment extends Fragment {
             }
         });
 
+        // go to People Fragment if adding
         viewModel.getIsReadyToAddPerson().observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
                 Snackbar.make(requireView(), getString(R.string.added_new_person_completed), BaseTransientBottomBar.LENGTH_SHORT).show();
@@ -89,6 +92,7 @@ public class CreatePersonFragment extends Fragment {
             }
         });
 
+        // go back to Edit Person Fragment if editing
         viewModel.getIsReadyToUpdatePerson().observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
                 Snackbar.make(requireView(), getString(R.string.update_finished), BaseTransientBottomBar.LENGTH_SHORT).show();
@@ -97,6 +101,7 @@ public class CreatePersonFragment extends Fragment {
             }
         });
 
+        // listener on date EditText
         binding.dateNewPersonEditText.setOnClickListener(dateEditTextOnClickListener);
     }
 

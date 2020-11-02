@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -20,7 +21,7 @@ public interface PersonDao {
     @Query("SELECT * FROM people WHERE team = :team")
     List<Person> getPeopleByTeamName(String team);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Person person);
 
     @Update

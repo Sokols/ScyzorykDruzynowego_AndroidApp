@@ -38,8 +38,8 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
             this.mBinding = binding;
         }
 
-        public void bind(Team currentTeam, OneTeamAdapter.OnItemClickListener listener, List<Person> peopleList) {
-            this.mAdapter = new OneTeamAdapter(peopleList, listener);
+        public void bind(Team currentTeam, OneTeamAdapter.OnItemClickListener listener, Application application) {
+            this.mAdapter = new OneTeamAdapter(currentTeam, listener, application);
             this.isPermitForAnimation = true;
             setRecyclerView();
             enableSwipeToDeleteAndUndo();
@@ -47,7 +47,9 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
             mBinding.setPeopleViewHolder(this);
         }
 
+        // expanding and collapsing recyclerview
         public void handleMoreButton() {
+            // wait until previous animation finish
             if (isPermitForAnimation) {
                 isPermitForAnimation = false;
                 if (mBinding.oneTeamRecyclerView.getVisibility() == View.VISIBLE) {
@@ -62,23 +64,25 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
             }
         }
 
+        // set one team recyclerview
         private void setRecyclerView() {
-            LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
-            mBinding.oneTeamRecyclerView.setLayoutManager(layoutManager);
+            mBinding.oneTeamRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
             mBinding.oneTeamRecyclerView.setAdapter(mAdapter);
             mBinding.oneTeamRecyclerView.setRecycledViewPool(new RecyclerView.RecycledViewPool());
         }
 
+        // set the swiping to delete item from recyclerview
         private void enableSwipeToDeleteAndUndo() {
             SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(mContext) {
                 @Override
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-                    final int position = viewHolder.getAdapterPosition();
-                    final Person item = mAdapter.getData().get(position);
+                    int position = viewHolder.getAdapterPosition();
+                    Person item = mAdapter.getData().get(position);
                     PersonRepository personRepository = PersonRepository.getInstance((Application) mContext.getApplicationContext(), Utils.getUserId(mContext));
                     personRepository.delete(item);
                     mAdapter.removeItem(position);
 
+                    // snackbar allows to cancel item deletion
                     Snackbar snackbar = Snackbar.make(
                             mBinding.oneTeamRecyclerView,
                             String.format(mContext.getString(R.string.person_removed), item.getName(), item.getSurname()),
@@ -99,11 +103,12 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
     }
 
     private List<Team> mTeamList = new ArrayList<>();
-    private List<Person> mAllPeopleList = new ArrayList<>();
     private OneTeamAdapter.OnItemClickListener mListener;
+    private Application mApplication;
 
-    public PeopleAdapter(OneTeamAdapter.OnItemClickListener listener) {
+    public PeopleAdapter(OneTeamAdapter.OnItemClickListener listener, Application application) {
         this.mListener = listener;
+        this.mApplication = application;
     }
 
     @NonNull
@@ -117,7 +122,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
     @Override
     public void onBindViewHolder(@NonNull PeopleViewHolder holder, int position) {
         Team currentTeam = mTeamList.get(position);
-        holder.bind(currentTeam, mListener, getPeopleListByTeam(currentTeam.getTeamName()));
+        holder.bind(currentTeam, mListener, mApplication);
     }
 
     @Override
@@ -125,23 +130,8 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         return mTeamList == null ? 0 : mTeamList.size();
     }
 
-    private List<Person> getPeopleListByTeam(String teamName) {
-        List<Person> personList = new ArrayList<>();
-        for (Person person : mAllPeopleList) {
-            if (person.getTeam() != null && person.getTeam().equals(teamName)) {
-                personList.add(person);
-            }
-        }
-        return personList;
-    }
-
     public void setTeamList(List<Team> teamList) {
         this.mTeamList = teamList;
-        notifyDataSetChanged();
-    }
-
-    public void setAllPeopleList(List<Person> peopleList) {
-        this.mAllPeopleList = peopleList;
         notifyDataSetChanged();
     }
 }
