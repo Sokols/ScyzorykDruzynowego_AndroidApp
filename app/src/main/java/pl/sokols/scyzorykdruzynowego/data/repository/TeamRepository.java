@@ -15,18 +15,10 @@ import pl.sokols.scyzorykdruzynowego.data.entity.Team;
 
 public class TeamRepository {
 
-    private static TeamRepository INSTANCE;
     private ExecutorService executorService;
     private TeamDao teamDao;
 
-    public static TeamRepository getInstance(Application application, int userId) {
-        if (INSTANCE == null) {
-            INSTANCE = new TeamRepository(application, userId);
-        }
-        return INSTANCE;
-    }
-
-    private TeamRepository(@NonNull Application application, int userId) {
+    public TeamRepository(@NonNull Application application, int userId) {
         teamDao = AppDatabase.getInstance(application, userId).teamDao();
         executorService = Executors.newSingleThreadExecutor();
     }
@@ -39,11 +31,15 @@ public class TeamRepository {
         return teamDao.getAllTeamNames();
     }
 
+    public int checkItemByName(String teamName) {
+        return teamDao.checkItemByName(teamName);
+    }
+
     public void insert(Team team) {
         executorService.execute(() -> teamDao.insert(team));
     }
 
-    public int checkItemByName(String teamName) {
-        return teamDao.checkItemByName(teamName);
+    public void update(Team team) {
+        executorService.execute(() -> teamDao.update(team));
     }
 }

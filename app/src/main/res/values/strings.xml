@@ -67,6 +67,7 @@
     <string name="age">lat</string>
     <string name="no_function">Bez funkcji</string>
     <string name="person_view">Podgląd osoby</string>
+    <string name="team_view">Podgląd zastępu</string>
     <string name="update_finished">Zaktualizowano dane</string>
     <string name="person_removed">Usunięto osobę: %s %s</string>
     <string name="delete">Usuń</string>

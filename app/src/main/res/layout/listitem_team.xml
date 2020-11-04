@@ -6,11 +6,9 @@
 
     <data>
 
-        <import type="android.view.View" />
-
         <variable
             name="PeopleViewHolder"
-            type="pl.sokols.scyzorykdruzynowego.ui.people.adapters.PeopleAdapter.PeopleViewHolder" />
+            type="pl.sokols.scyzorykdruzynowego.ui.main.people.people.adapters.PeopleAdapter.PeopleViewHolder" />
 
         <variable
             name="team"

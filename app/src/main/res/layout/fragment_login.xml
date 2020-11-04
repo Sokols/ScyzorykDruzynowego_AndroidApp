@@ -5,7 +5,7 @@
     <data>
         <variable
             name="LoginViewModel"
-            type="pl.sokols.scyzorykdruzynowego.ui.login.LoginViewModel" />
+            type="pl.sokols.scyzorykdruzynowego.ui.start.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,7 @@
         android:paddingTop="@dimen/fragment_vertical_margin"
         android:paddingRight="@dimen/fragment_horizontal_margin"
         android:paddingBottom="@dimen/fragment_vertical_margin"
-        tools:context=".ui.login.LoginFragment">
+        tools:context=".ui.start.login.LoginFragment">
 
         <TextView
             android:id="@+id/titleLoginTextView"

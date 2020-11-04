@@ -7,12 +7,8 @@
     <data>
 
         <variable
-            name="age"
-            type="long" />
-
-        <variable
-            name="Person"
-            type="pl.sokols.scyzorykdruzynowego.data.entity.Person" />
+            name="team"
+            type="pl.sokols.scyzorykdruzynowego.data.entity.Team" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -23,52 +19,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorBackground"
-            tools:context=".ui.main.people.editperson.EditPersonFragment">
+            tools:context=".ui.main.people.editperson.EditTeamFragment">
 
             <TextView
-                android:id="@+id/titleEditPersonTextView"
+                android:id="@+id/titleEditTeamTextView"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="64dp"
                 android:layout_marginEnd="32dp"
                 android:gravity="center_horizontal"
-                android:text='@{String.format("%s %s", Person.name, Person.surname).toUpperCase()}'
+                android:text="@{team.teamName.toUpperCase()}"
                 android:textColor="@color/colorMainText"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/rankAndAgeEditPersonTextView"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginStart="64dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="64dp"
-                android:gravity="center_horizontal"
-                android:text='@{String.format("%s, %d %s", Person.rank, age, @string/age)}'
-                android:textColor="@color/colorAccent"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleEditPersonTextView" />
-
-            <TextView
-                android:id="@+id/functionAndTeamEditPersonTextView"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginStart="64dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="64dp"
-                android:gravity="center_horizontal"
-                android:text='@{String.format("%s w zastępie %s", Person.function, Person.team)}'
-                android:textColor="@color/colorMainText"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rankAndAgeEditPersonTextView" />
 
             <View
                 android:id="@+id/horizontalEditPersonDivider"
@@ -80,7 +46,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/functionAndTeamEditPersonTextView"
+                app:layout_constraintTop_toBottomOf="@+id/titleEditTeamTextView"
                 app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -89,7 +55,7 @@
             android:layout_height="match_parent">
 
             <com.nambimobile.widgets.efab.ExpandableFab
-                android:id="@+id/moreEditPersonFAB"
+                android:id="@+id/moreEditTeamFAB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
@@ -101,7 +67,7 @@
                 app:rippleColor="@color/colorBackground" />
 
             <com.nambimobile.widgets.efab.FabOption
-                android:id="@+id/editEditPersonFAB"
+                android:id="@+id/editEditTeamFAB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
@@ -109,7 +75,7 @@
                 app:label_text="@string/edit" />
 
             <com.nambimobile.widgets.efab.FabOption
-                android:id="@+id/deleteEditPersonFAB"
+                android:id="@+id/deleteEditTeamFAB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"

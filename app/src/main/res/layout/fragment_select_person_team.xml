@@ -6,7 +6,7 @@
     <data>
         <variable
             name="SelectPersonTeamFragment"
-            type="pl.sokols.scyzorykdruzynowego.ui.selectpersonteam.SelectPersonTeamFragment" />
+            type="pl.sokols.scyzorykdruzynowego.ui.main.people.selectpersonteam.SelectPersonTeamFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
-        tools:context=".ui.selectpersonteam.SelectPersonTeamFragment">
+        tools:context=".ui.main.people.selectpersonteam.SelectPersonTeamFragment">
 
         <TextView
             android:id="@+id/mainQuestionTextView"

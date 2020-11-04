@@ -47,8 +47,7 @@ public class Person implements Parcelable, Cloneable {
     public Object clone() {
         try {
             return super.clone();
-        }
-        catch (CloneNotSupportedException e) {
+        } catch (CloneNotSupportedException e) {
             throw new Error("Something impossible just happened");
         }
     }

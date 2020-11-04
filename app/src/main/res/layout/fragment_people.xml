@@ -6,7 +6,7 @@
     <data>
         <variable
             name="PeopleViewModel"
-            type="pl.sokols.scyzorykdruzynowego.ui.people.PeopleViewModel" />
+            type="pl.sokols.scyzorykdruzynowego.ui.main.people.people.PeopleViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
-        tools:context=".ui.people.PeopleFragment">
+        tools:context=".ui.main.people.people.PeopleFragment">
 
         <ScrollView
             android:layout_width="match_parent"

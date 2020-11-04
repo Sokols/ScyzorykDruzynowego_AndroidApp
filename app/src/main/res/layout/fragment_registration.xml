@@ -6,7 +6,7 @@
     <data>
         <variable
             name="RegistrationViewModel"
-            type="pl.sokols.scyzorykdruzynowego.ui.registration.RegistrationViewModel" />
+            type="pl.sokols.scyzorykdruzynowego.ui.start.registration.RegistrationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
-        tools:context=".ui.registration.RegistrationFragment">
+        tools:context=".ui.start.registration.RegistrationFragment">
 
         <TextView
             android:id="@+id/titleRegistrationTextView"

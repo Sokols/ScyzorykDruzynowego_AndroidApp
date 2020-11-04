@@ -3,7 +3,9 @@ package pl.sokols.scyzorykdruzynowego.data.dao;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -11,9 +13,6 @@ import pl.sokols.scyzorykdruzynowego.data.entity.Team;
 
 @Dao
 public interface TeamDao {
-
-    @Insert
-    void insert(Team team);
 
     @Query("SELECT * FROM teams ORDER BY team_name ASC")
     LiveData<List<Team>> getAllTeams();
@@ -23,4 +22,10 @@ public interface TeamDao {
 
     @Query("SELECT EXISTS (SELECT * FROM teams WHERE team_name = :teamName)")
     int checkItemByName(String teamName);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(Team team);
+
+    @Update
+    void update(Team team);
 }

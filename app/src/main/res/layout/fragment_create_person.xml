@@ -7,7 +7,7 @@
 
         <variable
             name="CreatePersonViewModel"
-            type="pl.sokols.scyzorykdruzynowego.ui.createperson.CreatePersonViewModel" />
+            type="pl.sokols.scyzorykdruzynowego.ui.main.people.createperson.CreatePersonViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
-        tools:context=".ui.createperson.CreatePersonFragment">
+        tools:context=".ui.main.people.createperson.CreatePersonFragment">
 
         <TextView
             android:id="@+id/titleNewPersonTextView"

@@ -7,14 +7,14 @@
 
         <variable
             name="CreateTeamViewModel"
-            type="pl.sokols.scyzorykdruzynowego.ui.createteam.CreateTeamViewModel" />
+            type="pl.sokols.scyzorykdruzynowego.ui.main.people.createteam.CreateTeamViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
-        tools:context=".ui.createteam.CreateTeamFragment">
+        tools:context=".ui.main.people.createteam.CreateTeamFragment">
 
         <TextView
             android:id="@+id/titleNewTeamTextView"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
                 android:inputType="text"
-                android:text="@={CreateTeamViewModel.teamName}"
+                android:text="@={CreateTeamViewModel.teamToSave.teamName}"
                 android:textColor="@color/colorAccent"
                 android:textCursorDrawable="@color/colorAccent" />
         </com.google.android.material.textfield.TextInputLayout>
