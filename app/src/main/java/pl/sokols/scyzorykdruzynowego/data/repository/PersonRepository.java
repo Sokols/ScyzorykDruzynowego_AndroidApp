@@ -3,7 +3,6 @@ package pl.sokols.scyzorykdruzynowego.data.repository;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -23,10 +22,6 @@ public class PersonRepository {
         executorService = Executors.newSingleThreadExecutor();
     }
 
-    public LiveData<List<Person>> getAllPeople() {
-        return personDao.getAllPeople();
-    }
-
     public List<Person> getPeopleByTeamName(String teamName) {
         return personDao.getPeopleByTeamName(teamName);
     }
@@ -37,6 +32,10 @@ public class PersonRepository {
 
     public void update(Person person) {
         executorService.execute(() -> personDao.update(person));
+    }
+
+    public void updateTeam(String newTeamName, String oldTeamName) {
+        executorService.execute(() -> personDao.updateTeam(newTeamName, oldTeamName));
     }
 
     public void delete(Person person) {

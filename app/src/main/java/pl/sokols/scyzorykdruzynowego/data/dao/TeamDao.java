@@ -2,6 +2,7 @@ package pl.sokols.scyzorykdruzynowego.data.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -28,4 +29,7 @@ public interface TeamDao {
 
     @Update
     void update(Team team);
+
+    @Delete
+    void delete(Team team);
 }

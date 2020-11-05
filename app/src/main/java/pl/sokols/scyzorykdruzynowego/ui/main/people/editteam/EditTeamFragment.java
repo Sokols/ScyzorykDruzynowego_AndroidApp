@@ -14,7 +14,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import pl.sokols.scyzorykdruzynowego.R;
+import pl.sokols.scyzorykdruzynowego.data.repository.PersonRepository;
+import pl.sokols.scyzorykdruzynowego.data.repository.TeamRepository;
 import pl.sokols.scyzorykdruzynowego.databinding.FragmentEditTeamBinding;
+import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class EditTeamFragment extends Fragment {
 
@@ -45,9 +48,7 @@ public class EditTeamFragment extends Fragment {
         dialogBuilder.setTitle(getString(R.string.are_you_sure_title));
         dialogBuilder.setMessage(getString(R.string.are_you_sure_remove_person_description));
         dialogBuilder.setPositiveButton(getString(R.string.yes),
-                (dialogInterface, whichButton) -> {
-                   // TODO: implement moving team members to "-" team
-                });
+                (dialogInterface, whichButton) -> deleteTeam());
         dialogBuilder.setNegativeButton(getString(R.string.no),
                 (dialogInterface, i) -> { /* do nothing */ });
         dialogBuilder.create().show();
@@ -59,4 +60,15 @@ public class EditTeamFragment extends Fragment {
         action.setTeam(binding.getTeam());
         Navigation.findNavController(requireView()).navigate(action);
     };
+
+    // changing team name in all team members into "-"
+    private void deleteTeam() {
+        new PersonRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()))
+                .updateTeam(
+                        getString(R.string.blank), // new team name
+                        binding.getTeam().getTeamName()); // old team name
+        new TeamRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()))
+                .delete(binding.getTeam());
+        Navigation.findNavController(requireView()).popBackStack();
+    }
 }

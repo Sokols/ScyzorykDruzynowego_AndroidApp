@@ -19,7 +19,9 @@ import java.util.Objects;
 
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entity.Team;
+import pl.sokols.scyzorykdruzynowego.data.repository.PersonRepository;
 import pl.sokols.scyzorykdruzynowego.databinding.FragmentCreateTeamBinding;
+import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class CreateTeamFragment extends Fragment {
 
@@ -77,16 +79,20 @@ public class CreateTeamFragment extends Fragment {
 
         viewModel.getIsReadyToUpdateTeam().observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
+                changePeopleTeams();
                 Snackbar.make(requireView(), getString(R.string.update_finished), BaseTransientBottomBar.LENGTH_SHORT).show();
                 CreateTeamFragmentDirections.ActionCreateTeamToEditTeam action = CreateTeamFragmentDirections.actionCreateTeamToEditTeam();
                 action.setTeam(viewModel.getTeamToSave());
                 Navigation.findNavController(requireView()).navigate(action);
-                changePeopleTeams();
             }
         });
     }
 
+    // changing people team names in whole database
     private void changePeopleTeams() {
-        // TODO: change all people teams
+        new PersonRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()))
+                .updateTeam(
+                        viewModel.getTeamToSave().getTeamName(), // new team name
+                        Objects.requireNonNull(CreateTeamFragmentArgs.fromBundle(requireArguments()).getTeam()).getTeamName()); // old team name
     }
 }

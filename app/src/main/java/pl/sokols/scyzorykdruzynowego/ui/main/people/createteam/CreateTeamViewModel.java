@@ -40,7 +40,9 @@ public class CreateTeamViewModel extends AndroidViewModel {
 
     private boolean isAllDataCorrect() {
         // check if team name is null
-        if (teamToSave == null) {
+        if (teamToSave == null
+                || teamToSave.getTeamName() == null
+                || teamToSave.getTeamName().equals("")) {
             return false;
         }
         // check if team name exists in database

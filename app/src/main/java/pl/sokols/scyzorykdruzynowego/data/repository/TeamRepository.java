@@ -42,4 +42,8 @@ public class TeamRepository {
     public void update(Team team) {
         executorService.execute(() -> teamDao.update(team));
     }
+
+    public void delete(Team team) {
+        executorService.execute(() -> teamDao.delete(team));
+    }
 }

@@ -49,7 +49,12 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
             enableSwipeToDeleteAndUndo();
             mBinding.setTeam(currentTeam);
             mBinding.setPeopleViewHolder(this);
-            mBinding.titleTeamTextView.setOnClickListener(view -> teamListener.onTeamClick(currentTeam));
+
+            // do not enable listener in "-" team
+            // impossible to edit and delete
+            if (!mBinding.getTeam().getTeamName().equals(mContext.getString(R.string.blank))) {
+                mBinding.titleTeamTextView.setOnClickListener(view -> teamListener.onTeamClick(currentTeam));
+            }
         }
 
         // expanding and collapsing recyclerview
@@ -69,7 +74,6 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
             }
         }
 
-        // set one team recyclerview
         private void setRecyclerView() {
             mBinding.oneTeamRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
             mBinding.oneTeamRecyclerView.setAdapter(mAdapter);

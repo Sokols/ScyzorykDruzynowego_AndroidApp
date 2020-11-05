@@ -49,11 +49,7 @@ public class EditPersonFragment extends Fragment {
         dialogBuilder.setTitle(getString(R.string.are_you_sure_title));
         dialogBuilder.setMessage(getString(R.string.are_you_sure_remove_person_description));
         dialogBuilder.setPositiveButton(getString(R.string.yes),
-                (dialogInterface, whichButton) -> {
-                    PersonRepository personRepository = new PersonRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()));
-                    personRepository.delete(binding.getPerson());
-                    Navigation.findNavController(requireView()).popBackStack();
-                });
+                (dialogInterface, whichButton) -> deletePerson());
         dialogBuilder.setNegativeButton(getString(R.string.no),
                 (dialogInterface, i) -> { /* do nothing */ });
         dialogBuilder.create().show();
@@ -65,4 +61,10 @@ public class EditPersonFragment extends Fragment {
         action.setPerson(binding.getPerson());
         Navigation.findNavController(requireView()).navigate(action);
     };
+
+    private void deletePerson() {
+        new PersonRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()))
+                .delete(binding.getPerson());
+        Navigation.findNavController(requireView()).popBackStack();
+    }
 }

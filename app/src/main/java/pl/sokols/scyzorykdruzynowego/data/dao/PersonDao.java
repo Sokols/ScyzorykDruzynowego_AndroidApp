@@ -1,6 +1,5 @@
 package pl.sokols.scyzorykdruzynowego.data.dao;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -15,9 +14,6 @@ import pl.sokols.scyzorykdruzynowego.data.entity.Person;
 @Dao
 public interface PersonDao {
 
-    @Query("SELECT * FROM people")
-    LiveData<List<Person>> getAllPeople();
-
     @Query("SELECT * FROM people WHERE team = :team")
     List<Person> getPeopleByTeamName(String team);
 
@@ -26,6 +22,9 @@ public interface PersonDao {
 
     @Update
     void update(Person person);
+
+    @Query("UPDATE people SET team = :newTeam WHERE team = :oldTeam")
+    void updateTeam(String newTeam, String oldTeam);
 
     @Delete
     void delete(Person user);
