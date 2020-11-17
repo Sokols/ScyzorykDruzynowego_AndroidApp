@@ -21,7 +21,7 @@ public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTeamV
         void onPersonClick(Person item);
     }
 
-    static class OneTeamViewHolder extends RecyclerView.ViewHolder {
+    public static class OneTeamViewHolder extends RecyclerView.ViewHolder {
 
         private ListitemPersonBinding binding;
 

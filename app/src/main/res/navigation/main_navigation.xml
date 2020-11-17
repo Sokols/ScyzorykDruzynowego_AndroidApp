@@ -35,9 +35,9 @@
 
     <fragment
         android:id="@+id/navigation_todo"
-        android:name="pl.sokols.scyzorykdruzynowego.ui.main.todo.TodoFragment"
-        android:label="@string/to_do_list"
-        tools:layout="@layout/fragment_todo" />
+        android:name="pl.sokols.scyzorykdruzynowego.ui.main.stamps.StampsFragment"
+        android:label="@string/stamps"
+        tools:layout="@layout/fragment_stamps" />
 
     <fragment
         android:id="@+id/navigation_meetings"

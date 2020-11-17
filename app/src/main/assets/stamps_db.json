@@ -1,0 +1,143 @@
+[
+  {
+    "stamp_id": 1,
+    "section_id": 1,
+    "branch_id": 1,
+    "stamp_level": 1,
+    "stamp_name": "Płomień",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/242b4c10-b7a0-11ea-b4ea-2fb633d49b09.svg",
+    "stamp_tasks": [
+      "Umie ułożyć i rozpalić ognisko.",
+      "Potrafi umiejętnie podkładać drwa lub gałęzie, regulując wysokość płomienia i ograniczając iskrzenie.",
+      "Umie zatrzeć ślady ogniska po jego całkowitym wygaszeniu.",
+      "Potrafi obchodzić się z ogniem ostrożnie. Umie posługiwać się podstawowym sprzętem gaśniczym oraz wezwać straż pożarną."
+    ]
+  },
+  {
+    "stamp_id": 2,
+    "section_id": 1,
+    "branch_id": 1,
+    "stamp_level": 2,
+    "stamp_name": "Strażnik Ognia",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/242b7b30-b7a0-11ea-9fb2-fd3803acf6be.svg",
+    "stamp_tasks": [
+      "Potrafi ułożyć i rozpalić różne typy ognisk, takie jak ognisko do gotowania, do podtrzymania żaru, do oświetlenia kręgu, stos na mokry teren.",
+      "Umie podtrzymywać ogień odpowiednio do potrzeb i sytuacji. Zna zasady zachowania w kręgu ogniskowym.",
+      "Potrafi przygotować drewno przed ogniskiem: porąbać lub połamać odpowiedni zapas i przygotować rozpałkę odpowiednią do warunków.",
+      "Umie zabezpieczyć przybory do rozpalania ognia przed deszczem i wilgocią.",
+      "Potrafi rozpoznać i opatrzyć oparzenia różnych stopni, posiada sprawność *Higienisty ze ścieżki „Samarytanka”."
+    ]
+  },
+  {
+    "stamp_id": 3,
+    "section_id": 1,
+    "branch_id": 1,
+    "stamp_level": 3,
+    "stamp_name": "Ogniowiec",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/242b80e0-b7a0-11ea-8c78-8b9227e3fc06.svg",
+    "stamp_tasks": [
+      "Umie rozpalić ogień w niesprzyjających warunkach (np. w ulewnym deszczu, przy silnym wietrze lub w głębokim śniegu).",
+      "Potrafi rozpalić ogień bez zapałek, samodzielnie wykonanym narzędziem (np. łukiem ogniowym lub własnoręcznie zrobionym krzesiwem).",
+      "Umie wykorzystać specyficzne cechy różnych rodzajów i gatunków drewna do rozpalania i podtrzymywania ognia.",
+      "Potrafi przygotować pochodnię, która będzie płonęła 2 godziny.",
+      "Umie posłużyć się kilkoma rodzajami podręcznych środków gaśniczych, w tym gaśnicami różnych typów. Wie, jakie środki gaśnicze stosować w różnych sytuacjach."
+    ]
+  },
+  {
+    "stamp_id": 4,
+    "section_id": 1,
+    "branch_id": 2,
+    "stamp_level": 1,
+    "stamp_name": "Obserwator",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/28a4ed10-b7a1-11ea-bc51-add88f49f553.svg",
+    "stamp_tasks": [
+      "Umie posłużyć się mapą papierową (tj. zorientować ją i odczytać), żeby trafić za dnia do wyznaczonego miejsca.",
+      "Potrafi wyznaczyć kierunki świata według busoli, słońca (w dzień) i gwiazd (w nocy).",
+      "Umie ocenić przebytą odległość, mierząc ją krokami."
+    ]
+  },
+  {
+    "stamp_id": 5,
+    "section_id": 1,
+    "branch_id": 2,
+    "stamp_level": 2,
+    "stamp_name": "Terenoznawca",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/28a51090-b7a1-11ea-9531-0d00fe8f1b88.svg",
+    "stamp_tasks": [
+      "Potrafi w dzień i w nocy odnaleźć się na mapie w nieznanym terenie według ukształtowania terenu i przedmiotów terenowych (np. skrzyżowań, budowli, cieków wodnych).",
+      "Umie zmierzyć odległość na mapie i trafnie ocenić odległość „na oko” w terenie.",
+      "Potrafi nanieść na mapę trasę wędrówki, narysować szkic terenu i przebytej drogi.",
+      "Umie zapamiętać trasę zaznaczoną na mapie, a następnie bez pomocy mapy ją pokonać."
+    ]
+  },
+  {
+    "stamp_id": 6,
+    "section_id": 1,
+    "branch_id": 2,
+    "stamp_level": 3,
+    "stamp_name": "Topograf",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f33ee3b0-b7a0-11ea-819e-5d01b05b54e6.svg",
+    "stamp_tasks": [
+      "Potrafi wykonać odpowiednie pomiary i staranny szkic wskazanego terenu z zachowaniem skali.",
+      "Potrafi zmierzyć wysokość drzewa i szerokość rzeki bez użycia specjalistycznych narzędzi.",
+      "Umie posłużyć się dalmierzem lub niwelatorem.",
+      "Potrafi z pamięci narysować dokładny szkic przebytej drogi."
+    ]
+  },
+  {
+    "stamp_id": 7,
+    "section_id": 1,
+    "branch_id": 2,
+    "stamp_level": 3,
+    "stamp_name": "Mistrz Orientacji",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f33eeb40-b7a0-11ea-ba1e-21456ee6f1d5.svg",
+    "stamp_tasks": [
+      "Umie w każdych warunkach trafić do wyznaczonego miejsca – w dzień i w nocy, w górach i na nizinie, niezależnie od warunków pogodowych i pory roku, z pomocą map, lokalizatora GPS, kompasu albo bez nich."
+    ]
+  },
+  {
+    "stamp_id": 8,
+    "section_id": 1,
+    "branch_id": 3,
+    "stamp_level": 1,
+    "stamp_name": "Higienista",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/84adc4b0-b7a1-11ea-94bc-7d3cdeadc661.svg",
+    "stamp_tasks": [
+      "Potrafi opatrzyć drobne zranienie, oparzenie i lekki uraz.",
+      "Umie ułożyć poszkodowanego w pozycji bezpiecznej.",
+      "Zna numery alarmowe i potrafi wezwać pomoc w różnych sytuacjach."
+    ]
+  },
+  {
+    "stamp_id": 9,
+    "section_id": 1,
+    "branch_id": 3,
+    "stamp_level": 2,
+    "stamp_name": "Sanitariusz",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/84ae1ed0-b7a1-11ea-9a7e-abd50b8534d0.svg",
+    "stamp_tasks": [
+      "Umie zaradzić w sytuacji wyziębienia, udaru cieplnego, omdlenia i oparzeń.",
+      "Potrafi zaradzić w przypadku urazu kończyny (np. skręcenie lub złamanie), a w razie konieczności umie ją unieruchomić przy pomocy improwizowanego sprzętu.",
+      "Umie poprawnie przeprowadzić resuscytację krążeniowo-oddechową.",
+      "Potrafi skompletować apteczkę zastępu na całodniową wycieczkę i korzystać z jej zawartości."
+    ]
+  },
+  {
+    "stamp_id": 10,
+    "section_id": 1,
+    "branch_id": 3,
+    "stamp_level": 3,
+    "stamp_name": "Ratownik",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/84ae2d80-b7a1-11ea-bb17-61993e132835.svg",
+    "stamp_tasks": [
+      "Potrafi pokierować małym zespołem sanitariuszy w czasie akcji ratowniczej.",
+      "Umie udzielić pierwszej pomocy w przypadku ran i krwotoków.",
+      "Potrafi postępować w przypadku podejrzenia urazu kręgosłupa. Umie unieruchomić kończynę przy pomocy szyny (np. szyny Kramera lub szyny typu Splint).",
+      "Potrafi rozpoznać objawy udaru mózgu i zawału serca.",
+      "Umie zebrać informacje od osoby poszkodowanej według schematu SAMPLE.",
+      "Podczas ćwiczeń potrafi przeprowadzić triaż – segregację medyczną poszkodowanych.",
+      "Potrafi poprawnie się zachować w razie wypadku komunikacyjnego (np. samochodowego).",
+      "Umie skompletować apteczkę drużyny i określić sposób przechowywania leków."
+    ]
+  }
+]

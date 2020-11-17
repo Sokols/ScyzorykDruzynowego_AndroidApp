@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,7 +52,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
             mBinding.setPeopleViewHolder(this);
 
             // do not enable listener in "-" team
-            // impossible to edit and delete
+            // to ensure the inability to edit and delete
             if (!mBinding.getTeam().getTeamName().equals(mContext.getString(R.string.blank))) {
                 mBinding.titleTeamTextView.setOnClickListener(view -> teamListener.onTeamClick(currentTeam));
             }
@@ -78,11 +79,13 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
             mBinding.oneTeamRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
             mBinding.oneTeamRecyclerView.setAdapter(mAdapter);
             mBinding.oneTeamRecyclerView.setRecycledViewPool(new RecyclerView.RecycledViewPool());
+            // necessary for correct scrolling in nested recyclerview
+            ViewCompat.setNestedScrollingEnabled(mBinding.oneTeamRecyclerView, true);
         }
 
         // set the swiping to delete item from recyclerview
         private void enableSwipeToDeleteAndUndo() {
-            SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(mContext) {
+            ItemTouchHelper.Callback simpleItemTouchHelperCallback = new SimpleItemTouchHelperCallback(mContext) {
                 @Override
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
                     int position = viewHolder.getAdapterPosition();
@@ -106,7 +109,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
                 }
             };
 
-            ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+            ItemTouchHelper itemTouchhelper = new ItemTouchHelper(simpleItemTouchHelperCallback);
             itemTouchhelper.attachToRecyclerView(mBinding.oneTeamRecyclerView);
         }
     }

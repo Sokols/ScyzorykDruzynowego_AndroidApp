@@ -7,6 +7,9 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -35,11 +38,6 @@ public class Utils {
         }
     }
 
-    public static int getUserId(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(Utils.SHARED_PREFS_KEY_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.getInt(Utils.USER_ID_SHARED_PREFS_KEY, 0);
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static long getAgeFromDateDifference(Date start) {
         if (start != null) {
@@ -48,5 +46,26 @@ public class Utils {
             return ChronoUnit.YEARS.between(from, to);
         }
         return 0;
+    }
+
+    public static int getUserId(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Utils.SHARED_PREFS_KEY_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(Utils.USER_ID_SHARED_PREFS_KEY, 0);
+    }
+
+    public static String getJsonFromAssets(Context context, String fileName) {
+        String jsonString;
+        try {
+            InputStream inputStream = context.getAssets().open(fileName);
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            jsonString = new String(buffer, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return jsonString;
     }
 }

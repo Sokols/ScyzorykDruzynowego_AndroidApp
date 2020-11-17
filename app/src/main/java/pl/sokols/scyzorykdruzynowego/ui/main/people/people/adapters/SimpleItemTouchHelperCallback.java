@@ -16,9 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import pl.sokols.scyzorykdruzynowego.R;
 
-public abstract class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
+public abstract class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
-    Context mContext;
     private Paint mClearPaint;
     private ColorDrawable mBackground;
     private int backgroundColor;
@@ -26,13 +25,12 @@ public abstract class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
     private int intrinsicWidth;
     private int intrinsicHeight;
 
-    public SwipeToDeleteCallback(Context context) {
-        mContext = context;
+    public SimpleItemTouchHelperCallback(Context context) {
         mBackground = new ColorDrawable();
         backgroundColor = context.getColor(R.color.colorDelete);
         mClearPaint = new Paint();
         mClearPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-        deleteDrawable = ContextCompat.getDrawable(mContext, R.drawable.ic_baseline_delete_24);
+        deleteDrawable = ContextCompat.getDrawable(context, R.drawable.ic_baseline_delete_24);
         intrinsicWidth = deleteDrawable != null ? deleteDrawable.getIntrinsicWidth() : 0;
         intrinsicHeight = deleteDrawable != null ? deleteDrawable.getIntrinsicHeight() : 0;
     }

@@ -14,7 +14,7 @@
     <string name="title_activity_main">Main activity</string>
     <string name="prompt_repeat_password">Powtórz hasło</string>
     <string name="people">Członkowie</string>
-    <string name="to_do_list">TO DO</string>
+    <string name="stamps">Sprawności</string>
     <string name="meetings">Zbiórki</string>
     <string name="blank_team">Zastęp: %s</string>
     <string name="blank_rank">Stopień: %s</string>
@@ -72,4 +72,6 @@
     <string name="person_removed">Usunięto osobę: %s %s</string>
     <string name="delete">Usuń</string>
     <string name="more_image_button_description">Przycisk rozwijający i zwijający listę osób w zastępie</string>
+    <string name="stamp_icon_description">Logo sprawności</string>
+
 </resources>
