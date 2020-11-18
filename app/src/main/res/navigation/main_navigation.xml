@@ -3,20 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_people">
+    app:startDestination="@+id/peopleFragment">
 
     <fragment
-        android:id="@+id/navigation_people"
+        android:id="@+id/peopleFragment"
         android:name="pl.sokols.scyzorykdruzynowego.ui.main.people.people.PeopleFragment"
         android:label="@string/people"
         tools:layout="@layout/fragment_people">
-        <action
-            android:id="@+id/action_people_to_select"
-            app:destination="@id/selectCreateTeamOrScoutFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_people_to_edit_person"
             app:destination="@id/editPersonFragment"
@@ -31,38 +24,19 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_todo"
-        android:name="pl.sokols.scyzorykdruzynowego.ui.main.stamps.StampsFragment"
-        android:label="@string/stamps"
-        tools:layout="@layout/fragment_stamps" />
-
-    <fragment
-        android:id="@+id/navigation_meetings"
-        android:name="pl.sokols.scyzorykdruzynowego.ui.main.meetings.MeetingsFragment"
-        android:label="@string/meetings"
-        tools:layout="@layout/fragment_meetings" />
-
-    <fragment
-        android:id="@+id/selectCreateTeamOrScoutFragment"
-        android:name="pl.sokols.scyzorykdruzynowego.ui.main.people.selectpersonteam.SelectPersonTeamFragment"
-        android:label="@string/choice"
-        tools:layout="@layout/fragment_select_person_team">
         <action
-            android:id="@+id/action_select_to_new_team"
+            android:id="@+id/action_people_to_create_team"
             app:destination="@id/createNewTeamFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" >
+            app:popExitAnim="@android:anim/fade_out">
             <argument
                 android:name="isCreateTeam"
                 android:defaultValue="true" />
         </action>
         <action
-            android:id="@+id/action_select_to_new_person"
+            android:id="@+id/action_people_to_create_person"
             app:destination="@id/createNewPersonFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
@@ -75,16 +49,28 @@
     </fragment>
 
     <fragment
+        android:id="@+id/stampsFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.ui.main.stamps.StampsFragment"
+        android:label="@string/stamps"
+        tools:layout="@layout/fragment_stamps" />
+
+    <fragment
+        android:id="@+id/meetingsFragment"
+        android:name="pl.sokols.scyzorykdruzynowego.ui.main.meetings.MeetingsFragment"
+        android:label="@string/meetings"
+        tools:layout="@layout/fragment_meetings" />
+
+    <fragment
         android:id="@+id/createNewTeamFragment"
         android:name="pl.sokols.scyzorykdruzynowego.ui.main.people.createteam.CreateTeamFragment"
         android:label="@string/data"
         tools:layout="@layout/fragment_create_team">
         <action
             android:id="@+id/action_new_team_to_people"
-            app:destination="@id/navigation_people"
+            app:destination="@id/peopleFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
-            app:popUpTo="@id/navigation_people"
+            app:popUpTo="@id/peopleFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_create_team_to_edit_team"
@@ -114,10 +100,10 @@
             android:defaultValue="@null" />
         <action
             android:id="@+id/action_new_person_to_people"
-            app:destination="@id/navigation_people"
+            app:destination="@id/peopleFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
-            app:popUpTo="@id/navigation_people"
+            app:popUpTo="@id/peopleFragment"
             app:popUpToInclusive="true">
             <argument
                 android:name="person"

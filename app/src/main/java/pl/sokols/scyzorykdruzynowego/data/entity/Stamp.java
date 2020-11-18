@@ -1,10 +1,13 @@
 package pl.sokols.scyzorykdruzynowego.data.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Stamp {
+public class Stamp implements Parcelable {
 
     @SerializedName("stamp_id")
     private int stampId;
@@ -20,16 +23,6 @@ public class Stamp {
     private String stampImageURL;
     @SerializedName("stamp_tasks")
     private List<String> stampTasks;
-
-    public Stamp(int stampId, int sectionId, int branchId, int stampLevel, String stampName, String stampImageURL, List<String> stampTasks) {
-        this.stampId = stampId;
-        this.sectionId = sectionId;
-        this.branchId = branchId;
-        this.stampLevel = stampLevel;
-        this.stampName = stampName;
-        this.stampImageURL = stampImageURL;
-        this.stampTasks = stampTasks;
-    }
 
     public int getStampId() {
         return stampId;
@@ -57,5 +50,43 @@ public class Stamp {
 
     public List<String> getStampTasks() {
         return stampTasks;
+    }
+
+    public static final Creator<Stamp> CREATOR = new Creator<Stamp>() {
+        @Override
+        public Stamp createFromParcel(Parcel in) {
+            return new Stamp(in);
+        }
+
+        @Override
+        public Stamp[] newArray(int size) {
+            return new Stamp[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(stampId);
+        dest.writeInt(sectionId);
+        dest.writeInt(branchId);
+        dest.writeInt(stampLevel);
+        dest.writeString(stampName);
+        dest.writeString(stampImageURL);
+        dest.writeStringList(stampTasks);
+    }
+
+    protected Stamp(Parcel in) {
+        stampId = in.readInt();
+        sectionId = in.readInt();
+        branchId = in.readInt();
+        stampLevel = in.readInt();
+        stampName = in.readString();
+        stampImageURL = in.readString();
+        stampTasks = in.createStringArrayList();
     }
 }

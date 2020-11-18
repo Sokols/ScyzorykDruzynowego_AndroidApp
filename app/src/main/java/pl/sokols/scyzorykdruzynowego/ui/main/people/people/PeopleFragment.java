@@ -48,7 +48,8 @@ public class PeopleFragment extends Fragment {
         viewModel.getTeamList().observe(getViewLifecycleOwner(), peopleAdapter::setTeamList);
 
         // init listeners
-        binding.addPeopleFloatingActionButton.setOnClickListener(view1 -> Navigation.findNavController(requireView()).navigate(R.id.action_people_to_select));
+        binding.addPersonPeopleFAB.setOnClickListener(view1 -> Navigation.findNavController(requireView()).navigate(R.id.action_people_to_create_person));
+        binding.addTeamPeopleFAB.setOnClickListener(view1 -> Navigation.findNavController(requireView()).navigate(R.id.action_people_to_create_team));
     }
 
     // get onItemClickListener for recyclerview elements - scouts

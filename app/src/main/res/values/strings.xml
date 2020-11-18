@@ -73,5 +73,7 @@
     <string name="delete">Usuń</string>
     <string name="more_image_button_description">Przycisk rozwijający i zwijający listę osób w zastępie</string>
     <string name="stamp_icon_description">Logo sprawności</string>
+    <string name="add_new_person">Dodaj harcerza</string>
+    <string name="add_new_team">Dodaj zastęp</string>
 
 </resources>

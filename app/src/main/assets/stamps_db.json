@@ -139,5 +139,180 @@
       "Potrafi poprawnie się zachować w razie wypadku komunikacyjnego (np. samochodowego).",
       "Umie skompletować apteczkę drużyny i określić sposób przechowywania leków."
     ]
+  },
+  {
+    "stamp_id": 11,
+    "section_id": 1,
+    "branch_id": 4,
+    "stamp_level": 1,
+    "stamp_name": "Mistrz musztry",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f0fe7db0-b7a1-11ea-b15f-8debd16b684e.svg",
+    "stamp_tasks": [
+      "Umie prawidłowo wykonać wszystkie komendy musztry harcerskiej w czasie zbiórki, apelu i przemarszu.",
+      "Potrafi zadbać o wygląd i czystość swojego munduru, a także wytłumaczyć symbolikę jego elementów.",
+      "Potrafi stawić się na zbiórkę alarmową w wyznaczonym czasie."
+    ]
+  },
+  {
+    "stamp_id": 12,
+    "section_id": 1,
+    "branch_id": 4,
+    "stamp_level": 2,
+    "stamp_name": "Chorąży",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f0fdfb50-b7a1-11ea-9041-77a5fb23d14a.svg",
+    "stamp_tasks": [
+      "Umie poruszać się i wykonywać chwyty sztandarem lub proporcem zgodnie z regulaminem musztry.",
+      "Potrafi bezpiecznie przechowywać i zadbać o proporzec lub sztandar, zarówno w warunkach polowych, jak i w harcówce lub w domu.",
+      "Umie wyjaśnić symbolikę proporca lub sztandaru, który mu powierzono."
+    ]
+  },
+  {
+    "stamp_id": 13,
+    "section_id": 1,
+    "branch_id": 4,
+    "stamp_level": 3,
+    "stamp_name": "Dowódca",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f0fe29f0-b7a1-11ea-8d8e-5d2501a7702c.svg",
+    "stamp_tasks": [
+      "Potrafi poprowadzić apel drużyny zgodnie z regulaminem musztry.",
+      "Umie dowodzić drużyną podczas przemarszu, uroczystości lub pokazu musztry.",
+      "Potrafi sprawnie zwołać i opanować drużynę w czasie paniki lub zamieszania.",
+      "Umie zaplanować i zorganizować udział sztandaru w przemarszu lub uroczystości."
+    ]
+  },
+  {
+    "stamp_id": 14,
+    "section_id": 1,
+    "branch_id": 4,
+    "stamp_level": 3,
+    "stamp_name": "Dobosz",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f0fe66c0-b7a1-11ea-ad21-2f7ab4f77c4c.svg",
+    "stamp_tasks": [
+      "Potrafi dobrać i nadać kolumnie odpowiednie tempo wybijając rytm na instrumencie perkusyjnym w marszu.",
+      "Potrafi poprowadzić asystę perkusyjną, wybijając odpowiedni rytm na wejście pocztu sztandarowego, złożenie wieńca i apel poległych.",
+      "Posiada sprawność *Muzykanta ze ścieżki „Gra na instrumentach”."
+    ]
+  },
+  {
+    "stamp_id": 15,
+    "section_id": 1,
+    "branch_id": 4,
+    "stamp_level": 3,
+    "stamp_name": "Trębacz",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f0fe7350-b7a1-11ea-b0f3-df6360a44a21.svg",
+    "stamp_tasks": [
+      "Zna i umie zagrać kilka sygnałów Wojska Polskiego np. Pobudkę, Baczność, Spocznij, Hasło Wojska Polskiego.",
+      "Potrafi zastosować odpowiednie sygnały do kierowania drużyną.",
+      "Posiada sprawność *Muzykanta ze ścieżki „Gra na instrumentach”."
+    ]
+  },
+  {
+    "stamp_id": 16,
+    "section_id": 1,
+    "branch_id": 5,
+    "stamp_level": 1,
+    "stamp_name": "Łącznik",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/839912e0-b7a2-11ea-8478-73bd92ebdd90.svg",
+    "stamp_tasks": [
+      "Umie bezbłędnie zapamiętać i przenieść wiadomość ustną złożoną z kilkunastu słów.",
+      "Potrafi zaszyfrować i odczytać wiadomość trzema różnymi szyframi."
+    ]
+  },
+  {
+    "stamp_id": 17,
+    "section_id": 1,
+    "branch_id": 5,
+    "stamp_level": 2,
+    "stamp_name": "Sygnalista",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/8398cc40-b7a2-11ea-a316-572b30756142.svg",
+    "stamp_tasks": [
+      "Umie nadać i odebrać wiadomość zakodowaną alfabetem Morse’a przy pomocy chorągiewek, sygnałów dźwiękowych oraz świetlnych. Umie wykonać prowizoryczny sygnalizacyjny (np. chorągiewkę lub pochodnię).",
+      "Potrafi zakodować i rozkodować wiadomość przy pomocy alfabetu Morse’a.",
+      "Umie obsługiwać radiotelefon lub telefon polowy.",
+      "Potrafi wymyślić własny szyfr i nauczyć go kolegów."
+    ]
+  },
+  {
+    "stamp_id": 18,
+    "section_id": 1,
+    "branch_id": 5,
+    "stamp_level": 3,
+    "stamp_name": "Łącznościowiec",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/83991c20-b7a2-11ea-85e0-f324cee50a55.svg",
+    "stamp_tasks": [
+      "Umie zorganizować w terenie sprawną sieć łączności opartą na urządzeniach kablowych lub radiowych: przygotować i rozstawić sprzęt, ustalić zasady korzystania z sieci, przeszkolić operatorów.",
+      "Potrafi zorganizować kilkuosobową stację sygnalizacyjną do płynnego nadawania i odbierania wiadomości alfabetem Morse’a: wyznaczyć zadania, podzielić i zorganizować pracę.",
+      "Umie złamać prosty szyfr (np. szyfr Cezara)."
+    ]
+  },
+  {
+    "stamp_id": 19,
+    "section_id": 1,
+    "branch_id": 5,
+    "stamp_level": 3,
+    "stamp_name": "Krótkofalarz",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/83992800-b7a2-11ea-94d9-7f221bb78069.svg",
+    "stamp_tasks": [
+      "Potrafi posłużyć się alfabetem fonetycznym ICAO (tzw. alfabet fonetyczny NATO) oraz jego polskim odpowiednikiem.",
+      "Zna kilkanaście kodów Q najczęściej używanych przez krótkofalarzy oraz kilka wyrażeń z tzw. slangu amatorskiego. Umie przekazać raport RST oraz informacje o własnym QTH Locator.",
+      "Potrafi obsługiwać sprzęt łączności z zachowaniem zasad BHP.",
+      "Umie zmierzyć prąd, napięcie, WFS oraz moc wychodzącą do anteny. Posiada sprawność *Diodaka ze ścieżki „Elektrotechnika”."
+    ]
+  },
+  {
+    "stamp_id": 20,
+    "section_id": 1,
+    "branch_id": 6,
+    "stamp_level": 1,
+    "stamp_name": "Biwakowicz",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12172ac0-b7a3-11ea-85dc-0dfc8a6d8a57.svg",
+    "stamp_tasks": [
+      "Umie dobrze spakować się na biwak.",
+      "Potrafi rozbić namiot turystyczny.",
+      "Umie zapewnić sobie komfort cieplny podczas biwakowania, m.in. poprzez odpowiednią izolację od ziemi, wybór śpiwora dopasowanego do temperatury.",
+      "Potrafi zbudować kuchnię polową i zagotować na niej wodę."
+    ]
+  },
+  {
+    "stamp_id": 21,
+    "section_id": 1,
+    "branch_id": 6,
+    "stamp_level": 2,
+    "stamp_name": "Traper",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12176500-b7a3-11ea-b33e-458a84d5a1c9.svg",
+    "stamp_tasks": [
+      "Umie przygotować namiot na różne warunki atmosferyczne takie jak mocny wiatr czy burza oraz odpowiednio wybrać i przygotować miejsce do jego rozstawienia.",
+      "Umie wykorzystać 3 węzły przydatne podczas biwakowania (np. do zbudowania zadaszenia z plandeki biwakowej).",
+      "Potrafi przygotować ciepły posiłek w warunkach polowych, umie posługiwać się turystyczną kuchenką gazową.",
+      "Umie przygotować listę ekwipunku niezbędnego na biwak zastępu i odpowiednio rozdzielić go między uczestników."
+    ]
+  },
+  {
+    "stamp_id": 22,
+    "section_id": 1,
+    "branch_id": 6,
+    "stamp_level": 3,
+    "stamp_name": "Włóczykij",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12176d80-b7a3-11ea-8570-a1d08191b741.svg",
+    "stamp_tasks": [
+      "Potrafi przygotować się, skompletować ekwipunek i biwakować w każdych warunkach terenowych.",
+      "Umie w warunkach polowych wysuszyć ubranie i obuwie.",
+      "Potrafi wybrać dobre miejsce do biwakowania, uwzględniając dostępność wody, odległość od skupisk ludzkich, osłonięcie od wiatru itd.",
+      "Posiada sprawność **Strażnika Ognia ze ścieżki „Rozpalanie ognia”."
+    ]
+  },
+  {
+    "stamp_id": 23,
+    "section_id": 1,
+    "branch_id": 6,
+    "stamp_level": 3,
+    "stamp_name": "Polarnik",
+    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12177570-b7a3-11ea-8648-6db6e76af76d.svg",
+    "stamp_tasks": [
+      "Umie skompletować i spakować ekwipunek odpowiedni do biwakowania w warunkach zimowych.",
+      "Potrafi przygotować legowisko, które przy ujemnej temperaturze pozwoli mu spędzić noc w komforcie cieplnym.",
+      "W zimie, w warunkach polowych umie przygotować sobie ciepły posiłek.",
+      "Potrafi udzielić pierwszej pomocy w przypadku odmrożeń i hipotermii, posiada sprawność **Sanitariusza ze ścieżki „Samarytanka”."
+    ]
   }
 ]

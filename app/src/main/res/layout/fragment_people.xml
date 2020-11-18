@@ -31,16 +31,37 @@
                 tools:listitem="@layout/listitem_team" />
         </ScrollView>
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/addPeopleFloatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            android:text="@string/add"
-            android:textColor="@color/colorBackground"
-            app:backgroundTint="@color/colorAccent"
-            app:icon="@drawable/ic_baseline_add_24" />
+        <com.nambimobile.widgets.efab.ExpandableFabLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <com.nambimobile.widgets.efab.ExpandableFab
+                android:id="@+id/addPeopleFAB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/fab_margin"
+                android:layout_marginBottom="@dimen/fab_margin"
+                android:background="@color/colorAccent"
+                app:efab_icon="@drawable/ic_baseline_add_24"
+                app:efab_iconAnimationRotationDeg="-270"
+                app:rippleColor="@color/colorBackground" />
+
+            <com.nambimobile.widgets.efab.FabOption
+                android:id="@+id/addPersonPeopleFAB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                app:fab_icon="@drawable/ic_baseline_person_24"
+                app:label_text="@string/add_new_person" />
+
+            <com.nambimobile.widgets.efab.FabOption
+                android:id="@+id/addTeamPeopleFAB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                app:fab_icon="@drawable/ic_baseline_people_24"
+                app:label_text="@string/add_new_team" />
+        </com.nambimobile.widgets.efab.ExpandableFabLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

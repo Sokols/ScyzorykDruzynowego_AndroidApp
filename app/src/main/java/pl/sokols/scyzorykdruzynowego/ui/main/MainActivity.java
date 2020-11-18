@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private void setNavigation() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, new AppBarConfiguration.Builder(
-                R.id.navigation_people, R.id.navigation_todo, R.id.navigation_meetings).build());
+                R.id.peopleFragment, R.id.stampsFragment, R.id.meetingsFragment).build());
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
