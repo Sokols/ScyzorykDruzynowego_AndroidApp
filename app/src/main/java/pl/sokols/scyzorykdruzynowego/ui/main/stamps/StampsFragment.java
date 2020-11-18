@@ -40,9 +40,13 @@ public class StampsFragment extends Fragment {
     private void initComponents() {
         // init observer and recyclerview
         viewModel.getStampsLiveData().observe(getViewLifecycleOwner(), stamps -> {
-            StampsAdapter adapter = new StampsAdapter(stamps, this);
+            StampsAdapter adapter = new StampsAdapter(stamps, this, getOnStampClickListener());
             binding.allStampsRecyclerView.setAdapter(adapter);
             binding.allStampsRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 3, RecyclerView.VERTICAL, false));
         });
+    }
+
+    private StampsAdapter.OnStampClickListener getOnStampClickListener() {
+      return item -> new StampDialog(requireActivity(), item).show();
     }
 }

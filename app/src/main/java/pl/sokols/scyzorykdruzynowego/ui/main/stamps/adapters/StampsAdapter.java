@@ -17,11 +17,14 @@ import pl.sokols.scyzorykdruzynowego.ui.main.stamps.StampsFragment;
 
 public class StampsAdapter extends RecyclerView.Adapter<StampsAdapter.StampsViewHolder> {
 
+    public interface OnStampClickListener {
+        void onStampClick(Stamp stamp);
+    }
+
     public static class StampsViewHolder extends RecyclerView.ViewHolder {
 
         private ListitemStampBinding mBinding;
         private StampsFragment mFragment;
-
 
         public StampsViewHolder(ListitemStampBinding binding, StampsFragment fragment) {
             super(binding.getRoot());
@@ -29,18 +32,21 @@ public class StampsAdapter extends RecyclerView.Adapter<StampsAdapter.StampsView
             this.mFragment = fragment;
         }
 
-        public void bind(Stamp stamp) {
+        public void bind(Stamp stamp, OnStampClickListener listener) {
             mBinding.setStamp(stamp);
             GlideToVectorYou.justLoadImage(mFragment.requireActivity(), Uri.parse(stamp.getStampImageURL()), mBinding.stampIcon);
+            itemView.setOnClickListener(view -> listener.onStampClick(stamp));
         }
     }
 
     private List<Stamp> mStampList;
     private StampsFragment mFragment;
+    private OnStampClickListener mListener;
 
-    public StampsAdapter(List<Stamp> stampList, StampsFragment fragment) {
+    public StampsAdapter(List<Stamp> stampList, StampsFragment fragment, OnStampClickListener listener) {
         this.mStampList = stampList;
         this.mFragment = fragment;
+        this.mListener = listener;
     }
 
     @NonNull
@@ -53,7 +59,7 @@ public class StampsAdapter extends RecyclerView.Adapter<StampsAdapter.StampsView
 
     @Override
     public void onBindViewHolder(@NonNull StampsViewHolder holder, int position) {
-        holder.bind(mStampList.get(position));
+        holder.bind(mStampList.get(position), mListener);
     }
 
     @Override
