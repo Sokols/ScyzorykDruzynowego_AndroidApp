@@ -1,0 +1,67 @@
+[
+  {
+    "branch_id": 1,
+    "section_id": 1,
+    "branch_name": "Rozpalanie ognia"
+  },
+  {
+    "branch_id": 2,
+    "section_id": 1,
+    "branch_name": "Orientacja w terenie"
+  },
+  {
+    "branch_id": 3,
+    "section_id": 1,
+    "branch_name": "Samarytanka"
+  },
+  {
+    "branch_id": 4,
+    "section_id": 1,
+    "branch_name": "Musztra"
+  },
+  {
+    "branch_id": 5,
+    "section_id": 1,
+    "branch_name": "Łączność"
+  },
+  {
+    "branch_id": 6,
+    "section_id": 1,
+    "branch_name": "Biwakowanie"
+  },
+  {
+    "branch_id": 7,
+    "section_id": 1,
+    "branch_name": "Kwatermistrzostwo"
+  },
+  {
+    "branch_id": 8,
+    "section_id": 1,
+    "branch_name": "Obozownictwo"
+  },
+  {
+    "branch_id": 9,
+    "section_id": 1,
+    "branch_name": "Podchody i zwiady"
+  },
+  {
+    "branch_id": 10,
+    "section_id": 1,
+    "branch_name": "Bezpieczeństwo obozowe"
+  },
+  {
+    "branch_id": 11,
+    "section_id": 1,
+    "branch_name": "Tropienie zwierząt"
+  },
+  {
+    "branch_id": 12,
+    "section_id": 1,
+    "branch_name": "Zielarstwo"
+  },
+  {
+    "branch_id": 13,
+    "section_id": 1,
+    "branch_name": "Puszczaństwo"
+  }
+]

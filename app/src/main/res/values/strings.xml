@@ -76,5 +76,5 @@
     <string name="add_new_person">Dodaj harcerza</string>
     <string name="add_new_team">Dodaj zastęp</string>
     <string name="stamp_task_icon_description">Punktor dla zadania sprawności</string>
-
+    <string name="blank_level">Poziom: %s</string>
 </resources>

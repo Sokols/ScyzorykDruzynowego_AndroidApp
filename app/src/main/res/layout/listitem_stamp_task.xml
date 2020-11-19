@@ -28,16 +28,11 @@
         <TextView
             android:id="@+id/taskTextView"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeMaxTextSize="60sp"
-            android:autoSizeStepGranularity="2sp"
-            android:autoSizeTextType="uniform"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="10"
             android:padding="10dp"
             android:text="@{stampTask}"
-            android:textColor="@color/colorBackground"
-            tools:targetApi="o" />
+            android:textColor="@color/colorBackground"/>
     </LinearLayout>
 </layout>
