@@ -1,6 +1,5 @@
 package pl.sokols.scyzorykdruzynowego.ui.main.stamps.adapters;
 
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Filter;
@@ -9,14 +8,16 @@ import android.widget.Filterable;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entity.Stamp;
 import pl.sokols.scyzorykdruzynowego.databinding.ListitemStampBinding;
 import pl.sokols.scyzorykdruzynowego.ui.main.stamps.StampsFragment;
+import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class StampsAdapter extends RecyclerView.Adapter<StampsAdapter.StampsViewHolder> implements Filterable {
 
@@ -37,7 +38,10 @@ public class StampsAdapter extends RecyclerView.Adapter<StampsAdapter.StampsView
 
         public void bind(Stamp stamp, OnStampClickListener listener) {
             mBinding.setStamp(stamp);
-            GlideToVectorYou.justLoadImage(mFragment.requireActivity(), Uri.parse(stamp.getStampImageURL()), mBinding.stampIcon);
+            Glide.with(mFragment)
+                    .load(Utils.fromUri(mFragment.requireContext(), "stamps/" + stamp.getStampId() + ".png"))
+                    .error(R.drawable.ic_baseline_broken_image_24)
+                    .into(mBinding.stampIcon);
             itemView.setOnClickListener(view -> listener.onStampClick(stamp));
         }
     }

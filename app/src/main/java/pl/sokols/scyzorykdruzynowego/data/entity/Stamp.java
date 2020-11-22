@@ -19,8 +19,6 @@ public class Stamp implements Parcelable {
     private int stampLevel;
     @SerializedName("stamp_name")
     private String stampName;
-    @SerializedName(("stamp_image_url"))
-    private String stampImageURL;
     @SerializedName("stamp_tasks")
     private List<String> stampTasks;
 
@@ -42,10 +40,6 @@ public class Stamp implements Parcelable {
 
     public String getStampName() {
         return stampName;
-    }
-
-    public String getStampImageURL() {
-        return stampImageURL;
     }
 
     public List<String> getStampTasks() {
@@ -76,7 +70,6 @@ public class Stamp implements Parcelable {
         dest.writeInt(branchId);
         dest.writeInt(stampLevel);
         dest.writeString(stampName);
-        dest.writeString(stampImageURL);
         dest.writeStringList(stampTasks);
     }
 
@@ -86,7 +79,6 @@ public class Stamp implements Parcelable {
         branchId = in.readInt();
         stampLevel = in.readInt();
         stampName = in.readString();
-        stampImageURL = in.readString();
         stampTasks = in.createStringArrayList();
     }
 }

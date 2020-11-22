@@ -5,7 +5,6 @@
     "branch_id": 1,
     "stamp_level": 1,
     "stamp_name": "Płomień",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/242b4c10-b7a0-11ea-b4ea-2fb633d49b09.svg",
     "stamp_tasks": [
       "Umie ułożyć i rozpalić ognisko.",
       "Potrafi umiejętnie podkładać drwa lub gałęzie, regulując wysokość płomienia i ograniczając iskrzenie.",
@@ -19,7 +18,6 @@
     "branch_id": 1,
     "stamp_level": 2,
     "stamp_name": "Strażnik Ognia",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/242b7b30-b7a0-11ea-9fb2-fd3803acf6be.svg",
     "stamp_tasks": [
       "Potrafi ułożyć i rozpalić różne typy ognisk, takie jak ognisko do gotowania, do podtrzymania żaru, do oświetlenia kręgu, stos na mokry teren.",
       "Umie podtrzymywać ogień odpowiednio do potrzeb i sytuacji. Zna zasady zachowania w kręgu ogniskowym.",
@@ -34,7 +32,6 @@
     "branch_id": 1,
     "stamp_level": 3,
     "stamp_name": "Ogniowiec",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/242b80e0-b7a0-11ea-8c78-8b9227e3fc06.svg",
     "stamp_tasks": [
       "Umie rozpalić ogień w niesprzyjających warunkach (np. w ulewnym deszczu, przy silnym wietrze lub w głębokim śniegu).",
       "Potrafi rozpalić ogień bez zapałek, samodzielnie wykonanym narzędziem (np. łukiem ogniowym lub własnoręcznie zrobionym krzesiwem).",
@@ -49,7 +46,6 @@
     "branch_id": 2,
     "stamp_level": 1,
     "stamp_name": "Obserwator",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/28a4ed10-b7a1-11ea-bc51-add88f49f553.svg",
     "stamp_tasks": [
       "Umie posłużyć się mapą papierową (tj. zorientować ją i odczytać), żeby trafić za dnia do wyznaczonego miejsca.",
       "Potrafi wyznaczyć kierunki świata według busoli, słońca (w dzień) i gwiazd (w nocy).",
@@ -62,7 +58,6 @@
     "branch_id": 2,
     "stamp_level": 2,
     "stamp_name": "Terenoznawca",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/28a51090-b7a1-11ea-9531-0d00fe8f1b88.svg",
     "stamp_tasks": [
       "Potrafi w dzień i w nocy odnaleźć się na mapie w nieznanym terenie według ukształtowania terenu i przedmiotów terenowych (np. skrzyżowań, budowli, cieków wodnych).",
       "Umie zmierzyć odległość na mapie i trafnie ocenić odległość „na oko” w terenie.",
@@ -76,7 +71,6 @@
     "branch_id": 2,
     "stamp_level": 3,
     "stamp_name": "Topograf",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f33ee3b0-b7a0-11ea-819e-5d01b05b54e6.svg",
     "stamp_tasks": [
       "Potrafi wykonać odpowiednie pomiary i staranny szkic wskazanego terenu z zachowaniem skali.",
       "Potrafi zmierzyć wysokość drzewa i szerokość rzeki bez użycia specjalistycznych narzędzi.",
@@ -90,7 +84,6 @@
     "branch_id": 2,
     "stamp_level": 3,
     "stamp_name": "Mistrz Orientacji",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f33eeb40-b7a0-11ea-ba1e-21456ee6f1d5.svg",
     "stamp_tasks": [
       "Umie w każdych warunkach trafić do wyznaczonego miejsca – w dzień i w nocy, w górach i na nizinie, niezależnie od warunków pogodowych i pory roku, z pomocą map, lokalizatora GPS, kompasu albo bez nich."
     ]
@@ -101,7 +94,6 @@
     "branch_id": 3,
     "stamp_level": 1,
     "stamp_name": "Higienista",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/84adc4b0-b7a1-11ea-94bc-7d3cdeadc661.svg",
     "stamp_tasks": [
       "Potrafi opatrzyć drobne zranienie, oparzenie i lekki uraz.",
       "Umie ułożyć poszkodowanego w pozycji bezpiecznej.",
@@ -114,7 +106,6 @@
     "branch_id": 3,
     "stamp_level": 2,
     "stamp_name": "Sanitariusz",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/84ae1ed0-b7a1-11ea-9a7e-abd50b8534d0.svg",
     "stamp_tasks": [
       "Umie zaradzić w sytuacji wyziębienia, udaru cieplnego, omdlenia i oparzeń.",
       "Potrafi zaradzić w przypadku urazu kończyny (np. skręcenie lub złamanie), a w razie konieczności umie ją unieruchomić przy pomocy improwizowanego sprzętu.",
@@ -128,7 +119,6 @@
     "branch_id": 3,
     "stamp_level": 3,
     "stamp_name": "Ratownik",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/84ae2d80-b7a1-11ea-bb17-61993e132835.svg",
     "stamp_tasks": [
       "Potrafi pokierować małym zespołem sanitariuszy w czasie akcji ratowniczej.",
       "Umie udzielić pierwszej pomocy w przypadku ran i krwotoków.",
@@ -146,7 +136,6 @@
     "branch_id": 4,
     "stamp_level": 1,
     "stamp_name": "Mistrz musztry",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f0fe7db0-b7a1-11ea-b15f-8debd16b684e.svg",
     "stamp_tasks": [
       "Umie prawidłowo wykonać wszystkie komendy musztry harcerskiej w czasie zbiórki, apelu i przemarszu.",
       "Potrafi zadbać o wygląd i czystość swojego munduru, a także wytłumaczyć symbolikę jego elementów.",
@@ -159,7 +148,6 @@
     "branch_id": 4,
     "stamp_level": 2,
     "stamp_name": "Chorąży",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f0fdfb50-b7a1-11ea-9041-77a5fb23d14a.svg",
     "stamp_tasks": [
       "Umie poruszać się i wykonywać chwyty sztandarem lub proporcem zgodnie z regulaminem musztry.",
       "Potrafi bezpiecznie przechowywać i zadbać o proporzec lub sztandar, zarówno w warunkach polowych, jak i w harcówce lub w domu.",
@@ -172,7 +160,6 @@
     "branch_id": 4,
     "stamp_level": 3,
     "stamp_name": "Dowódca",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f0fe29f0-b7a1-11ea-8d8e-5d2501a7702c.svg",
     "stamp_tasks": [
       "Potrafi poprowadzić apel drużyny zgodnie z regulaminem musztry.",
       "Umie dowodzić drużyną podczas przemarszu, uroczystości lub pokazu musztry.",
@@ -186,7 +173,6 @@
     "branch_id": 4,
     "stamp_level": 3,
     "stamp_name": "Dobosz",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f0fe66c0-b7a1-11ea-ad21-2f7ab4f77c4c.svg",
     "stamp_tasks": [
       "Potrafi dobrać i nadać kolumnie odpowiednie tempo wybijając rytm na instrumencie perkusyjnym w marszu.",
       "Potrafi poprowadzić asystę perkusyjną, wybijając odpowiedni rytm na wejście pocztu sztandarowego, złożenie wieńca i apel poległych.",
@@ -199,7 +185,6 @@
     "branch_id": 4,
     "stamp_level": 3,
     "stamp_name": "Trębacz",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/f0fe7350-b7a1-11ea-b0f3-df6360a44a21.svg",
     "stamp_tasks": [
       "Zna i umie zagrać kilka sygnałów Wojska Polskiego np. Pobudkę, Baczność, Spocznij, Hasło Wojska Polskiego.",
       "Potrafi zastosować odpowiednie sygnały do kierowania drużyną.",
@@ -212,7 +197,6 @@
     "branch_id": 5,
     "stamp_level": 1,
     "stamp_name": "Łącznik",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/839912e0-b7a2-11ea-8478-73bd92ebdd90.svg",
     "stamp_tasks": [
       "Umie bezbłędnie zapamiętać i przenieść wiadomość ustną złożoną z kilkunastu słów.",
       "Potrafi zaszyfrować i odczytać wiadomość trzema różnymi szyframi."
@@ -224,7 +208,6 @@
     "branch_id": 5,
     "stamp_level": 2,
     "stamp_name": "Sygnalista",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/8398cc40-b7a2-11ea-a316-572b30756142.svg",
     "stamp_tasks": [
       "Umie nadać i odebrać wiadomość zakodowaną alfabetem Morse’a przy pomocy chorągiewek, sygnałów dźwiękowych oraz świetlnych. Umie wykonać prowizoryczny sygnalizacyjny (np. chorągiewkę lub pochodnię).",
       "Potrafi zakodować i rozkodować wiadomość przy pomocy alfabetu Morse’a.",
@@ -238,7 +221,6 @@
     "branch_id": 5,
     "stamp_level": 3,
     "stamp_name": "Łącznościowiec",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/83991c20-b7a2-11ea-85e0-f324cee50a55.svg",
     "stamp_tasks": [
       "Umie zorganizować w terenie sprawną sieć łączności opartą na urządzeniach kablowych lub radiowych: przygotować i rozstawić sprzęt, ustalić zasady korzystania z sieci, przeszkolić operatorów.",
       "Potrafi zorganizować kilkuosobową stację sygnalizacyjną do płynnego nadawania i odbierania wiadomości alfabetem Morse’a: wyznaczyć zadania, podzielić i zorganizować pracę.",
@@ -251,7 +233,6 @@
     "branch_id": 5,
     "stamp_level": 3,
     "stamp_name": "Krótkofalarz",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/83992800-b7a2-11ea-94d9-7f221bb78069.svg",
     "stamp_tasks": [
       "Potrafi posłużyć się alfabetem fonetycznym ICAO (tzw. alfabet fonetyczny NATO) oraz jego polskim odpowiednikiem.",
       "Zna kilkanaście kodów Q najczęściej używanych przez krótkofalarzy oraz kilka wyrażeń z tzw. slangu amatorskiego. Umie przekazać raport RST oraz informacje o własnym QTH Locator.",
@@ -265,7 +246,6 @@
     "branch_id": 6,
     "stamp_level": 1,
     "stamp_name": "Biwakowicz",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12172ac0-b7a3-11ea-85dc-0dfc8a6d8a57.svg",
     "stamp_tasks": [
       "Umie dobrze spakować się na biwak.",
       "Potrafi rozbić namiot turystyczny.",
@@ -279,7 +259,6 @@
     "branch_id": 6,
     "stamp_level": 2,
     "stamp_name": "Traper",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12176500-b7a3-11ea-b33e-458a84d5a1c9.svg",
     "stamp_tasks": [
       "Umie przygotować namiot na różne warunki atmosferyczne takie jak mocny wiatr czy burza oraz odpowiednio wybrać i przygotować miejsce do jego rozstawienia.",
       "Umie wykorzystać 3 węzły przydatne podczas biwakowania (np. do zbudowania zadaszenia z plandeki biwakowej).",
@@ -293,7 +272,6 @@
     "branch_id": 6,
     "stamp_level": 3,
     "stamp_name": "Włóczykij",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12176d80-b7a3-11ea-8570-a1d08191b741.svg",
     "stamp_tasks": [
       "Potrafi przygotować się, skompletować ekwipunek i biwakować w każdych warunkach terenowych.",
       "Umie w warunkach polowych wysuszyć ubranie i obuwie.",
@@ -307,7 +285,6 @@
     "branch_id": 6,
     "stamp_level": 3,
     "stamp_name": "Polarnik",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12177570-b7a3-11ea-8648-6db6e76af76d.svg",
     "stamp_tasks": [
       "Umie skompletować i spakować ekwipunek odpowiedni do biwakowania w warunkach zimowych.",
       "Potrafi przygotować legowisko, które przy ujemnej temperaturze pozwoli mu spędzić noc w komforcie cieplnym.",
@@ -321,7 +298,6 @@
     "branch_id": 7,
     "stamp_level": 1,
     "stamp_name": "Sakwa",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/a596f1c0-b7a3-11ea-bb45-3b5bfb17a0b8.svg",
     "stamp_tasks": [
       "Umie odłożyć pieniądze na zaplanowany wydatek. Potrafi oszacować, ile czasu będzie mu potrzebne na zebranie określonej kwoty.",
       "Umie bezpiecznie przechowywać pieniądze.",
@@ -332,22 +308,8 @@
     "stamp_id": 25,
     "section_id": 1,
     "branch_id": 7,
-    "stamp_level": 1,
-    "stamp_name": "Sakwa",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/a596f1c0-b7a3-11ea-bb45-3b5bfb17a0b8.svg",
-    "stamp_tasks": [
-      "Umie odłożyć pieniądze na zaplanowany wydatek. Potrafi oszacować, ile czasu będzie mu potrzebne na zebranie określonej kwoty.",
-      "Umie bezpiecznie przechowywać pieniądze.",
-      "Potrafi zadbać o powierzony sprzęt biwakowy i pionierski, tj. właściwie go przechowywać, transportować i kompletować."
-    ]
-  },
-  {
-    "stamp_id": 26,
-    "section_id": 1,
-    "branch_id": 7,
     "stamp_level": 2,
     "stamp_name": "Gospodarz",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/a5973e90-b7a3-11ea-af68-a5f6d66c74f0.svg",
     "stamp_tasks": [
       "Umie skompletować narzędzia dla zastępu na biwak lub obóz.",
       "Potrafi konserwować narzędzia pionierskie a także odpowiednio je oznakować. Umie prowadzić wykaz sprzętu zastępu.",
@@ -355,12 +317,11 @@
     ]
   },
   {
-    "stamp_id": 27,
+    "stamp_id": 26,
     "section_id": 1,
     "branch_id": 7,
     "stamp_level": 3,
     "stamp_name": "Kwatermistrz",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/a5974aa0-b7a3-11ea-a6d4-7df36a21721d.svg",
     "stamp_tasks": [
       "Potrafi zaplanować budżet wyjazdu lub biwaku, sprawować nadzór nad wydatkami i rozliczyć powierzone środki.",
       "Umie przygotować kompletną listę zadań kwatermistrzowskich związanych z organizacją biwaku lub wędrówki, takich jak dojazd, aprowizacja, noclegi. Każde z tych zadań potrafi wykonać samodzielnie.",
@@ -370,12 +331,11 @@
     ]
   },
   {
-    "stamp_id": 28,
+    "stamp_id": 27,
     "section_id": 1,
     "branch_id": 7,
     "stamp_level": 3,
     "stamp_name": "Magazynier",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/a59761c0-b7a3-11ea-88af-8fc7634dae9f.svg",
     "stamp_tasks": [
       "Potrafi wykonać prace konserwacyjne sprzętu takiego jak namioty, sprzęt pływający, kanadyjki. Umie pokierować wykonaniem takich prac przez drużynę.",
       "Potrafi wysuszyć namioty różnych typów, zabezpieczyć je przed zawilgoceniem i właściwie przygotować do magazynowania.",
@@ -385,12 +345,11 @@
     ]
   },
   {
-    "stamp_id": 29,
+    "stamp_id": 28,
     "section_id": 1,
     "branch_id": 8,
     "stamp_level": 1,
     "stamp_name": "Sobieradek Obozowy",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12f62580-b7a4-11ea-aca1-e362605a8398.svg",
     "stamp_tasks": [
       "Potrafi sprawnie posługiwać się narzędziami pionierskimi: młotkiem, toporkiem i piłą. Umie zabezpieczyć je po skończonej pracy.",
       "Umie zaprojektować i wykonać drobny przedmiot pionierki obozowej (np. drogowskaz, wieszak lub ławkę).",
@@ -398,36 +357,33 @@
     ]
   },
   {
-    "stamp_id": 30,
+    "stamp_id": 29,
     "section_id": 1,
     "branch_id": 8,
     "stamp_level": 2,
     "stamp_name": "Zdobnik",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12f617a0-b7a4-11ea-b4ac-75959a84e58d.svg",
     "stamp_tasks": [
       "Umie samodzielnie wykonać prosty totem lub inny element zdobnictwa obozowego z wykorzystaniem materiałów znalezionych w terenie.",
       "Posiada sprawność *Plastyka ze ścieżki „Rzemiosło plastyczne”."
     ]
   },
   {
-    "stamp_id": 31,
+    "stamp_id": 30,
     "section_id": 1,
     "branch_id": 8,
     "stamp_level": 2,
     "stamp_name": "Technik Obozowy",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12f61f30-b7a4-11ea-87ef-0df3c9b94c34.svg",
     "stamp_tasks": [
       "Umie zaprojektować oraz pokierować wykonaniem pomysłowego i estetycznego urządzenia obozowego (np. bramy, latryny lub pionierki w namiocie).",
       "Umie pokierować rozstawieniem namiotu dziesięcioosobowego."
     ]
   },
   {
-    "stamp_id": 32,
+    "stamp_id": 31,
     "section_id": 1,
     "branch_id": 8,
     "stamp_level": 3,
     "stamp_name": "Wyga Obozowy",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12f5db80-b7a4-11ea-ba4e-07cb08bc3b08.svg",
     "stamp_tasks": [
       "Potrafi zaprojektować i pokierować budową dużego urządzenia obozowego (np. pomostu, zadaszenia kuchni, stołówki, elektrowni solarnej, pieca lub wieży ciśnień).",
       "Umie sprawnie pokierować rozstawieniem namiotów według określonego planu (np. w kręgu, w kwadracie lub szeregu).",
@@ -435,12 +391,11 @@
     ]
   },
   {
-    "stamp_id": 33,
+    "stamp_id": 32,
     "section_id": 1,
     "branch_id": 8,
     "stamp_level": 3,
     "stamp_name": "Mistrz Zdobnictwa",
-    "stamp_image_url": "https://stampsapi.jandab.io/img/form/12f60f30-b7a4-11ea-95bb-ef2c0e941c8d.svg",
     "stamp_tasks": [
       "Umie wykonać totem przedstawiający w rozpoznawalny sposób charakterystyczne zwierzę lub konkretną postać, z wykorzystaniem materiałów znalezionych w terenie.",
       "Umie opracować dokładny projekt plastyczny i na jego podstawie wykonać samodzielnie trwały element zdobniczy (np. proporzec, rzeźbioną buławę, herb, inny element obrzędowy).",

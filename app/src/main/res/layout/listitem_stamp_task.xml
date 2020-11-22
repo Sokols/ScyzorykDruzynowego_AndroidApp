@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -20,10 +19,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:padding="8dp"
             android:scaleType="centerCrop"
-            android:layout_gravity="center"
+            android:layout_gravity="top|center"
             app:srcCompat="@drawable/ic_baseline_grade_24"
-            android:contentDescription="@string/stamp_task_icon_description" />
+            android:contentDescription="@string/stamp_task_icon_description"
+            app:tint="@color/colorMainText" />
 
         <TextView
             android:id="@+id/taskTextView"
@@ -31,8 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="10"
-            android:padding="10dp"
+            android:padding="8dp"
             android:text="@{stampTask}"
-            android:textColor="@color/colorBackground"/>
+            android:textColor="@color/colorMainText"/>
     </LinearLayout>
 </layout>

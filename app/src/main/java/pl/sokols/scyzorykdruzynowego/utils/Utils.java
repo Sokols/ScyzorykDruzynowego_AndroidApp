@@ -3,8 +3,11 @@ package pl.sokols.scyzorykdruzynowego.utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import java.io.IOException;
@@ -68,4 +71,24 @@ public class Utils {
         }
         return jsonString;
     }
+
+    public static Bitmap fromUri(@NonNull Context context, @NonNull String path) {
+        InputStream inputStream = null;
+        try {
+            inputStream = context.getAssets().open(path);
+            return BitmapFactory.decodeStream(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
