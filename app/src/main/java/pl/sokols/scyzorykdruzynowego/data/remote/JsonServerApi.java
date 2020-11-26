@@ -11,6 +11,7 @@ import retrofit2.http.POST;
 public interface JsonServerApi {
 
     String API_BASE_URL = "https://jsonserver-5791.restdb.io/rest/";
+    String API_BASE_KEY = "a587bef7361c86e19ba1dbd22d7e5d1a598bb";
 
     @GET("appusers")
     Call<List<User>> getUsers();

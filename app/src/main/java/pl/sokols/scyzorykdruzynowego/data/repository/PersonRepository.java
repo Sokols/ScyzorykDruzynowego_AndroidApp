@@ -14,8 +14,8 @@ import pl.sokols.scyzorykdruzynowego.data.entity.Person;
 
 public class PersonRepository {
 
-    private ExecutorService executorService;
-    private PersonDao personDao;
+    private final ExecutorService executorService;
+    private final PersonDao personDao;
 
     public PersonRepository(@NonNull Application application, int userId) {
         personDao = AppDatabase.getInstance(application, userId).personDao();

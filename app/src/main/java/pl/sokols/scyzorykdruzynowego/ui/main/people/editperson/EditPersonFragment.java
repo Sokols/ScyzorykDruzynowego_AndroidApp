@@ -44,7 +44,7 @@ public class EditPersonFragment extends Fragment {
     }
 
     // ask user if really wants to delete person - if yes, remove person from db and go back to PeopleFragment
-    private View.OnClickListener deleteOnClickListener = view -> {
+    private final View.OnClickListener deleteOnClickListener = view -> {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(requireContext(), R.style.MyDialogTheme);
         dialogBuilder.setTitle(getString(R.string.are_you_sure_title));
         dialogBuilder.setMessage(getString(R.string.are_you_sure_remove_person_description));
@@ -56,7 +56,7 @@ public class EditPersonFragment extends Fragment {
     };
 
     // go to CreatePersonFragment if user chose edit FAB
-    private View.OnClickListener editOnClickListener = view -> {
+    private final View.OnClickListener editOnClickListener = view -> {
         EditPersonFragmentDirections.ActionEditPersonToCreatePerson action = EditPersonFragmentDirections.actionEditPersonToCreatePerson();
         action.setPerson(binding.getPerson());
         Navigation.findNavController(requireView()).navigate(action);

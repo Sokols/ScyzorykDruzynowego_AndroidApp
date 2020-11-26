@@ -7,11 +7,10 @@ import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class PeopleModel {
 
-    private TeamRepository teamRepository;
+    private final TeamRepository teamRepository;
 
     public PeopleModel(Application application) {
-        int userId = Utils.getUserId(application);
-        this.teamRepository = new TeamRepository(application, userId);
+        this.teamRepository = new TeamRepository(application, Utils.getUserId(application));
     }
 
     public TeamRepository getTeamRepository() {

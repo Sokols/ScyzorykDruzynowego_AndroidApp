@@ -34,7 +34,7 @@ public class LoginViewModel extends AndroidViewModel {
     public LoginViewModel(@NonNull Application application) {
         super(application);
         model = new LoginModel(application);
-        model.getUserRepository().getUsers().observeForever(users -> currentUsers = users);
+        model.getUserRepository().getCurrentUsers().observeForever(users -> currentUsers = users);
     }
 
     public void handleLoginButton() {

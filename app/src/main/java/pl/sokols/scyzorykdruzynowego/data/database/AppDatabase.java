@@ -23,7 +23,7 @@ import pl.sokols.scyzorykdruzynowego.data.entity.Team;
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String APP_DB_NAME = "app_database.db";
-    private static Map<Integer, AppDatabase> instancesMap = new HashMap<>();
+    private static final Map<Integer, AppDatabase> instancesMap = new HashMap<>();
 
     public static synchronized AppDatabase getInstance(Context context, int userId) {
         if (!instancesMap.containsKey(userId)) {

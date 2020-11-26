@@ -1,6 +1,6 @@
 package pl.sokols.scyzorykdruzynowego.data.repository;
 
-import androidx.lifecycle.LiveData;
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
@@ -16,6 +16,7 @@ public class UserRepository {
 
     private static UserRepository INSTANCE;
     private static JsonServerApi jsonServerApi;
+    private MutableLiveData<List<User>> currentUsers;
 
     public static UserRepository getInstance() {
         if (INSTANCE == null) {
@@ -28,65 +29,44 @@ public class UserRepository {
         jsonServerApi = RetrofitService.getServer();
     }
 
-    public LiveData<List<User>> getUsers() {
-        final MutableLiveData<List<User>> currentUsers = new MutableLiveData<>();
+    public void getUsers() {
         jsonServerApi.getUsers().enqueue(new Callback<List<User>>() {
             @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+            public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
                 if (response.isSuccessful()) {
                     currentUsers.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<User>> call, @NonNull Throwable t) {
                 currentUsers.postValue(null);
+                t.printStackTrace();
             }
         });
-
-        return currentUsers;
     }
 
     public void createUser(User user) {
         jsonServerApi.createUser(user).enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                // do nothing
+            public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
+                if (response.isSuccessful()) {
+                    getUsers();
+                }
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
                 // do nothing
             }
         });
     }
+
+    public MutableLiveData<List<User>> getCurrentUsers() {
+        if (currentUsers == null) {
+            currentUsers = new MutableLiveData<>();
+        }
+        getUsers();
+        return currentUsers;
+    }
 }
-
-
-//    private static UserRepository INSTANCE;
-//    private ExecutorService executorService;
-//    private UserDao userDao;
-//
-//    public static UserRepository getInstance(Application application) {
-//        if (INSTANCE == null) {
-//            INSTANCE = new UserRepository(application);
-//        }
-//        return INSTANCE;
-//    }
-//
-//    private UserRepository(@NonNull Application application) {
-//        userDao = UsersDatabase.getInstance(application).userDao();
-//        executorService = Executors.newSingleThreadExecutor();
-//    }
-//
-//    public void insert(User user) {
-//        executorService.execute(() -> userDao.insert(user));
-//    }
-//
-//    public User getItemByName(String login) {
-//        return userDao.getItemByName(login);
-//    }
-//
-//    public int checkItemByName(String login) {
-//        return userDao.checkItemByName(login);
-//    }

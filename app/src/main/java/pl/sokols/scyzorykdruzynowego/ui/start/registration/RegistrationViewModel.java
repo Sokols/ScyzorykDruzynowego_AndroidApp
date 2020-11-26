@@ -29,7 +29,7 @@ public class RegistrationViewModel extends AndroidViewModel {
     public RegistrationViewModel(@NonNull Application application) {
         super(application);
         model = new RegistrationModel(application);
-        model.getUserRepository().getUsers().observeForever(users -> currentUsers = users);
+        model.getUserRepository().getCurrentUsers().observeForever(users -> currentUsers = users);
     }
 
     public void handleRegisterButton() {
