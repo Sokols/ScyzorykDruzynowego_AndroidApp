@@ -58,7 +58,7 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        viewModel.getIsUsernameUnique().observe(getViewLifecycleOwner(), aBoolean -> {
+        viewModel.getIsUsernameExists().observe(getViewLifecycleOwner(), aBoolean -> {
             if (!aBoolean) {
                 Snackbar.make(view, getString(R.string.incorrect_login), BaseTransientBottomBar.LENGTH_SHORT).show();
             }

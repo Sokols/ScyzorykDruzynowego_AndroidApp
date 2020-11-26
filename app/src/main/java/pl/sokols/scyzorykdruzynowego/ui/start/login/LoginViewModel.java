@@ -7,8 +7,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pl.sokols.scyzorykdruzynowego.data.entity.User;
-import pl.sokols.scyzorykdruzynowego.data.repository.UserRepository;
 
 import static pl.sokols.scyzorykdruzynowego.utils.Utils.REMEMBER_ME_SHARED_PREFS_KEY;
 import static pl.sokols.scyzorykdruzynowego.utils.Utils.USER_ID_SHARED_PREFS_KEY;
@@ -16,20 +18,23 @@ import static pl.sokols.scyzorykdruzynowego.utils.Utils.USER_LOGIN_SHARED_PREFS_
 
 public class LoginViewModel extends AndroidViewModel {
 
-    private MutableLiveData<Boolean> isPasswordCorrect = new MutableLiveData<>();
-    private MutableLiveData<Boolean> isUsernameUnique = new MutableLiveData<>();
-    private MutableLiveData<Boolean> isReadyToLogin = new MutableLiveData<>();
+    private final LoginModel model;
+
+    private final MutableLiveData<Boolean> isPasswordCorrect = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> isUsernameExists = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> isReadyToLogin = new MutableLiveData<>();
     private MutableLiveData<User> user;
+
+    private List<User> currentUsers = new ArrayList<>();
 
     private String username;
     private String password;
     private boolean rememberMe;
 
-    private LoginModel model;
-
     public LoginViewModel(@NonNull Application application) {
         super(application);
-        this.model = new LoginModel(application);
+        model = new LoginModel(application);
+        model.getUserRepository().getUsers().observeForever(users -> currentUsers = users);
     }
 
     public void handleLoginButton() {
@@ -45,25 +50,28 @@ public class LoginViewModel extends AndroidViewModel {
         String username = getUsername() == null ? "" : getUsername();
         String password = getPassword() == null ? "" : getPassword();
 
-        UserRepository userRepository = model.getUserRepository();
-
         // check if all data exist
         if (username.equals("") || password.equals("")) {
             return false;
         }
-        // check if typed username exists in database
-        else if (userRepository.checkItemByName(username) != 1) {
-            isUsernameUnique.setValue(false);
-            return false;
-        }
-        // check if password is correct
-        else if (!userRepository.getItemByName(username).getPassword().equals(password)) {
-            isPasswordCorrect.setValue(false);
-            return false;
-        }
+        // check if typed username exists and password is correct
+        return checkCorrectnessOfProvidedData(username, password);
+    }
 
-        setSharedPreferences(userRepository.getItemByName(username).getUserId());
-        return true;
+    private boolean checkCorrectnessOfProvidedData(String username, String password) {
+        for (User user : currentUsers) {
+            if (user.getUsername().equals(username)) {
+                if (user.getPassword().equals(password)) {
+                    // set shared preferences for chosen user
+                    setSharedPreferences(user.getUserId());
+                    return true;
+                }
+                isPasswordCorrect.setValue(false);
+                return false;
+            }
+        }
+        isUsernameExists.setValue(false);
+        return false;
     }
 
     private void setSharedPreferences(int userId) {
@@ -101,8 +109,8 @@ public class LoginViewModel extends AndroidViewModel {
         return isPasswordCorrect;
     }
 
-    public MutableLiveData<Boolean> getIsUsernameUnique() {
-        return isUsernameUnique;
+    public MutableLiveData<Boolean> getIsUsernameExists() {
+        return isUsernameExists;
     }
 
     public MutableLiveData<Boolean> getIsReadyToLogin() {

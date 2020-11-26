@@ -6,31 +6,37 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pl.sokols.scyzorykdruzynowego.data.entity.User;
 
 public class RegistrationViewModel extends AndroidViewModel {
 
-    private MutableLiveData<Boolean> arePasswordsCorrect = new MutableLiveData<>();
-    private MutableLiveData<Boolean> isUsernameUnique = new MutableLiveData<>();
-    private MutableLiveData<Boolean> isReadyToRegister = new MutableLiveData<>();
+    private final RegistrationModel model;
+
+    private final MutableLiveData<Boolean> arePasswordsCorrect = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> isUsernameUnique = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> isReadyToRegister = new MutableLiveData<>();
     private MutableLiveData<User> user;
+
+    private List<User> currentUsers = new ArrayList<>();
 
     private String username;
     private String password;
     private String password2;
 
-    private RegistrationModel model;
-
     public RegistrationViewModel(@NonNull Application application) {
         super(application);
-        this.model = new RegistrationModel(application);
+        model = new RegistrationModel(application);
+        model.getUserRepository().getUsers().observeForever(users -> currentUsers = users);
     }
 
     public void handleRegisterButton() {
         User newUser = new User(username, password);
         user.setValue(newUser);
         if (isAllDataCorrect()) {
-            model.getUserRepository().insert(newUser);
+            model.getUserRepository().createUser(newUser);
             isReadyToRegister.setValue(true);
         }
     }
@@ -46,19 +52,20 @@ public class RegistrationViewModel extends AndroidViewModel {
             return false;
         }
         // check if typed username exists in database
-        else if (model.getUserRepository().checkItemByName(username) == 1) {
-            isUsernameUnique.setValue(false);
-            return false;
+        for (User user : currentUsers) {
+            if (user.getUsername().equals(username)) {
+                isUsernameUnique.setValue(false);
+                return false;
+            }
         }
         // check if password equals password2
-        else if (!password.equals(password2)) {
+        if (!password.equals(password2)) {
             arePasswordsCorrect.setValue(false);
             return false;
         }
 
         return true;
     }
-
 
     public String getUsername() {
         return username;

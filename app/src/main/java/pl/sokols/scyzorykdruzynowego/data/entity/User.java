@@ -1,18 +1,13 @@
 package pl.sokols.scyzorykdruzynowego.data.entity;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "users")
 public class User {
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    private int userId;
-
-    private String username;
-    private String password;
+    @SerializedName("id")
+    private Integer userId;
+    private final String username;
+    private final String password;
 
     public User(String username, String password) {
         this.username = username;
@@ -21,10 +16,6 @@ public class User {
 
     public int getUserId() {
         return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getUsername() {

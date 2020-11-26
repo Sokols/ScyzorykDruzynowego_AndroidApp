@@ -9,7 +9,7 @@ public class RegistrationModel {
     private UserRepository userRepository;
 
     public RegistrationModel(Application application) {
-        this.userRepository = UserRepository.getInstance(application);
+        this.userRepository = UserRepository.getInstance();
     }
 
     public UserRepository getUserRepository() {

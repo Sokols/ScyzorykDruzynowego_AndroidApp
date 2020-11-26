@@ -10,184 +10,187 @@
             type="pl.sokols.scyzorykdruzynowego.ui.main.people.createperson.CreatePersonViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorBackground"
-        tools:context=".ui.main.people.createperson.CreatePersonFragment">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/titleNewPersonTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:gravity="center_horizontal"
-            android:text="@string/type_data"
-            android:textColor="@color/colorMainText"
-            android:textSize="@dimen/add_fragments_title_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/nameNewPersonTextInputLayout"
-            style="@style/EditTextsTextInputLayoutStyle"
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/edittext_margin"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="@dimen/edittext_margin"
-            android:hint="@string/name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleNewPersonTextView">
+            android:background="@color/colorBackground"
+            tools:context=".ui.main.people.createperson.CreatePersonFragment">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/searchStampsEditText"
+            <TextView
+                android:id="@+id/titleNewPersonTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="center_horizontal"
+                android:text="@string/type_data"
+                android:textColor="@color/colorMainText"
+                android:textSize="@dimen/add_fragments_title_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameNewPersonTextInputLayout"
+                style="@style/EditTextsTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill_horizontal"
-                android:text="@={CreatePersonViewModel.personToSave.name}"
-                android:textColor="@color/colorAccent"
-                android:textCursorDrawable="@color/colorAccent" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="@dimen/edittext_margin"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="@dimen/edittext_margin"
+                android:hint="@string/name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleNewPersonTextView">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/surnameNewPersonTextInputLayout"
-            style="@style/EditTextsTextInputLayoutStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/edittext_margin"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="@dimen/edittext_margin"
-            android:hint="@string/surname"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameNewPersonTextInputLayout">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/searchStampsEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_horizontal"
+                    android:text="@={CreatePersonViewModel.personToSave.name}"
+                    android:textColor="@color/colorAccent"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/surnameNewPersonEditText"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/surnameNewPersonTextInputLayout"
+                style="@style/EditTextsTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill_horizontal"
-                android:text="@={CreatePersonViewModel.personToSave.surname}"
-                android:textColor="@color/colorAccent"
-                android:textCursorDrawable="@color/colorAccent" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="@dimen/edittext_margin"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="@dimen/edittext_margin"
+                android:hint="@string/surname"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameNewPersonTextInputLayout">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/dateNewPersonTextInputLayout"
-            style="@style/EditTextsTextInputLayoutStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/edittext_margin"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="@dimen/edittext_margin"
-            android:hint="@string/birthday_date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/surnameNewPersonTextInputLayout">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/surnameNewPersonEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_horizontal"
+                    android:text="@={CreatePersonViewModel.personToSave.surname}"
+                    android:textColor="@color/colorAccent"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/dateNewPersonEditText"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dateNewPersonTextInputLayout"
+                style="@style/EditTextsTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill_horizontal"
-                android:clickable="false"
-                android:focusable="false"
-                android:inputType="date"
-                android:text="@={CreatePersonViewModel.date}"
-                android:textColor="@color/colorAccent"
-                android:textCursorDrawable="@color/colorAccent" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="@dimen/edittext_margin"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="@dimen/edittext_margin"
+                android:hint="@string/birthday_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/surnameNewPersonTextInputLayout">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/rankNewPersonTextInputLayout"
-            style="@style/AutoCompleteTextViewsTextInputLayoutStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/edittext_margin"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="@dimen/edittext_margin"
-            android:hint="@string/scout_rank"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateNewPersonTextInputLayout">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/dateNewPersonEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_horizontal"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:inputType="date"
+                    android:text="@={CreatePersonViewModel.date}"
+                    android:textColor="@color/colorAccent"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/rankNewPersonAutoCompleteTextView"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/rankNewPersonTextInputLayout"
+                style="@style/AutoCompleteTextViewsTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none"
-                adapter="@{CreatePersonViewModel.ranks}"
-                android:text="@={CreatePersonViewModel.personToSave.rank}"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/colorAccent" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="@dimen/edittext_margin"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="@dimen/edittext_margin"
+                android:hint="@string/scout_rank"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateNewPersonTextInputLayout">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/teamNewPersonTextInputLayout"
-            style="@style/AutoCompleteTextViewsTextInputLayoutStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/edittext_margin"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="@dimen/edittext_margin"
-            android:hint="@string/scout_team"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rankNewPersonTextInputLayout">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/rankNewPersonAutoCompleteTextView"
+                    adapter="@{CreatePersonViewModel.ranks}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:text="@={CreatePersonViewModel.personToSave.rank}"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/teamNewPersonAutoCompleteTextView"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/teamNewPersonTextInputLayout"
+                style="@style/AutoCompleteTextViewsTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none"
-                adapter="@{CreatePersonViewModel.teams}"
-                android:text="@={CreatePersonViewModel.personToSave.team}"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/colorAccent" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="@dimen/edittext_margin"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="@dimen/edittext_margin"
+                android:hint="@string/scout_team"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rankNewPersonTextInputLayout">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/functionNewPersonTextInputLayout"
-            style="@style/AutoCompleteTextViewsTextInputLayoutStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/edittext_margin"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="@dimen/edittext_margin"
-            android:hint="@string/scout_function"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teamNewPersonTextInputLayout">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/teamNewPersonAutoCompleteTextView"
+                    adapter="@{CreatePersonViewModel.teams}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:text="@={CreatePersonViewModel.personToSave.team}"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/functionNewPersonAutoCompleteTextView"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/functionNewPersonTextInputLayout"
+                style="@style/AutoCompleteTextViewsTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none"
-                adapter="@{CreatePersonViewModel.functions}"
-                android:text="@={CreatePersonViewModel.personToSave.function}"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/colorAccent" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="@dimen/edittext_margin"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="@dimen/edittext_margin"
+                android:hint="@string/scout_function"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/teamNewPersonTextInputLayout">
 
-        <Button
-            android:id="@+id/confirmNewPersonButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/colorAccent"
-            android:text="@string/confirm"
-            android:textColor="@color/colorPrimary"
-            android:onClick="@{() -> CreatePersonViewModel.handleCreatePersonButton()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/functionNewPersonTextInputLayout"
-            app:layout_constraintVertical_bias="0.0" />
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/functionNewPersonAutoCompleteTextView"
+                    adapter="@{CreatePersonViewModel.functions}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:text="@={CreatePersonViewModel.personToSave.function}"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/confirmNewPersonButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="@{() -> CreatePersonViewModel.handleCreatePersonButton()}"
+                android:text="@string/confirm"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/functionNewPersonTextInputLayout"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

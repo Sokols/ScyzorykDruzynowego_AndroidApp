@@ -12,7 +12,7 @@ public class LoginModel {
     private SharedPreferences sharedPreferences;
 
     public LoginModel(Application application) {
-        this.userRepository = UserRepository.getInstance(application);
+        this.userRepository = UserRepository.getInstance();
         this.sharedPreferences = application.getSharedPreferences(Utils.SHARED_PREFS_KEY_NAME, 0);
     }
 
