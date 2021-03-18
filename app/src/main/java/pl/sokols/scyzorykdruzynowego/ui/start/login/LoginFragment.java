@@ -29,6 +29,12 @@ public class LoginFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
+        viewModel.getUserLiveData().observe(this, firebaseUser -> {
+            if (firebaseUser != null) {
+                startActivity(new Intent(requireActivity(), MainActivity.class));
+                requireActivity().finish();
+            }
+        });
     }
 
     @Nullable
@@ -44,39 +50,10 @@ public class LoginFragment extends Fragment {
     }
 
     private void initObservers(View view) {
-        viewModel.getUser().observe(getViewLifecycleOwner(), user -> {
-            if (user.getUsername() == null) {
-                binding.usernameLoginTextInputLayout.setError(getString(R.string.required_error));
-            } else {
-                binding.usernameLoginTextInputLayout.setError(null);
-            }
+        viewModel.getErrorMessageLiveData()
+                .observe(getViewLifecycleOwner(), s -> Snackbar.make(view, s, BaseTransientBottomBar.LENGTH_SHORT).show());
 
-            if (user.getPassword() == null) {
-                binding.passwordLoginTextInputLayout.setError(getString(R.string.required_error));
-            } else {
-                binding.passwordLoginTextInputLayout.setError(null);
-            }
-        });
-
-        viewModel.getIsUsernameExists().observe(getViewLifecycleOwner(), aBoolean -> {
-            if (!aBoolean) {
-                Snackbar.make(view, getString(R.string.incorrect_login), BaseTransientBottomBar.LENGTH_SHORT).show();
-            }
-        });
-
-        viewModel.getIsPasswordCorrect().observe(getViewLifecycleOwner(), aBoolean -> {
-            if (!aBoolean) {
-                Snackbar.make(view, getString(R.string.incorrect_password), BaseTransientBottomBar.LENGTH_SHORT).show();
-            }
-        });
-
-        viewModel.getIsReadyToLogin().observe(getViewLifecycleOwner(), aBoolean -> {
-            if (aBoolean) {
-                startActivity(new Intent(requireActivity(), MainActivity.class));
-                requireActivity().finish();
-            }
-        });
-
-        binding.registerLoginButton.setOnClickListener(view1 -> Navigation.findNavController(view).navigate(R.id.action_login_to_registration));
+        binding.registerLoginButton
+                .setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_login_to_registration));
     }
 }

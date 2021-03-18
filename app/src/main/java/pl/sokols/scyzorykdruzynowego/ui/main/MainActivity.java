@@ -1,7 +1,7 @@
 package pl.sokols.scyzorykdruzynowego.ui.main;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,22 +16,31 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import pl.sokols.scyzorykdruzynowego.R;
+import pl.sokols.scyzorykdruzynowego.data.repository.AuthRepository;
 import pl.sokols.scyzorykdruzynowego.databinding.ActivityMainBinding;
 import pl.sokols.scyzorykdruzynowego.ui.start.StartActivity;
-import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private AuthRepository authRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        authRepository = new AuthRepository(getApplication());
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar(binding.mainActivityTopAppBar);
         setNavigation();
     }
 
+    private void logOut() {
+        authRepository.logOut();
+        startActivity(new Intent(this, StartActivity.class));
+        finish();
+    }
+
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -70,12 +79,7 @@ public class MainActivity extends AppCompatActivity {
         dialogBuilder.setTitle(getString(R.string.are_you_sure_title));
         dialogBuilder.setMessage(getString(R.string.are_you_sure_logout_description));
         dialogBuilder.setPositiveButton(getString(R.string.yes),
-                (dialogInterface, whichButton) -> {
-                    SharedPreferences sharedPreferences = getSharedPreferences(Utils.SHARED_PREFS_KEY_NAME, MODE_PRIVATE);
-                    sharedPreferences.edit().putBoolean(Utils.REMEMBER_ME_SHARED_PREFS_KEY, false).apply();
-                    startActivity(new Intent(this, StartActivity.class));
-                    finish();
-                });
+                (dialogInterface, whichButton) -> logOut());
         dialogBuilder.setNegativeButton(getString(R.string.no),
                 (dialogInterface, i) -> { /* do nothing */ });
         dialogBuilder.create().show();

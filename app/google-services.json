@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "325924577615",
+    "project_id": "scyzoryk-druzynowego-d0ff0",
+    "storage_bucket": "scyzoryk-druzynowego-d0ff0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325924577615:android:35a1c7f4ed8d927bb6253a",
+        "android_client_info": {
+          "package_name": "pl.sokols.scyzorykdruzynowego"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325924577615-2066j5f8sfbbs28nbv9pm5oeoosalhot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmuQZj9k4vEsz-sL3jodjCI4QLaAzHReY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325924577615-2066j5f8sfbbs28nbv9pm5oeoosalhot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

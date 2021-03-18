@@ -6,21 +6,16 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.firebase.auth.FirebaseUser;
 
-import pl.sokols.scyzorykdruzynowego.data.entity.User;
+import pl.sokols.scyzorykdruzynowego.R;
+import pl.sokols.scyzorykdruzynowego.data.repository.AuthRepository;
 
 public class RegistrationViewModel extends AndroidViewModel {
 
-    private final RegistrationModel model;
-
-    private final MutableLiveData<Boolean> arePasswordsCorrect = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> isUsernameUnique = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> isReadyToRegister = new MutableLiveData<>();
-    private MutableLiveData<User> user;
-
-    private List<User> currentUsers = new ArrayList<>();
+    private final AuthRepository authRepository;
+    private final MutableLiveData<String> errorMessageLiveData;
+    private final MutableLiveData<FirebaseUser> userLiveData;
 
     private String username;
     private String password;
@@ -28,43 +23,23 @@ public class RegistrationViewModel extends AndroidViewModel {
 
     public RegistrationViewModel(@NonNull Application application) {
         super(application);
-        model = new RegistrationModel(application);
-        model.getUserRepository().getCurrentUsers().observeForever(users -> currentUsers = users);
+        authRepository = new AuthRepository(application);
+        userLiveData = authRepository.getUserLiveData();
+        errorMessageLiveData = authRepository.getErrorMessageLiveData();
+    }
+
+    public void register(String email, String password) {
+        authRepository.register(email, password);
     }
 
     public void handleRegisterButton() {
-        User newUser = new User(username, password);
-        user.setValue(newUser);
-        if (isAllDataCorrect()) {
-            model.getUserRepository().createUser(newUser);
-            isReadyToRegister.setValue(true);
-        }
-    }
-
-    private boolean isAllDataCorrect() {
-        // get data typed
-        String username = getUsername() == null ? "" : getUsername();
-        String password = getPassword() == null ? "" : getPassword();
-        String password2 = getPassword2() == null ? "" : getPassword2();
-
-        // check if all data exist
-        if (username.equals("") || password.equals("") || password2.equals("")) {
-            return false;
-        }
-        // check if typed username exists in database
-        for (User user : currentUsers) {
-            if (user.getUsername().equals(username)) {
-                isUsernameUnique.setValue(false);
-                return false;
-            }
-        }
-        // check if password equals password2
         if (!password.equals(password2)) {
-            arePasswordsCorrect.setValue(false);
-            return false;
+            errorMessageLiveData.postValue(getApplication().getString(R.string.ERROR_DIFFERENT_PASSWORDS));
+        } else if (username.length() > 0 && password.length() > 0) {
+            register(username, password);
+        } else {
+           errorMessageLiveData.postValue(getApplication().getString(R.string.ERROR_BLANK_INPUTS));
         }
-
-        return true;
     }
 
     public String getUsername() {
@@ -91,22 +66,11 @@ public class RegistrationViewModel extends AndroidViewModel {
         this.password2 = password2;
     }
 
-    public MutableLiveData<Boolean> getArePasswordsCorrect() {
-        return arePasswordsCorrect;
+    public MutableLiveData<String> getErrorMessageLiveData() {
+        return errorMessageLiveData;
     }
 
-    public MutableLiveData<Boolean> getIsUsernameUnique() {
-        return isUsernameUnique;
-    }
-
-    public MutableLiveData<Boolean> getIsReadyToRegister() {
-        return isReadyToRegister;
-    }
-
-    public MutableLiveData<User> getUser() {
-        if (user == null) {
-            user = new MutableLiveData<>();
-        }
-        return user;
+    public MutableLiveData<FirebaseUser> getUserLiveData() {
+        return userLiveData;
     }
 }

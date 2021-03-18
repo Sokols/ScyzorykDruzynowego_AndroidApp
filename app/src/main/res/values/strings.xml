@@ -77,4 +77,13 @@
     <string name="add_new_team">Dodaj zastęp</string>
     <string name="stamp_task_icon_description">Punktor dla zadania sprawności</string>
     <string name="blank_level">Poziom: %s</string>
+    <string name="ERROR_INVALID_EMAIL">Niepoprawny email!</string>
+    <string name="ERROR_WRONG_PASSWORD">Niepoprawne hasło!</string>
+    <string name="ERROR_EMAIL_ALREADY_IN_USE">Taki email już istnieje!</string>
+    <string name="ERROR_USER_NOT_FOUND">Taki email nie istnieje!</string>
+    <string name="ERROR_WEAK_PASSWORD">Hasło musi posiadać przynajmniej 6 znaków!</string>
+    <string name="ERROR">Coś poszło nie tak.</string>
+    <string name="app_logo_description">App logo</string>
+    <string name="ERROR_DIFFERENT_PASSWORDS">Hasła nie są takie same!</string>
+    <string name="ERROR_BLANK_INPUTS">Uzupełnij wszystkie pola!</string>
 </resources>

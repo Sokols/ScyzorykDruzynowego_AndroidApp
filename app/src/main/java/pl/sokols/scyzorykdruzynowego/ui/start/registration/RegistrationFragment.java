@@ -1,5 +1,6 @@
 package pl.sokols.scyzorykdruzynowego.ui.start.registration;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,12 +13,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.databinding.FragmentRegistrationBinding;
-
-import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
+import pl.sokols.scyzorykdruzynowego.ui.main.MainActivity;
 
 public class RegistrationFragment extends Fragment {
 
@@ -28,6 +29,12 @@ public class RegistrationFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(RegistrationViewModel.class);
+        viewModel.getUserLiveData().observe(this, firebaseUser -> {
+            if (firebaseUser != null) {
+                startActivity(new Intent(requireActivity(), MainActivity.class));
+                requireActivity().finish();
+            }
+        });
     }
 
     @Override
@@ -42,45 +49,10 @@ public class RegistrationFragment extends Fragment {
     }
 
     private void initObservers(View view) {
-        viewModel.getUser().observe(getViewLifecycleOwner(), user -> {
-            if (viewModel.getUsername() == null) {
-                binding.usernameRegistrationTextInputLayout.setError(getString(R.string.required_error));
-            } else {
-                binding.usernameRegistrationTextInputLayout.setError(null);
-            }
+        viewModel.getErrorMessageLiveData()
+                .observe(getViewLifecycleOwner(), s -> Snackbar.make(view, s, BaseTransientBottomBar.LENGTH_SHORT).show());
 
-            if (viewModel.getPassword() == null) {
-                binding.passwordRegistrationTextInputLayout.setError(getString(R.string.required_error));
-            } else {
-                binding.passwordRegistrationTextInputLayout.setError(null);
-            }
-
-            if (viewModel.getPassword2() == null) {
-                binding.repeatPasswordRegistrationTextInputLayout.setError(getString(R.string.required_error));
-            } else {
-                binding.repeatPasswordRegistrationTextInputLayout.setError(null);
-            }
-        });
-
-        viewModel.getIsUsernameUnique().observe(getViewLifecycleOwner(), aBoolean -> {
-            if (!aBoolean) {
-                Snackbar.make(view, getString(R.string.double_login), LENGTH_SHORT).show();
-            }
-        });
-
-        viewModel.getArePasswordsCorrect().observe(getViewLifecycleOwner(), aBoolean -> {
-            if (!aBoolean) {
-                Snackbar.make(view, getString(R.string.incorrect_second_password), LENGTH_SHORT).show();
-            }
-        });
-
-        viewModel.getIsReadyToRegister().observe(getViewLifecycleOwner(), aBoolean -> {
-            if (aBoolean) {
-                Navigation.findNavController(requireView()).navigate(R.id.action_registration_to_login);
-                Snackbar.make(view, getString(R.string.registration_completed), LENGTH_SHORT).show();
-            }
-        });
-
-        binding.loginRegistrationButton.setOnClickListener(view1 -> Navigation.findNavController(view).navigate(R.id.action_registration_to_login));
+        binding.loginRegistrationButton
+                .setOnClickListener(view1 -> Navigation.findNavController(view).navigate(R.id.action_registration_to_login));
     }
 }
