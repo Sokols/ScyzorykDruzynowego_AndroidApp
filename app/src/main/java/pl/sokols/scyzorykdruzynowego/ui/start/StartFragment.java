@@ -13,18 +13,18 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.repository.AuthRepository;
+import pl.sokols.scyzorykdruzynowego.data.firebase.FirebaseAuthRepository;
 import pl.sokols.scyzorykdruzynowego.ui.main.MainActivity;
 
 public class StartFragment extends Fragment {
 
     private final int SPLASH_TIME_OUT = 3000;
-    private AuthRepository authRepository;
+    private FirebaseAuthRepository firebaseAuthRepository;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        authRepository = new AuthRepository(requireActivity().getApplication());
+        firebaseAuthRepository = new FirebaseAuthRepository(requireActivity().getApplication());
     }
 
     @Override
@@ -35,7 +35,7 @@ public class StartFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        new Handler().postDelayed(() -> authRepository.getUserLiveData().observe(requireActivity(), firebaseUser -> {
+        new Handler().postDelayed(() -> firebaseAuthRepository.getUserLiveData().observe(requireActivity(), firebaseUser -> {
             if (firebaseUser != null) {
                 startActivity(new Intent(requireActivity(), MainActivity.class));
                 requireActivity().finish();

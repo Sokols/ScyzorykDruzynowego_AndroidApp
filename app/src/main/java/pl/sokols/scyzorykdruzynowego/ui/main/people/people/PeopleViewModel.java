@@ -12,9 +12,8 @@ import pl.sokols.scyzorykdruzynowego.data.entity.Team;
 
 public class PeopleViewModel extends AndroidViewModel {
 
+    private final PeopleModel model;
     private LiveData<List<Team>> teamList;
-
-    private PeopleModel model;
 
     public PeopleViewModel(@NonNull Application application) {
         super(application);

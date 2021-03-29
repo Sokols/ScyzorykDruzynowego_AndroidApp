@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import pl.sokols.scyzorykdruzynowego.R;
+import pl.sokols.scyzorykdruzynowego.data.firebase.FirebaseUtils;
 import pl.sokols.scyzorykdruzynowego.data.repository.PersonRepository;
 import pl.sokols.scyzorykdruzynowego.databinding.FragmentEditPersonBinding;
 import pl.sokols.scyzorykdruzynowego.utils.Utils;
@@ -63,7 +64,7 @@ public class EditPersonFragment extends Fragment {
     };
 
     private void deletePerson() {
-        new PersonRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()))
+        new PersonRepository(requireActivity().getApplication(), FirebaseUtils.getUserId())
                 .delete(binding.getPerson());
         Navigation.findNavController(requireView()).popBackStack();
     }

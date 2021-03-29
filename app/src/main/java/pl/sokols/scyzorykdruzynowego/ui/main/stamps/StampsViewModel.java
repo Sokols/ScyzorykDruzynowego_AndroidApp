@@ -19,7 +19,7 @@ import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class StampsViewModel extends AndroidViewModel {
 
-    private MutableLiveData<List<Stamp>> stampsLiveData;
+    private final MutableLiveData<List<Stamp>> stampsLiveData;
 
     public StampsViewModel(@NonNull Application application) {
         super(application);

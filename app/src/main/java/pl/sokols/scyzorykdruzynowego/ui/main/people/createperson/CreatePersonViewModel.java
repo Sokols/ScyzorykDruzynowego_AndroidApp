@@ -15,15 +15,15 @@ import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class CreatePersonViewModel extends AndroidViewModel {
 
-    private MutableLiveData<Boolean> isReadyToAddPerson = new MutableLiveData<>();
-    private MutableLiveData<Boolean> isReadyToUpdatePerson = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> isReadyToAddPerson = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> isReadyToUpdatePerson = new MutableLiveData<>();
     private MutableLiveData<Person> person;
 
     private Person personToSave;
     private String date;
     private boolean isCreatePerson;
 
-    private CreatePersonModel model;
+    private final CreatePersonModel model;
 
     public CreatePersonViewModel(@NonNull Application application) {
         super(application);

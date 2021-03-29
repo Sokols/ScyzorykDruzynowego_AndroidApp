@@ -9,11 +9,11 @@ import androidx.lifecycle.MutableLiveData;
 import com.google.firebase.auth.FirebaseUser;
 
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.repository.AuthRepository;
+import pl.sokols.scyzorykdruzynowego.data.firebase.FirebaseAuthRepository;
 
 public class RegistrationViewModel extends AndroidViewModel {
 
-    private final AuthRepository authRepository;
+    private final FirebaseAuthRepository firebaseAuthRepository;
     private final MutableLiveData<String> errorMessageLiveData;
     private final MutableLiveData<FirebaseUser> userLiveData;
 
@@ -23,13 +23,13 @@ public class RegistrationViewModel extends AndroidViewModel {
 
     public RegistrationViewModel(@NonNull Application application) {
         super(application);
-        authRepository = new AuthRepository(application);
-        userLiveData = authRepository.getUserLiveData();
-        errorMessageLiveData = authRepository.getErrorMessageLiveData();
+        firebaseAuthRepository = new FirebaseAuthRepository(application);
+        userLiveData = firebaseAuthRepository.getUserLiveData();
+        errorMessageLiveData = firebaseAuthRepository.getErrorMessageLiveData();
     }
 
     public void register(String email, String password) {
-        authRepository.register(email, password);
+        firebaseAuthRepository.register(email, password);
     }
 
     public void handleRegisterButton() {

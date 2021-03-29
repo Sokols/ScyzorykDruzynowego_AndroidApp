@@ -17,7 +17,7 @@ public class PersonRepository {
     private final ExecutorService executorService;
     private final PersonDao personDao;
 
-    public PersonRepository(@NonNull Application application, int userId) {
+    public PersonRepository(@NonNull Application application, String userId) {
         personDao = AppDatabase.getInstance(application, userId).personDao();
         executorService = Executors.newSingleThreadExecutor();
     }

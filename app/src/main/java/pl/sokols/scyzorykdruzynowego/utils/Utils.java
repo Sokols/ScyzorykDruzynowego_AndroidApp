@@ -2,7 +2,6 @@ package pl.sokols.scyzorykdruzynowego.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -21,11 +20,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class Utils {
-    public static final String SHARED_PREFS_KEY_NAME = "all_prefs_key";
-
-    public static final String REMEMBER_ME_SHARED_PREFS_KEY = "remember_me_key";
-    public static final String USER_LOGIN_SHARED_PREFS_KEY = "user_login_key";
-    public static final String USER_ID_SHARED_PREFS_KEY = "user_id_key";
 
     @SuppressLint("SimpleDateFormat")
     public static Date getDateFromString(String date) throws ParseException {
@@ -49,11 +43,6 @@ public class Utils {
             return ChronoUnit.YEARS.between(from, to);
         }
         return 0;
-    }
-
-    public static int getUserId(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(Utils.SHARED_PREFS_KEY_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.getInt(Utils.USER_ID_SHARED_PREFS_KEY, 0);
     }
 
     public static String getJsonFromAssets(Context context, String fileName) {

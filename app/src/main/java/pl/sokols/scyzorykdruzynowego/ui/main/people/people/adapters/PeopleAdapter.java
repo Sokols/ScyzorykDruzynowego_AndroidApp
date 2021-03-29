@@ -20,9 +20,9 @@ import java.util.List;
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entity.Person;
 import pl.sokols.scyzorykdruzynowego.data.entity.Team;
+import pl.sokols.scyzorykdruzynowego.data.firebase.FirebaseUtils;
 import pl.sokols.scyzorykdruzynowego.data.repository.PersonRepository;
 import pl.sokols.scyzorykdruzynowego.databinding.ListitemTeamBinding;
-import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder> {
 
@@ -32,8 +32,8 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
 
     public static class PeopleViewHolder extends RecyclerView.ViewHolder {
 
-        private ListitemTeamBinding mBinding;
-        private Context mContext;
+        private final ListitemTeamBinding mBinding;
+        private final Context mContext;
         private OneTeamAdapter mAdapter;
         private boolean isPermitForAnimation;
 
@@ -90,7 +90,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
                     int position = viewHolder.getAdapterPosition();
                     Person item = mAdapter.getData().get(position);
-                    PersonRepository personRepository = new PersonRepository((Application) mContext.getApplicationContext(), Utils.getUserId(mContext));
+                    PersonRepository personRepository = new PersonRepository((Application) mContext.getApplicationContext(), FirebaseUtils.getUserId());
                     personRepository.delete(item);
                     mAdapter.removeItem(position);
 
@@ -114,10 +114,10 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         }
     }
 
+    private final OneTeamAdapter.OnPersonClickListener mPersonListener;
+    private final PeopleAdapter.OnTeamClickListener mTeamListener;
+    private final Application mApplication;
     private List<Team> mTeamList = new ArrayList<>();
-    private OneTeamAdapter.OnPersonClickListener mPersonListener;
-    private PeopleAdapter.OnTeamClickListener mTeamListener;
-    private Application mApplication;
 
     public PeopleAdapter(OneTeamAdapter.OnPersonClickListener personListener, PeopleAdapter.OnTeamClickListener teamListener, Application application) {
         this.mPersonListener = personListener;

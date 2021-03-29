@@ -27,8 +27,8 @@ public class StampsAdapter extends RecyclerView.Adapter<StampsAdapter.StampsView
 
     public static class StampsViewHolder extends RecyclerView.ViewHolder {
 
-        private ListitemStampBinding mBinding;
-        private StampsFragment mFragment;
+        private final ListitemStampBinding mBinding;
+        private final StampsFragment mFragment;
 
         public StampsViewHolder(ListitemStampBinding binding, StampsFragment fragment) {
             super(binding.getRoot());
@@ -46,7 +46,7 @@ public class StampsAdapter extends RecyclerView.Adapter<StampsAdapter.StampsView
         }
     }
 
-    private Filter mValueFilter = new Filter() {
+    private final Filter mValueFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             List<Stamp> filteredStampsList = new ArrayList<>();
@@ -72,10 +72,10 @@ public class StampsAdapter extends RecyclerView.Adapter<StampsAdapter.StampsView
             notifyDataSetChanged();
         }
     };
-    private List<Stamp> mStampList;
-    private List<Stamp> mStampListFull;
-    private StampsFragment mFragment;
-    private OnStampClickListener mListener;
+    private final List<Stamp> mStampList;
+    private final List<Stamp> mStampListFull;
+    private final StampsFragment mFragment;
+    private final OnStampClickListener mListener;
 
     public StampsAdapter(List<Stamp> stampList, StampsFragment fragment, OnStampClickListener listener) {
         this.mStampList = stampList;

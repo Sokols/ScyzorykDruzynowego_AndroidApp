@@ -16,26 +16,26 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.repository.AuthRepository;
+import pl.sokols.scyzorykdruzynowego.data.firebase.FirebaseAuthRepository;
 import pl.sokols.scyzorykdruzynowego.databinding.ActivityMainBinding;
 import pl.sokols.scyzorykdruzynowego.ui.start.StartActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private AuthRepository authRepository;
+    private FirebaseAuthRepository firebaseAuthRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        authRepository = new AuthRepository(getApplication());
+        firebaseAuthRepository = new FirebaseAuthRepository(getApplication());
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar(binding.mainActivityTopAppBar);
         setNavigation();
     }
 
     private void logOut() {
-        authRepository.logOut();
+        firebaseAuthRepository.logOut();
         startActivity(new Intent(this, StartActivity.class));
         finish();
     }

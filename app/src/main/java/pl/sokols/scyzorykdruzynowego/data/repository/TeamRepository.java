@@ -15,10 +15,10 @@ import pl.sokols.scyzorykdruzynowego.data.entity.Team;
 
 public class TeamRepository {
 
-    private ExecutorService executorService;
-    private TeamDao teamDao;
+    private final ExecutorService executorService;
+    private final TeamDao teamDao;
 
-    public TeamRepository(@NonNull Application application, int userId) {
+    public TeamRepository(@NonNull Application application, String userId) {
         teamDao = AppDatabase.getInstance(application, userId).teamDao();
         executorService = Executors.newSingleThreadExecutor();
     }

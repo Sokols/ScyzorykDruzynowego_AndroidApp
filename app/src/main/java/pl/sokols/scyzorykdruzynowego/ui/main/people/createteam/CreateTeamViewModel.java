@@ -10,15 +10,15 @@ import pl.sokols.scyzorykdruzynowego.data.entity.Team;
 
 public class CreateTeamViewModel extends AndroidViewModel {
 
-    private MutableLiveData<Boolean> isReadyToAddTeam = new MutableLiveData<>();
-    private MutableLiveData<Boolean> isReadyToUpdateTeam = new MutableLiveData<>();
-    private MutableLiveData<Boolean> isTeamNameUnique = new MutableLiveData<>();
+    private final CreateTeamModel model;
+
+    private final MutableLiveData<Boolean> isReadyToAddTeam = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> isReadyToUpdateTeam = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> isTeamNameUnique = new MutableLiveData<>();
     private MutableLiveData<Team> team;
 
     private Team teamToSave;
     private boolean isCreateTeam;
-
-    private CreateTeamModel model;
 
     public CreateTeamViewModel(@NonNull Application application) {
         super(application);

@@ -2,18 +2,19 @@ package pl.sokols.scyzorykdruzynowego.ui.main.people.createperson;
 
 import android.app.Application;
 
+import pl.sokols.scyzorykdruzynowego.data.firebase.FirebaseUtils;
 import pl.sokols.scyzorykdruzynowego.data.repository.PersonRepository;
 import pl.sokols.scyzorykdruzynowego.data.repository.TeamRepository;
-import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class CreatePersonModel {
 
-    private PersonRepository personRepository;
-    private TeamRepository teamRepository;
+    private final PersonRepository personRepository;
+    private final TeamRepository teamRepository;
 
     public CreatePersonModel(Application application) {
-        this.personRepository = new PersonRepository(application, Utils.getUserId(application));
-        this.teamRepository = new TeamRepository(application, Utils.getUserId(application));
+        String userId = FirebaseUtils.getUserId();
+        this.personRepository = new PersonRepository(application, userId);
+        this.teamRepository = new TeamRepository(application, userId);
     }
 
     public PersonRepository getPersonRepository() {

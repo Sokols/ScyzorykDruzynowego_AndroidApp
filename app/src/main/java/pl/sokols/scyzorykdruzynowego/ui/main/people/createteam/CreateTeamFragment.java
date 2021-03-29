@@ -19,9 +19,9 @@ import java.util.Objects;
 
 import pl.sokols.scyzorykdruzynowego.R;
 import pl.sokols.scyzorykdruzynowego.data.entity.Team;
+import pl.sokols.scyzorykdruzynowego.data.firebase.FirebaseUtils;
 import pl.sokols.scyzorykdruzynowego.data.repository.PersonRepository;
 import pl.sokols.scyzorykdruzynowego.databinding.FragmentCreateTeamBinding;
-import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class CreateTeamFragment extends Fragment {
 
@@ -90,7 +90,7 @@ public class CreateTeamFragment extends Fragment {
 
     // changing people team names in whole database
     private void changePeopleTeams() {
-        new PersonRepository(requireActivity().getApplication(), Utils.getUserId(requireContext()))
+        new PersonRepository(requireActivity().getApplication(), FirebaseUtils.getUserId())
                 .updateTeam(
                         viewModel.getTeamToSave().getTeamName(), // new team name
                         Objects.requireNonNull(CreateTeamFragmentArgs.fromBundle(requireArguments()).getTeam()).getTeamName()); // old team name

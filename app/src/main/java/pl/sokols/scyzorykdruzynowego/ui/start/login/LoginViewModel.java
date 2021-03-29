@@ -9,11 +9,11 @@ import androidx.lifecycle.MutableLiveData;
 import com.google.firebase.auth.FirebaseUser;
 
 import pl.sokols.scyzorykdruzynowego.R;
-import pl.sokols.scyzorykdruzynowego.data.repository.AuthRepository;
+import pl.sokols.scyzorykdruzynowego.data.firebase.FirebaseAuthRepository;
 
 public class LoginViewModel extends AndroidViewModel {
 
-    private final AuthRepository authRepository;
+    private final FirebaseAuthRepository firebaseAuthRepository;
     private final MutableLiveData<FirebaseUser> userLiveData;
     private final MutableLiveData<String> errorMessageLiveData;
 
@@ -22,13 +22,13 @@ public class LoginViewModel extends AndroidViewModel {
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
-        authRepository = new AuthRepository(application);
-        userLiveData = authRepository.getUserLiveData();
-        errorMessageLiveData = authRepository.getErrorMessageLiveData();
+        firebaseAuthRepository = new FirebaseAuthRepository(application);
+        userLiveData = firebaseAuthRepository.getUserLiveData();
+        errorMessageLiveData = firebaseAuthRepository.getErrorMessageLiveData();
     }
 
     public void login(String email, String password) {
-        authRepository.login(email, password);
+        firebaseAuthRepository.login(email, password);
     }
 
     public MutableLiveData<FirebaseUser> getUserLiveData() {

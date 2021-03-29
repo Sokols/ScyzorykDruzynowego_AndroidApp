@@ -11,9 +11,9 @@ import java.util.List;
 
 import pl.sokols.scyzorykdruzynowego.data.entity.Person;
 import pl.sokols.scyzorykdruzynowego.data.entity.Team;
+import pl.sokols.scyzorykdruzynowego.data.firebase.FirebaseUtils;
 import pl.sokols.scyzorykdruzynowego.data.repository.PersonRepository;
 import pl.sokols.scyzorykdruzynowego.databinding.ListitemPersonBinding;
-import pl.sokols.scyzorykdruzynowego.utils.Utils;
 
 public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTeamViewHolder> {
 
@@ -23,7 +23,7 @@ public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTeamV
 
     public static class OneTeamViewHolder extends RecyclerView.ViewHolder {
 
-        private ListitemPersonBinding binding;
+        private final ListitemPersonBinding binding;
 
         public OneTeamViewHolder(ListitemPersonBinding binding) {
             super(binding.getRoot());
@@ -36,12 +36,12 @@ public class OneTeamAdapter extends RecyclerView.Adapter<OneTeamAdapter.OneTeamV
         }
     }
 
-    private List<Person> mPersonList;
-    private OnPersonClickListener mListener;
-    private PersonRepository mPersonRepository;
+    private final List<Person> mPersonList;
+    private final OnPersonClickListener mListener;
+    private final PersonRepository mPersonRepository;
 
     public OneTeamAdapter(Team currentTeam, OnPersonClickListener listener, Application application) {
-        this.mPersonRepository = new PersonRepository(application, Utils.getUserId(application.getBaseContext()));
+        this.mPersonRepository = new PersonRepository(application, FirebaseUtils.getUserId());
         this.mPersonList = mPersonRepository.getPeopleByTeamName(currentTeam.getTeamName());
         this.mListener = listener;
     }

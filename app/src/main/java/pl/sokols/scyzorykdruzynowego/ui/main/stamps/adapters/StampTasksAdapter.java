@@ -14,7 +14,7 @@ public class StampTasksAdapter extends RecyclerView.Adapter<StampTasksAdapter.St
 
     public static class StampTasksViewHolder extends RecyclerView.ViewHolder {
 
-        ListitemStampTaskBinding mBinding;
+        private final ListitemStampTaskBinding mBinding;
 
         public StampTasksViewHolder(ListitemStampTaskBinding binding) {
             super(binding.getRoot());
@@ -26,7 +26,7 @@ public class StampTasksAdapter extends RecyclerView.Adapter<StampTasksAdapter.St
         }
     }
 
-    private List<String> mStampTasksList;
+    private final List<String> mStampTasksList;
 
     public StampTasksAdapter(List<String> stampTasksList) {
         this.mStampTasksList = stampTasksList;
